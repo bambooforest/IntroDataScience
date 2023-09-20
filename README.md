@@ -46,8 +46,8 @@ assessment.
 
 # Form of education
 
-Readings, lectures, methods and [data practical](data_practical.md)
-(final project).
+Readings, lectures, methods and [data
+practical](data_practicals/README.md) (final project).
 
 The course schedule is available here (invite only; email me if don’t
 have access):
@@ -91,7 +91,7 @@ must be completed by the last day of class.
 
 # Final data practical
 
-The “final” [data practical](data_practical.md) will include the
+The “final” [data practical](data_practicals/README.md) will include the
 creation of an R markdown [scientific report](2_scientific_reports)
 incorporating material and methods from the lectures in R code. You will
 select dataset(s) of your own interest to test a hypothesis (or
@@ -108,22 +108,22 @@ into one of the following formats for final submission:
   README.md)
 
 On the final day of class, each student will briefly present their [data
-practical](data_practical.md) report.
+practical](data_practicals/README.md) report.
 
 If you use GitHub, put your repository’s URL into the spreadsheet in the
 course schedule above. If you do not use GitHub, please submit your
-[data practical](data_practical.md) to me via email.
+[data practical](data_practicals/README.md) to me via email.
 
 The course is heavily weighted on the [data
-practical](data_practical.md). The idea is that you not only learn how
-to implement the materials you learn from DataCamp and from this course,
-but that after the course is over, you will have a piece of work that
-showcases your data science skills, e.g., something that you can share
-on a resume or CV or on job or school applications.
+practical](data_practicals/README.md). The idea is that you not only
+learn how to implement the materials you learn from DataCamp and from
+this course, but that after the course is over, you will have a piece of
+work that showcases your data science skills, e.g., something that you
+can share on a resume or CV or on job or school applications.
 
 # Grading
 
-- 70% [data practical](data_practical.md).
+- 70% [data practical](data_practicals/README.md).
 
 - 30% of your grade will come from the presentation of the reading
   chapters (to be divided among the students).
