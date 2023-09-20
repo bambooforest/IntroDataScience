@@ -31,7 +31,7 @@ Are you using the [scientific method](https://en.wikipedia.org/wiki/Scientific_m
 
 Do you follow a particular [workflow](https://en.wikipedia.org/wiki/Workflow)? For example, the [IMRAD](https://en.wikipedia.org/wiki/IMRAD) organizational structure for the systematic organization of a research paper:
 
-![IMRAD workflow.](Wineglass_model_for_IMRaD_structure.png)
+![IMRAD workflow.](figures/Wineglass_model_for_IMRaD_structure.png)
 
 If so, let's take a minute and discuss how we can organize ourselves.
 
@@ -411,7 +411,7 @@ in this pretty good online book:
 
 and which of course the proper thing to do is cite it [@Xie_etal2020]. What's an easy way to do that? Of course you can do it by hand or you can use [Google Scholar](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=R+Markdown+Cookbook&btnG=) and click on the `Cite` link below the correct search result to access the citation (I simply click on `Bibtex` and copy and paste the text into the .bib file and then I usually have to clean it up by making some edits).
 
-![Getting the citation.](citation_example.png)
+![Getting the citation.](figures/citation_example.png)
 I can give a demo in the class.
 
 
