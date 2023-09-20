@@ -1,6 +1,6 @@
 # Intro to data science
 
-* **Lectures**: Wednesdays 13:15--16:00 (21.09.2022--14.12.2022)
+* **Lectures**: Wednesdays 13:15--16:00 (20.09.2023--20.12.2023)
 * **Location**: RS40 - [Faculty of Arts](https://goo.gl/maps/ufPzXmoxHDXrbPrx6)
 * **ECTS credits**: 3
 * **Instructor**: [Dr. Steven Moran](https://www.unine.ch/evolang/home/team/steven-moran.html) \<steven.moran@unine.ch\>
@@ -9,7 +9,7 @@
 
 **Course summary**: The basic principles and methods of [data science](https://en.wikipedia.org/wiki/Data_science) will be presented. A central theme is the assessment of scientific claims, and subsequent data collection, transformation, quantitative analysis, and reporting of scientific results. Official course description:
 
-* http://www10.unine.ch/desc_data/plans2022-2023/plan_2022-2023_2LN2319.pdf
+* http://www10.unine.ch/desc_data/plans2023-2024/plan_2023-2024_2LN2319.pdf
 
 **Form of assessment**: Continuous assessment with data science exercises (graded). Work not submitted by the required deadline will result in a fail for that given assessment.
 
@@ -17,7 +17,7 @@
 
 The course schedule is available here (invite only; email me if don't have access):
 
-* https://docs.google.com/spreadsheets/d/1CpLh_zcx-XNne84IaXbYCqIAp6T17wkEaEK7OUVtEhQ/edit#gid=0
+* https://docs.google.com/spreadsheets/d/1ksPxC2Vx1Pe9QedAk_Ynq55rp_ONZJn4QuDc0TWB3lM/edit?usp=sharing
 
 **Course structure**: The readings will include chapters from: Calling Bullshit: The Art of Skepticism in a Data-Driven World, by Carl Bergstrom and Jevin West: 
 
@@ -43,11 +43,11 @@ The "final" [data practical](data_practical.md) will include the creation of an 
 
 This report must be [compiled (aka knit)](https://github.com/bambooforest/IntroDataScience/tree/main/2_writing_scientific_reports#r-markdown-overview) into one of the following formats for final submission:
 
-* GitHub markdown in a GitHub repository (preferred -- we will discuss this procedure in class)
-* HTML
 * PDF
+* HTML
+* GitHub markdown in a GitHub repository (filenames: README.Rmd / README.md)
 
-On the final day of class, each student will briefly present their [data practical](data_practical.md) report and we will anonymously rate and review them.
+On the final day of class, each student will briefly present their [data practical](data_practical.md) report.
 
 If you use GitHub, put your repository's URL into the spreadsheet in the course schedule above. If you do not use GitHub, please submit your [data practical](data_practical.md) to me via email.
 
@@ -60,7 +60,6 @@ The course is heavily weighted on the [data practical](data_practical.md). The i
 * 70% [data practical](data_practical.md).
 
 * 30% of your grade will come from the presentation of the reading chapters (to be divided among the students). 
-
 * Homework in DataCamp is pass / fail. That is, you must complete all homework assignments to pass the class. You will be added to our DataCamp group and you should receive an invite. DataCamp requires a login. (Shout out to DataCamp for giving us free access to their great materials.)
 
 **Note**: This syllabus is subject to change but the most up-to-date version is always available online:
@@ -97,5 +96,7 @@ The code and the data needed to reproduce the error or problem.
 ***
 
 Lastly, every classroom has students with different levels of experience. The goal is that you understand and can implement the learning objectives in this course. It is not the goal that you go through every single URL provided in each chapter in detail. But of course read what interests you!
+
+***
 
 **Good luck and have fun!!!**
