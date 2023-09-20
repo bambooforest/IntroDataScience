@@ -1,37 +1,28 @@
 Data
 ================
 Steven Moran
-(26 October, 2022)
+(20 September, 2023)
 
--   <a href="#what-is-data" id="toc-what-is-data">What is data?</a>
--   <a href="#where-do-i-find-data" id="toc-where-do-i-find-data">Where do I
-    find data?</a>
--   <a href="#structured-versus-unstructured-data"
-    id="toc-structured-versus-unstructured-data">Structured versus
-    unstructured data</a>
--   <a href="#data-formats" id="toc-data-formats">Data formats</a>
-    -   <a href="#analog-versus-digital" id="toc-analog-versus-digital">Analog
-        versus digital</a>
-    -   <a href="#binary-and-electronic-text"
-        id="toc-binary-and-electronic-text">Binary and electronic text</a>
--   <a href="#data-types-in-computer-programming"
-    id="toc-data-types-in-computer-programming">Data types in computer
-    programming</a>
--   <a href="#data-types-in-statistics"
-    id="toc-data-types-in-statistics">Data types in statistics</a>
-    -   <a href="#qualitative-versus-quantitative-variables"
-        id="toc-qualitative-versus-quantitative-variables">Qualitative versus
-        quantitative variables</a>
-    -   <a href="#scales-of-measurement" id="toc-scales-of-measurement">Scales
-        of measurement</a>
--   <a href="#data-structures" id="toc-data-structures">Data structures</a>
--   <a href="#file-formats" id="toc-file-formats">File formats</a>
--   <a href="#tabular-data" id="toc-tabular-data">Tabular data</a>
--   <a href="#metadata" id="toc-metadata">Metadata</a>
--   <a href="#data-archiving" id="toc-data-archiving">Data archiving</a>
--   <a href="#exercises" id="toc-exercises">Exercises</a>
--   <a href="#references-and-footnotes"
-    id="toc-references-and-footnotes">References and footnotes</a>
+- [What is data?](#what-is-data)
+- [Where do I find data?](#where-do-i-find-data)
+- [Structured versus unstructured
+  data](#structured-versus-unstructured-data)
+- [Data formats](#data-formats)
+  - [Analog versus digital](#analog-versus-digital)
+  - [Binary and electronic text](#binary-and-electronic-text)
+- [Data types in computer
+  programming](#data-types-in-computer-programming)
+- [Data types in statistics](#data-types-in-statistics)
+  - [Qualitative versus quantitative
+    variables](#qualitative-versus-quantitative-variables)
+  - [Scales of measurement](#scales-of-measurement)
+- [Data structures](#data-structures)
+- [File formats](#file-formats)
+- [Tabular data](#tabular-data)
+- [Metadata](#metadata)
+- [Data archiving](#data-archiving)
+- [Exercises](#exercises)
+- [References and footnotes](#references-and-footnotes)
 
 This report uses the [R programming
 language](https://cran.r-project.org/doc/FAQ/R-FAQ.html) (R Core Team
@@ -78,7 +69,7 @@ that make the raw data useful and interpretable. Having context about
 data, i.e., information, can help us make decisions, inferences about
 the data, etc.
 
--   <https://www.diffen.com/difference/Data_vs_Information>
+- <https://www.diffen.com/difference/Data_vs_Information>
 
 | Data                                         | Information                                              |
 |----------------------------------------------|----------------------------------------------------------|
@@ -89,7 +80,10 @@ the data, etc.
 Or
 [visually](https://twitter.com/beco/status/717112009385357316/photo/1):
 
-![Data vs information](CfOwObSVAAAkC2F.jpeg)
+<figure>
+<img src="CfOwObSVAAAkC2F.jpeg" alt="Data vs information" />
+<figcaption aria-hidden="true">Data vs information</figcaption>
+</figure>
 
 Or in code using the built in [Airline passengers
 dataset](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/AirPassengers.html).
@@ -174,9 +168,9 @@ increasingly rapidly. By some estimates, there was 60 or more
 [zettabytes](https://en.wikipedia.org/wiki/Zettabyte_Era) of data as of
 2020.
 
--   <https://www.statista.com/statistics/871513/worldwide-data-created/>
--   <https://seedscientific.com/how-much-data-is-created-every-day/>
--   <https://rivery.io/blog/big-data-statistics-how-much-data-is-there-in-the-world/>
+- <https://www.statista.com/statistics/871513/worldwide-data-created/>
+- <https://seedscientific.com/how-much-data-is-created-every-day/>
+- <https://rivery.io/blog/big-data-statistics-how-much-data-is-there-in-the-world/>
 
 As of 2021, calculations of how much data is being created stood at:
 
@@ -184,7 +178,7 @@ As of 2021, calculations of how much data is being created stood at:
 > > > emails, 4 million gigabytes of Facebook data, 65 billion WhatsApp
 > > > messages and 720,000 hours of new content added daily on YouTube.
 
--   <https://theconversation.com/the-worlds-data-explained-how-much-were-producing-and-where-its-all-stored-159964>
+- <https://theconversation.com/the-worlds-data-explained-how-much-were-producing-and-where-its-all-stored-159964>
 
 That’s a lot of data. Lots of it’s “closed” or
 [“proprietary”](https://en.wikipedia.org/wiki/Proprietary_software)
@@ -207,102 +201,103 @@ science](https://en.wikipedia.org/wiki/Open_science_data) and
 There is a lot of openly available datasets out there. Here are some
 that I use:
 
--   <https://archive.ics.uci.edu/ml/index.php>
--   <https://opendata.swiss/en/>
--   <https://zenodo.org>
+- <https://archive.ics.uci.edu/ml/index.php>
+- <https://opendata.swiss/en/>
+- <https://zenodo.org>
+- <https://library.harvard.edu/services-tools/harvard-dataverse>
 
 But don’t be shy – use search to find other places! For example:
 
--   [best places for open
-    datasets](https://www.google.com/search?q=best+places+for+open+datasets)
+- [best places for open
+  datasets](https://www.google.com/search?q=best+places+for+open+datasets)
 
 There are lots of results highlighing where to look for free datasets,
 e.g.:
 
--   <https://careerfoundry.com/en/blog/data-analytics/where-to-find-free-datasets/>
--   <https://www.freecodecamp.org/news/https-medium-freecodecamp-org-best-free-open-data-sources-anyone-can-use-a65b514b0f2d/>
+- <https://careerfoundry.com/en/blog/data-analytics/where-to-find-free-datasets/>
+- <https://www.freecodecamp.org/news/https-medium-freecodecamp-org-best-free-open-data-sources-anyone-can-use-a65b514b0f2d/>
 
 Google for example has a dataset search and a public data portal:
 
--   <https://datasetsearch.research.google.com>
--   <https://www.google.com/publicdata/directory>
+- <https://datasetsearch.research.google.com>
+- <https://www.google.com/publicdata/directory>
 
 Kaggle is another popular place to look for data:
 
--   <https://www.kaggle.com/datasets>
+- <https://www.kaggle.com/datasets>
 
 Amazon Web Services has a data portal:
 
--   <https://registry.opendata.aws>
+- <https://registry.opendata.aws>
 
 Governments sometimes publish data, e.g.:
 
--   [European Union](https://data.europa.eu)
--   [US government open data](https://data.gov)
--   [Germany government open data](https://www.govdata.de)
--   [CIA world factbook](https://www.cia.gov/the-world-factbook/)
--   [US census data](https://www.census.gov/data.html)
+- [European Union](https://data.europa.eu)
+- [US government open data](https://data.gov)
+- [Germany government open data](https://www.govdata.de)
+- [CIA world factbook](https://www.cia.gov/the-world-factbook/)
+- [US census data](https://www.census.gov/data.html)
 
 How about some “high quality data and datasets organized by topic”?
 
--   <https://datahub.io/collections>
+- <https://datahub.io/collections>
 
 This is an example of a general repository for datasets, which also
 includes the UCI Machine Learning Repository:
 
--   <https://archive.ics.uci.edu/ml/index.php>
--   <https://archive.ics.uci.edu/ml/datasets.php>
+- <https://archive.ics.uci.edu/ml/index.php>
+- <https://archive.ics.uci.edu/ml/datasets.php>
 
 Want some data about the Earth?
 
--   <https://www.earthdata.nasa.gov>
+- <https://www.earthdata.nasa.gov>
 
 Or particle physics?
 
--   <http://opendata.cern.ch>
+- <http://opendata.cern.ch>
 
 Are you interested in global health?
 
--   <https://apps.who.int/gho/data/node.home>
--   <https://data.unicef.org>
+- <https://apps.who.int/gho/data/node.home>
+- <https://data.unicef.org>
 
 Or film?
 
--   <https://www.bfi.org.uk/industry-data-insights>
--   <https://data.world/datasets/movies>
--   <https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset>
+- <https://www.bfi.org.uk/industry-data-insights>
+- <https://data.world/datasets/movies>
+- <https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset>
 
 Or something more specific? New York city taxis?
 
--   <https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page>
+- <https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page>
 
 Crime?
 
--   <https://crime-data-explorer.fr.cloud.gov/pages/home>
+- <https://crime-data-explorer.fr.cloud.gov/pages/home>
 
 Finance?
 
--   <https://data.worldbank.org>
+- <https://data.worldbank.org>
 
 Are you interested in [data
 journalism](https://en.wikipedia.org/wiki/Data_journalism)? Try
 FiveThirtyEight or The Pudding:
 
--   <https://data.fivethirtyeight.com>
--   <https://pudding.cool>
+- <https://data.fivethirtyeight.com>
+- <https://pudding.cool>
 
 [DBpedia](https://en.wikipedia.org/wiki/DBpedia) is a knowledge base
 built on [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia):
 
--   <https://www.dbpedia.org>
+- <https://www.dbpedia.org>
 
 Yelp datasets:
 
--   <https://www.yelp.com/dataset>
+- <https://www.yelp.com/dataset>
 
 R also has built in datasets:
 
--   <https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html>
+- <https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html>
 
 # Structured versus unstructured data
 
@@ -320,28 +315,28 @@ product of [data
 processing](https://en.wikipedia.org/wiki/Data_processing). Data
 processing may include:
 
--   [Validation](https://en.wikipedia.org/wiki/Data_validation) –
-    Ensuring that supplied data is correct and relevant.
--   [Sorting](https://en.wikipedia.org/wiki/Sorting) – “arranging items
-    in some sequence and/or in different sets.”
--   [Summarization](https://en.wikipedia.org/wiki/Summary_statistics)
-    statistical or automatic – reducing detailed data to its main
-    points, e.g., taking the mean of a set of numbers.
--   [Aggregation](https://en.wikipedia.org/wiki/Aggregate_data) –
-    combining multiple pieces of data.
--   [Analysis](https://en.wikipedia.org/wiki/Statistical_inference) –
-    the “collection, organization, analysis, interpretation and
-    presentation of data.”
--   [Reporting](https://en.wikipedia.org/wiki/Business_reporting) – list
-    detail or summary data or computed information.
--   [Classification](https://en.wikipedia.org/wiki/Data_classification_(business_intelligence))
-    – separation of data into various categories.
+- [Validation](https://en.wikipedia.org/wiki/Data_validation) – Ensuring
+  that supplied data is correct and relevant.
+- [Sorting](https://en.wikipedia.org/wiki/Sorting) – “arranging items in
+  some sequence and/or in different sets.”
+- [Summarization](https://en.wikipedia.org/wiki/Summary_statistics)
+  statistical or automatic – reducing detailed data to its main points,
+  e.g., taking the mean of a set of numbers.
+- [Aggregation](https://en.wikipedia.org/wiki/Aggregate_data) –
+  combining multiple pieces of data.
+- [Analysis](https://en.wikipedia.org/wiki/Statistical_inference) – the
+  “collection, organization, analysis, interpretation and presentation
+  of data.”
+- [Reporting](https://en.wikipedia.org/wiki/Business_reporting) – list
+  detail or summary data or computed information.
+- [Classification](https://en.wikipedia.org/wiki/Data_classification_(business_intelligence))
+  – separation of data into various categories.
 
 We can process raw data to turn it into useful information.
 
 Raw data can come in structured or unstructured formats:
 
--   <https://www.ibm.com/cloud/blog/structured-vs-unstructured-data>
+- <https://www.ibm.com/cloud/blog/structured-vs-unstructured-data>
 
 Unstructured data does not have a predefined format and may be (very)
 diverse. It is considered qualitative and may be difficult to search,
@@ -403,9 +398,13 @@ Consider for example the follow images.
 wave, i.e., a vibration. The reception of these waves by the human ear
 is perceived as sound (only sounds between around 20 Hz and 20 kHz).
 
--   <https://www.soundonsound.com/techniques/digital-myth>
+- <https://www.soundonsound.com/techniques/digital-myth>
 
-![Digital audio basics](DigMyth1-wpILIpnPnsuSK1dcyD8V_Ps3F_98.qjE.jpg)
+<figure>
+<img src="DigMyth1-wpILIpnPnsuSK1dcyD8V_Ps3F_98.qjE.jpg"
+alt="Digital audio basics" />
+<figcaption aria-hidden="true">Digital audio basics</figcaption>
+</figure>
 
 The sound source is a
 [continuous](https://en.wikipedia.org/wiki/Discrete_time_and_continuous_time)
@@ -420,12 +419,20 @@ information.
 Here is a visualization of [sampling a wave
 form](https://manual.audacityteam.org/man/digital_audio.html):
 
-![Sampling a wave form](waveform_sample_formats.png)
+<figure>
+<img src="figures/waveform_sample_formats.png"
+alt="Sampling a wave form" />
+<figcaption aria-hidden="true">Sampling a wave form</figcaption>
+</figure>
 
 Increasing the sampling rate leads to higher resolution of the audio
 (right hand side):
 
-![Increased sampling rate](waveform_sample_rates.png)
+<figure>
+<img src="figures/waveform_sample_rates.png"
+alt="Increased sampling rate" />
+<figcaption aria-hidden="true">Increased sampling rate</figcaption>
+</figure>
 
 ## Binary and electronic text
 
@@ -453,7 +460,7 @@ Excel). Because all electronic (aka digital) text is encoded at the
 “lowest” level in binary, there are ways of turning binary into plain
 text:
 
--   <https://en.wikipedia.org/wiki/Binary-to-text_encoding>
+- <https://en.wikipedia.org/wiki/Binary-to-text_encoding>
 
 In other words, an electronic text in binary can be encoded as
 [printable
@@ -463,7 +470,7 @@ you see and read on the screen includes characters.
 Which of these files are plain text and which are binary? How do you
 find out?
 
--   <https://drive.google.com/drive/folders/1bRg1MS0iBPvb7Rz3eMaezC_PsaKNoFjF?usp=sharing>
+- <https://drive.google.com/drive/folders/1bRg1MS0iBPvb7Rz3eMaezC_PsaKNoFjF?usp=sharing>
 
 Characters are encoded in various [character
 encodings](https://en.wikipedia.org/wiki/Character_encoding) – that is,
@@ -477,7 +484,7 @@ The point is that each character is encoded in binary and the computer
 knows how to interpret, for example `01100110` and display `f`. Here is
 a table that shows the mappings between binary and ASCII characters:
 
--   <http://sticksandstones.kstrom.com/appen.html>
+- <http://sticksandstones.kstrom.com/appen.html>
 
 Nowadays, most of the world uses the [Unicode
 Standard](https://en.wikipedia.org/wiki/Unicode) for character encoding
@@ -486,7 +493,7 @@ writing systems of the world. More recently, its developers aim to make
 sure that “everyone in the world should be able to use their own
 language on phones and computers”:
 
--   <https://home.unicode.org>
+- <https://home.unicode.org>
 
 This includes of course encoding characters for
 [emojis](https://en.wikipedia.org/wiki/Emoji)! (Both emoji and emojis
@@ -511,11 +518,11 @@ would like to see?
 Now if are like me, you’re asking yourself how does one puts an emoji
 into R markdown? I’m guess I’m not alone:
 
--   <https://twitter.com/hadleywickham/status/856938704748896258?lang=en>
+- <https://twitter.com/hadleywickham/status/856938704748896258?lang=en>
 
 And there’s apparently an R package for that!
 
--   <https://github.com/hadley/emo>
+- <https://github.com/hadley/emo>
 
 First you need to install the [devtools](https://devtools.r-lib.org)
 package (first line below) – commented out so that it does not run
@@ -547,7 +554,7 @@ emo::ji("poop")  # line 3
 Here’s a Unicode table website to easily search for characters and
 emojis:
 
--   <https://unicode-table.com/en/>
+- <https://unicode-table.com/en/>
 
 Find the craziest Unicode symbol!
 
@@ -559,17 +566,17 @@ interpreted by the computer’s
 [compiler](https://en.wikipedia.org/wiki/Compiler). In programming
 languages, these include types such as:
 
--   [Integers](https://en.wikipedia.org/wiki/Integer_(computer_science))
--   [Floats (floating point
-    numbers)](https://en.wikipedia.org/wiki/Floating-point_arithmetic)
--   [Characters](https://en.wikipedia.org/wiki/Character_(computing)) –
-    ask me about these
--   [Strings](https://en.wikipedia.org/wiki/String_(computer_science)) –
-    sequence of characters
--   [Boolean](https://en.wikipedia.org/wiki/Boolean_data_type) – two
-    possible values (True vs False)
--   [Enumerated types](https://en.wikipedia.org/wiki/Enumerated_type) –
-    categorical data, i.e., a set of values (e.g., factors in R)
+- [Integers](https://en.wikipedia.org/wiki/Integer_(computer_science))
+- [Floats (floating point
+  numbers)](https://en.wikipedia.org/wiki/Floating-point_arithmetic)
+- [Characters](https://en.wikipedia.org/wiki/Character_(computing)) –
+  ask me about these
+- [Strings](https://en.wikipedia.org/wiki/String_(computer_science)) –
+  sequence of characters
+- [Boolean](https://en.wikipedia.org/wiki/Boolean_data_type) – two
+  possible values (True vs False)
+- [Enumerated types](https://en.wikipedia.org/wiki/Enumerated_type) –
+  categorical data, i.e., a set of values (e.g., factors in R)
 
 In a [typed programming
 language](https://en.wikipedia.org/wiki/Type_system), the data type
@@ -579,9 +586,9 @@ program](https://en.wikipedia.org/wiki/Correctness_(computer_science)).
 
 R has several data types underlying its data structures, e.g.:
 
--   <https://www.r-bloggers.com/2021/09/r-data-types/>
--   <https://www.w3schools.com/r/r_data_types.asp>
--   <https://statsandr.com/blog/data-types-in-r/>
+- <https://www.r-bloggers.com/2021/09/r-data-types/>
+- <https://www.w3schools.com/r/r_data_types.asp>
+- <https://statsandr.com/blog/data-types-in-r/>
 
 [Data types for computer
 programming](https://en.wikipedia.org/wiki/Data_type) have comparable
@@ -602,9 +609,9 @@ access, perform functions or statistics on these data types – whether in
 programming code or with statistical methods – depends on what **type**
 of data you are dealing with. For example:
 
--   You cannot apply arithmetic to qualitative / categorical values.
--   Ordinal scales are equidistant, so you can rank them, but how much x
-    is from y is unknown.
+- You cannot apply arithmetic to qualitative / categorical values.
+- Ordinal scales are equidistant, so you can rank them, but how much x
+  is from y is unknown.
 
 One last distinction to make clear is between the term “variable” in
 computer programming and in statistical analysis.
@@ -651,10 +658,10 @@ change across a population.
 
 They include:
 
--   **Qualitative variables** – measure non-numeric qualities and are
-    not subject to the laws of arithmetic.
--   **Quantitative variables** – measure numeric quantities and
-    arithmetic can be applied to them.
+- **Qualitative variables** – measure non-numeric qualities and are not
+  subject to the laws of arithmetic.
+- **Quantitative variables** – measure numeric quantities and arithmetic
+  can be applied to them.
 
 Qualitative variables are also call **categorical** or **discrete**
 variables. Quantitative variables can be measured, so that their rank or
@@ -663,31 +670,35 @@ score can tell you about the degree or amount of variable.
 A hierarchy of variable types in statistics is given in the image below
 taken from this [Stats and R](https://statsandr.com/terms/) blog.
 
-![Variable types.](variable-types-and-examples.png)
+<figure>
+<img src="figures/variable-types-and-examples.png"
+alt="Variable types." />
+<figcaption aria-hidden="true">Variable types.</figcaption>
+</figure>
 
 As you can see, variables in statistics can be classified into four
 types under qualitative and quantitative variables:
 
--   **Nominal** – a qualitative variable where no ordering is possible
-    (e.g., eye color) as implied by its **levels** – levels can be for
-    example binary (e.g., do you smoke?) or multilevel (e.g., what is
-    your degree – where each degree is a level).
--   **Ordinal** – a qualitative variable in which an order is implied in
-    the levels, e.g., if the side effects of a drug taken are measured
-    as “light”, “moderate”, “severe”, then this qualitative ordinal
-    value has a clear order or ranking (but note we don’t know *how*
-    different these levels are from one to the next!).
--   **Discrete** – variables that can only take specific values (e.g.,
-    whole numbers) – no values can exist between these numbers.
--   **Continuous** – variables can take the full range of values (e.g.,
-    floating point numbers) – there are an infinite number of potential
-    values between values.
+- **Nominal** – a qualitative variable where no ordering is possible
+  (e.g., eye color) as implied by its **levels** – levels can be for
+  example binary (e.g., do you smoke?) or multilevel (e.g., what is your
+  degree – where each degree is a level).
+- **Ordinal** – a qualitative variable in which an order is implied in
+  the levels, e.g., if the side effects of a drug taken are measured as
+  “light”, “moderate”, “severe”, then this qualitative ordinal value has
+  a clear order or ranking (but note we don’t know *how* different these
+  levels are from one to the next!).
+- **Discrete** – variables that can only take specific values (e.g.,
+  whole numbers) – no values can exist between these numbers.
+- **Continuous** – variables can take the full range of values (e.g.,
+  floating point numbers) – there are an infinite number of potential
+  values between values.
 
 Consider these examples:
 
--   What number were you wearing in the race? – “5”!
--   What place did you finish in? – “5”!
--   How many minutes did it take you to finish? – “5”!
+- What number were you wearing in the race? – “5”!
+- What place did you finish in? – “5”!
+- How many minutes did it take you to finish? – “5”!
 
 The three “5”s all look the same.
 
@@ -698,7 +709,7 @@ different possible interpretation.
 What kind of of variables are each of these below?[^2]
 
 ``` r
-df <- readr::read_csv('variables_quiz.csv', na=character())
+df <- readr::read_csv('data/variables_quiz.csv', na=character())
 knitr::kable(df)
 ```
 
@@ -719,7 +730,7 @@ knitr::kable(df)
 | l\. body height of a person                         |             |                |                |
 | m\. number of vowels in a language                  |             |                |                |
 
-Answers are available [here](variables_quiz_answers.csv).
+Answers are available [here](data/variables_quiz_answers.csv).
 
 ## Scales of measurement
 
@@ -742,28 +753,28 @@ scale](https://en.wikipedia.org/wiki/Likert_scale). Each scale above is
 an incremental level of measurement, such that each scale incorporates
 the function of the previous scale.
 
--   **Nominal** – the so-called “naming” scale, i.e., variables have
-    categorical values with no specific order (thus it’s not really a
-    scale at all because it does not scale along any dimension!).
-    Instead, the nominal scale is generally used for classification
-    purposes, e.g., the numbers worn by athletes.
+- **Nominal** – the so-called “naming” scale, i.e., variables have
+  categorical values with no specific order (thus it’s not really a
+  scale at all because it does not scale along any dimension!). Instead,
+  the nominal scale is generally used for classification purposes, e.g.,
+  the numbers worn by athletes.
 
--   **Ordinal** – the simplest true scale in which variables are encoded
-    in a specific order, but the individual positions are equidistant,
-    e.g., the rank of winners in a marathon (regardless of their times).
+- **Ordinal** – the simplest true scale in which variables are encoded
+  in a specific order, but the individual positions are equidistant,
+  e.g., the rank of winners in a marathon (regardless of their times).
 
--   **Interval** – a scale of measurement in which the order of the
-    variables and the distance between them is known, e.g., a scale for
-    temperature (e.g., Celsius or Fahrenheit) in which a difference of
-    10 degrees has the same meaning anywhere on the scale (but not
-    across scales!).
+- **Interval** – a scale of measurement in which the order of the
+  variables and the distance between them is known, e.g., a scale for
+  temperature (e.g., Celsius or Fahrenheit) in which a difference of 10
+  degrees has the same meaning anywhere on the scale (but not across
+  scales!).
 
--   **Ratio** – a scale of measurement that includes rank (ordinal),
-    distance between points on the scale (interval) and additionally
-    information about the value of \*true zero\*\*, where zero means the
-    complete absence of the property under measurement, e.g., how many
-    [cervelat](https://en.wikipedia.org/wiki/Cervelat) can you eat per
-    day?
+- **Ratio** – a scale of measurement that includes rank (ordinal),
+  distance between points on the scale (interval) and additionally
+  information about the value of \*true zero\*\*, where zero means the
+  complete absence of the property under measurement, e.g., how many
+  [cervelat](https://en.wikipedia.org/wiki/Cervelat) can you eat per
+  day?
 
 Depending on what is being measured (i.e., what kind of variables) and
 how we measure it (i.e., with what methods and scales), the numbers or
@@ -781,7 +792,7 @@ been widely criticized, e.g., Michell (1986).
 Here is a cheat sheet that summarizes the levels of measurement.[^3]
 
 ``` r
-df <- readr::read_csv('levels_of_measurement.csv')
+df <- readr::read_csv('data/levels_of_measurement.csv')
 knitr::kable(df)
 ```
 
@@ -799,7 +810,7 @@ knitr::kable(df)
 And here is a table that compares the levels of measurement.
 
 ``` r
-df <- readr::read_csv('comparison_of_levels.csv')
+df <- readr::read_csv('data/comparison_of_levels.csv')
 knitr::kable(df)
 ```
 
@@ -814,7 +825,7 @@ And yet another way of looking at the differences between scales (Spatz
 2008). <!-- page 11 -->
 
 ``` r
-df <- readr::read_csv('Spatz2008_11.csv')
+df <- readr::read_csv('data/Spatz2008_11.csv')
 knitr::kable(df)
 ```
 
@@ -830,15 +841,15 @@ knitr::kable(df)
 To summarize, knowing the distinctions among the four scales of
 measurement will help you in two tasks:
 
--   The kind of descriptive statistics you can compute from numbers
-    depends, in part, on the scale of measurement the numbers represent.
+- The kind of descriptive statistics you can compute from numbers
+  depends, in part, on the scale of measurement the numbers represent.
 
--   Understanding scales of measurement is sometimes important in
-    choosing the kind of inferential statistic that is appropriate for a
-    set of data. For example, if the dependent variable is a nominal
-    variable, then a chi-square analysis is appropriate. If the
-    dependent variable is a set of ranks (ordinal data), then a
-    nonparametric statistic is required. Etc.
+- Understanding scales of measurement is sometimes important in choosing
+  the kind of inferential statistic that is appropriate for a set of
+  data. For example, if the dependent variable is a nominal variable,
+  then a chi-square analysis is appropriate. If the dependent variable
+  is a set of ranks (ordinal data), then a nonparametric statistic is
+  required. Etc.
 
 # Data structures
 
@@ -848,13 +859,13 @@ performed on them. They include the primitive data types (some mentioned
 above) but also abstract data types, linear data structures, trees,
 hashes, graphs, and so on.
 
--   <https://en.wikipedia.org/wiki/List_of_data_structures>
+- <https://en.wikipedia.org/wiki/List_of_data_structures>
 
 Data structures are also typically programming language dependent, i.e.,
 the developers of the language have made decisions which types of data
 structures to implement. R has several data structures:
 
--   <http://adv-r.had.co.nz/Data-structures.html>
+- <http://adv-r.had.co.nz/Data-structures.html>
 
 [Data transformation](https://en.wikipedia.org/wiki/Data_transformation)
 is the process of converting one data format to another (whether
@@ -873,15 +884,15 @@ are looking at the source code).
 
 Typical file names include suffixes such as:
 
--   .txt – [plain text file](https://en.wikipedia.org/wiki/Plain_text)
--   .csv – [CSV comma-separated
-    values](https://en.wikipedia.org/wiki/Comma-separated_values)
--   .doc – [MS Word doc](https://en.wikipedia.org/wiki/Microsoft_Word)
--   .html – [HTML](https://en.wikipedia.org/wiki/HTML), i.e., the
-    [markup language](https://en.wikipedia.org/wiki/Markup_language) for
-    documents displayed in a web browser
--   .exe – [executable file](https://en.wikipedia.org/wiki/.exe) for
-    [Windows](https://en.wikipedia.org/wiki/Microsoft_Windows)
+- .txt – [plain text file](https://en.wikipedia.org/wiki/Plain_text)
+- .csv – [CSV comma-separated
+  values](https://en.wikipedia.org/wiki/Comma-separated_values)
+- .doc – [MS Word doc](https://en.wikipedia.org/wiki/Microsoft_Word)
+- .html – [HTML](https://en.wikipedia.org/wiki/HTML), i.e., the [markup
+  language](https://en.wikipedia.org/wiki/Markup_language) for documents
+  displayed in a web browser
+- .exe – [executable file](https://en.wikipedia.org/wiki/.exe) for
+  [Windows](https://en.wikipedia.org/wiki/Microsoft_Windows)
 
 There are lots more!
 
@@ -978,13 +989,13 @@ words_df %>%
     ##  2 a              3
     ##  3 sit            3
     ##  4 velit          3
-    ##  5 amet           2
-    ##  6 dui            2
-    ##  7 elit           2
-    ##  8 enim.          2
-    ##  9 eu             2
-    ## 10 id             2
-    ## # … with 80 more rows
+    ##  5 Morbi          2
+    ##  6 amet           2
+    ##  7 dui            2
+    ##  8 elit           2
+    ##  9 enim.          2
+    ## 10 eu             2
+    ## # ℹ 80 more rows
 
 We can save the results to another data frame or we can write them to
 disk as a table for later use, e.g., as a CSV file (more in next
@@ -1000,18 +1011,18 @@ text](https://en.wikipedia.org/wiki/Plain_text) and structured data in
 rectangular format, also known as **tabular data**. Here are some
 descriptions:
 
--   <https://en.wikipedia.org/wiki/Table_(information)>
--   <https://papl.cs.brown.edu/2016/intro-tabular-data.html>
--   <https://www.w3.org/TR/tabular-data-model/>
+- <https://en.wikipedia.org/wiki/Table_(information)>
+- <https://papl.cs.brown.edu/2016/intro-tabular-data.html>
+- <https://www.w3.org/TR/tabular-data-model/>
 
 Tabular data **can be stored in many ways**, e.g.:
 
--   [CSV](https://en.wikipedia.org/wiki/Comma-separated_values)
--   [Excel sheets](https://en.wikipedia.org/wiki/Microsoft_Excel)
--   [Google sheets](https://en.wikipedia.org/wiki/Google_Sheets)
--   [Numbers](https://en.wikipedia.org/wiki/Numbers_(spreadsheet))
--   [SQLite](https://en.wikipedia.org/wiki/SQLite)
--   [JSON](https://en.wikipedia.org/wiki/JSON)
+- [CSV](https://en.wikipedia.org/wiki/Comma-separated_values)
+- [Excel sheets](https://en.wikipedia.org/wiki/Microsoft_Excel)
+- [Google sheets](https://en.wikipedia.org/wiki/Google_Sheets)
+- [Numbers](https://en.wikipedia.org/wiki/Numbers_(spreadsheet))
+- [SQLite](https://en.wikipedia.org/wiki/SQLite)
+- [JSON](https://en.wikipedia.org/wiki/JSON)
 
 Which of these formats above are stored in plain text?
 
@@ -1106,19 +1117,19 @@ Tabular data typically contains numerical data or [categorical
 data](https://en.wikipedia.org/wiki/Categorical_variable) (recall data
 types discussed above). Numerical data is either:
 
--   numerical (aka discrete) – integer values, e.g., counts, indices.
--   continuous – data that can take any value within in interval, e.g.,
-    temperature.
+- numerical (aka discrete) – integer values, e.g., counts, indices.
+- continuous – data that can take any value within in interval, e.g.,
+  temperature.
 
 [Categorical data](https://en.wikipedia.org/wiki/Categorical_variable)
 represents sets of values that represent possible categories. They are
 not subject to the laws of arithmetic (but note they can be counted, as
 are the words in the example above). Categorical data includes:
 
--   binary – dichotomous data, i.e., True vs False (often encoded 1
-    vs. 0).
--   ordinal – categorical data with explicit ordering, e.g., grades,
-    ranks, 5-star reviews.
+- binary – dichotomous data, i.e., True vs False (often encoded 1
+  vs. 0).
+- ordinal – categorical data with explicit ordering, e.g., grades,
+  ranks, 5-star reviews.
 
 The types of data in your table, i.e., the [statistical data
 types](https://en.wikipedia.org/wiki/Statistical_data_type) **constrain
@@ -1131,22 +1142,21 @@ A quick note about metadata.
 i.e., it provides information about the data. There are different
 metadata types, but most pertinent to this course are:
 
--   **Descriptive metadata** -— the descriptive information about a
-    resource. It is used for discovery and identification. It includes
-    elements such as title, abstract, author, and keywords.
+- **Descriptive metadata** -— the descriptive information about a
+  resource. It is used for discovery and identification. It includes
+  elements such as title, abstract, author, and keywords.
 
--   **Structural metadata** -— metadata about containers of data and
-    indicates how compound objects are put together, for example, how
-    pages are ordered to form chapters. It describes the types,
-    versions, relationships and other characteristics of digital
-    materials.
+- **Structural metadata** -— metadata about containers of data and
+  indicates how compound objects are put together, for example, how
+  pages are ordered to form chapters. It describes the types, versions,
+  relationships and other characteristics of digital materials.
 
 # Data archiving
 
 We won’t talk much about data archiving, but it is important for
 research and reproducibility, e.g.:
 
--   <https://en.wikipedia.org/wiki/Research_data_archiving>
+- <https://en.wikipedia.org/wiki/Research_data_archiving>
 
 Ask me more, if you have questions or it is relevant to your research!
 For example, I have collected a lot of data on endangered languages,
