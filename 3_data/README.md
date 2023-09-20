@@ -81,7 +81,7 @@ Or
 [visually](https://twitter.com/beco/status/717112009385357316/photo/1):
 
 <figure>
-<img src="CfOwObSVAAAkC2F.jpeg" alt="Data vs information" />
+<img src="figures/CfOwObSVAAAkC2F.jpeg" alt="Data vs information" />
 <figcaption aria-hidden="true">Data vs information</figcaption>
 </figure>
 
@@ -401,7 +401,7 @@ is perceived as sound (only sounds between around 20 Hz and 20 kHz).
 - <https://www.soundonsound.com/techniques/digital-myth>
 
 <figure>
-<img src="DigMyth1-wpILIpnPnsuSK1dcyD8V_Ps3F_98.qjE.jpg"
+<img src="figures/DigMyth1-wpILIpnPnsuSK1dcyD8V_Ps3F_98.qjE.jpg"
 alt="Digital audio basics" />
 <figcaption aria-hidden="true">Digital audio basics</figcaption>
 </figure>

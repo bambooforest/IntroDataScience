@@ -44,7 +44,7 @@ It's more recent meaning with regard to computing is from the 1940s:
 
 Or [visually](https://twitter.com/beco/status/717112009385357316/photo/1):
 
-![Data vs information](CfOwObSVAAAkC2F.jpeg)
+![Data vs information](figures/CfOwObSVAAAkC2F.jpeg)
 
 Or in code using the built in [Airline passengers dataset](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/AirPassengers.html). For an overview of the data, you can use the `help()` function:
 
@@ -288,7 +288,7 @@ Consider for example the follow images. [Sound](https://en.wikipedia.org/wiki/So
 
 * https://www.soundonsound.com/techniques/digital-myth
 
-![Digital audio basics](DigMyth1-wpILIpnPnsuSK1dcyD8V_Ps3F_98.qjE.jpg)
+![Digital audio basics](figures/DigMyth1-wpILIpnPnsuSK1dcyD8V_Ps3F_98.qjE.jpg)
 
 The sound source is a [continuous](https://en.wikipedia.org/wiki/Discrete_time_and_continuous_time) wave is [analog signal](https://en.wikipedia.org/wiki/Analog_signal).
 
