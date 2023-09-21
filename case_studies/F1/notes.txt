@@ -1,0 +1,117 @@
+T-test
+======
+
+housekeeping
+	- grades
+	- please tell the students that I think most of them did really well on this assignment
+	- I noted that two or three people already handed in the final homework...
+maybe you should make them aware that they won’t get the grade before the beginning of July. just so they know
+	- final homework due 18.6.2015
+	- questions?
+
+
+
+Central tendencies
+------------------
+- test of means from independent samples (t-test for independent samples)
+- test of medians from independent samples
+- test of means from dependent samples
+- computation of confidence intervals for means
+
+
+z-test
+------
+
+% http://www.statisticshowto.com/t-statistic/
+The Z-score allows you to decide if your sample is different from the population mean. In order to use z, you must know four things:
+
+The population mean.
+The population standard deviation.
+The sample mean.
+The sample size.
+
+Usually in stats, you don’t know anything about a population, so instead of a Z Test with a Z score you use a T Test with a T Statistic. The only difference between using a Z score and a T statistic is that you have to estimate the population standard deviation. The T test is also used if you have a small sample size (less than 30).
+
+Z Score Definition
+	- Simply put, a z-score is the number of standard deviations from the mean a data point is.
+
+
+
+
+
+t-test
+------
+
+A t-test is any statistical hypothesis test in which the test statistic follows a Student's t distribution if the null hypothesis is supported.
+
+It can be used to determine if two sets of data are significantly different from each other, and is most commonly applied when the test statistic would follow a normal distribution if the value of a scaling term in the test statistic were known.
+
+When the scaling term is unknown and is replaced by an estimate based on the data, the test statistic (under certain conditions) follows a Student's t distribution.
+
+% http://www.statisticshowto.com/t-statistic/
+The t statistic can be found in so many different ways, there is no single formula for it. The formula depends on what type of test you are trying to do. For example:
+
+One sample t test. This is the most common type of t test you’ll come across in elementary statistics.
+A Paired sample t-test compares means from the same group at different times (say, one year apart).
+
+
+### types of t-tests
+
+t-test for independent samples
+
+t-test for dependent samples
+
+
+Single sample t-test
+
+population vs sample
+
+two types of single sample hypothesis tests
+	when population standard deviation is known
+
+
+### history
+
+The t-statistic was introduced in 1908 by William Sealy Gosset, a chemist working for the Guinness brewery in Dublin, Ireland ("Student" was his pen name).
+
+Gosset had been hired due to Claude Guinness's policy of recruiting the best graduates from Oxford and Cambridge to apply biochemistry and statistics to Guinness's industrial processes.
+
+Gosset devised the t-test as a cheap way to monitor the quality of stout.
+
+The Student's t-test work was submitted to and accepted in the journal Biometrika and published in 1908.
+
+Company policy at Guinness forbade its chemists from publishing their findings, so Gosset published his statistical work under the pseudonym "Student"
+
+Guinness had a policy of allowing technical staff leave for study (so-called "study leave"), which Gosset used during the first two terms of the 1906–1907 academic year in Professor Karl Pearson’s Biometric Laboratory at University College London.
+
+
+### conditions for using a t-test
+
+population vs sample
+
+1. population standard deviation is unknown
+2. sample size is less than 30
+
+
+
+
+% http://www.statisticshowto.com/t-statistic/
+
+The T Statistic is used in a T test when you are deciding if you should support or reject the null hypothesis. It’s very similar to a Z-score. The T statistic has limited use by itself. Instead, the T test uses the T statistic along with the T distribution and degrees of freedom to find a p-value (a probability) that can tell you if the population means are different.
+
+
+
+
+Criticisms
+----------
+Why are we still teaching t-tests?
+https://matloff.wordpress.com/2014/09/15/why-are-we-still-teaching-about-t-tests/
+
+
+
+
+
+Examples
+--------
+Sandra's materials
+Johnson: VOT

@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+author: "Steven Moran"
+date: "2023-03-02"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+```
+
+```{r}
+athletes <- read_tsv(url('https://raw.githubusercontent.com/bambooforest/APY313/main/datasets/athletes.csv'))
+
+head(athletes)
+```
+
+```{r}
+ggplot(athletes, aes(height, weight)) +
+  geom_point() +
+  geom_smooth(method='lm')
+```
+
+```{r}
+hist(athletes$height)
+```
+
+```{r}
+plot(weight ~ height, data = athletes)
+```
+
+
+

@@ -1,0 +1,6 @@
+# tf-idf
+
+How do we calculate how important a word is to a given document?
+
+[tf–idf](https://en.wikipedia.org/wiki/Tf–idf) is a metric that captures how "inmportant" a word is to a text. It stands for: term frequency (tf)--inverse document frequency (idf).
+

@@ -1,61 +1,140 @@
 Data behind the plots
 ================
 Alena Witzlack-Makarevich & Steven Moran
-(26 October, 2022)
+(02 February, 2023)
 
--   <a href="#data-set-data-matrix-tabular-data"
-    id="toc-data-set-data-matrix-tabular-data">Data set, data matrix,
-    tabular data</a>
--   <a href="#tabular-data" id="toc-tabular-data">Tabular data</a>
--   <a href="#case-study-red-wine-quality"
-    id="toc-case-study-red-wine-quality">Case study: Red wine quality</a>
--   <a href="#case-study-come-fly-with-me"
-    id="toc-case-study-come-fly-with-me">Case study: Come fly with me</a>
--   <a href="#more-resources" id="toc-more-resources">More resources</a>
+- [Recap: Data set, data matrix, tabular
+  data](#recap-data-set-data-matrix-tabular-data)
+- [Case study: Come fly with me](#case-study-come-fly-with-me)
+- [Case study: Red wine quality](#case-study-red-wine-quality)
+- [More resources](#more-resources)
 
-# Data set, data matrix, tabular data
+# Recap: Data set, data matrix, tabular data
 
--   A data set (or dataset) is a collection of data.
+- A data set (or dataset) is a collection of data.
 
--   Most commonly datasets come in the tabular format and correspond to
-    the contents of a single database table, or a single statistical
-    data matrix
+- Most commonly datasets come in the tabular format and correspond to
+  the contents of a single database table, or a single statistical data
+  matrix
 
--   The term data set may also be used more loosely, to refer to the
-    data in a collection of closely related tables, corresponding to a
-    particular experiment or event.
+- The term data set may also be used more loosely, to refer to the data
+  in a collection of closely related tables, corresponding to a
+  particular experiment or event.
 
--   every column represents a particular variable (height, weight,
-    number of letters, number of vowels, …)
+- Every column represents a particular variable (height, weight, number
+  of letters, number of vowels, …)
 
--   each row/record corresponds to a given member of the data set in
-    question (e.g. a person, a sentence, a language, a phoneme, a
-    measurement, …)
+- Each row/record corresponds to a given member of the data set in
+  question (e.g. a person, a sentence, a language, a phoneme, a
+  measurement…)
 
--   Every record shares the same set of variables.
+- Every record shares the same set of variables.
 
--   In other words: Every row has the same set of column headers.
+- In other words: Every row has the same set of column headers.
 
--   Tabular data are inherently rectangular and cannot have “ragged
-    rows”.
+- Tabular data are inherently rectangular and cannot have “ragged rows”.
 
--   If any row is lacking information for a particular column a missing
-    value (NA) must be stored in that cell.
+- If any row is lacking information for a particular column a missing
+  value (NA) must be stored in that cell.
 
--   Each value (each cell) is known as a datum.
+- Each value (each cell) is known as a datum.
 
-# Tabular data
-
-![Variables and observations in a table](table_example.png)
+<figure>
+<img src="table_example.png"
+alt="Variables and observations in a table" />
+<figcaption aria-hidden="true">Variables and observations in a
+table</figcaption>
+</figure>
 
 ------------------------------------------------------------------------
+
+# Case study: Come fly with me
+
+Which airlines should you travel with – and which should you avoid? We
+sift through the data so you don’t have to (JAMES TOZER \| APRIL/MAY
+2016)
+
+- <https://www.1843magazine.com/travel/what-the-numbers-say/come-fly-with-me>
+
+> > > Asia’s airlines are mostly excellent; Europe’s are competent;
+> > > America’s are awful. It is a pattern that many globetrotters have
+> > > observed, but which we have confirmed by trawling through data on
+> > > 18 major international carriers.
+
+> > > We used flight-volume data from FlightStats.com and
+> > > customer-satisfaction data from Skytrax, an airline consultancy
+> > > which asks users to mark carriers out of five for the quality of
+> > > their food, service, comfort, in-flight entertainment and value
+> > > for money. American and United each scored 2.17 – barely half as
+> > > much as leaders ANA and Singapore Airlines, both rated at 4.17.
+
+> > > For prices, we took the world’s 30 busiest airports in the last
+> > > quarter of 2015, and analyzed direct flights between them on
+> > > week-long return trips from a sample at the start of August 2016.
+> > > Most of the 870 routes we looked at had a cheapest option, but
+> > > across the whole sample few companies were able to charge much
+> > > more or less than their rivals – as you would expect in a
+> > > competitive market.
+
+> > > With so little difference in prices between airlines, the savvy
+> > > traveller might as well opt for the comfiest seats, not the
+> > > cheapest ones – and plump for Asian luxury over shoddy American
+> > > service.
+
+- Which airlines should you travel with – and which should you avoid?
+- We sift through the data so you don’t have to Asia’s airlines are
+  mostly excellent; Europe’s are competent; America’s are awful.
+- For prices, we took the world’s 30 busiest airports in the last
+  quarter of 2015, and analyzed direct flights between them on week-long
+  return trips from a sample at the start of August 2016.
+
+Sketch the data matrix which could have been used to produce this plot:
+
+<figure>
+<img src="international_airlines.png"
+alt="International airlines price vs service" />
+<figcaption aria-hidden="true">International airlines price vs
+service</figcaption>
+</figure>
+
+------------------------------------------------------------------------
+
+Recall “Aesthetics”:
+
+> > > aesthetic \< Gr. aisthētikos \< aisthēta ‘perceptible things’ \<
+> > > aisthesthai ‘perceive’
+
+In statistical graphics (specifically in the ggplot sense) this old
+usage is meant: aesthetics are principles for relating sensory
+attributes (color, shape, sound, etc.) to variables.
+
+In modern usage (since mid 18th c., first in Ger. and then in Eng.),
+aesthetics can also mean taste or beauty.
+
+- In a plot one aesthetic attribute can represent one variable
+
+- Sophisticated plots combine various aesthetic attributes (color,
+  shape, line type, size, position, transparency, text, etc.) to
+  represent multiple variables at ones
+
+Which aesthetic attributes stand for what variable:
+
+\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
+
+\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
+
+\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
+
+\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
+
+\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
 
 # Case study: Red wine quality
 
 Here is a paper about modeling wine preferences by using data mining on
 physicochemical properties of wine:
 
--   <https://www.sciencedirect.com/science/article/abs/pii/S0167923609001377?via%3Dihub>
+- <https://www.sciencedirect.com/science/article/abs/pii/S0167923609001377?via%3Dihub>
 
 The authors aims to predict human wine taste preferences using a data
 driven approach. They do so through regression modeling and model
@@ -63,8 +142,8 @@ selection techniques.
 
 The dataset is available online:
 
--   <https://archive.ics.uci.edu/ml/datasets/wine+quality>
--   <https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009?select=winequality-red.csv>
+- <https://archive.ics.uci.edu/ml/datasets/wine+quality>
+- <https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009?select=winequality-red.csv>
 
 You can find out more about the data types in dataset at these URLs,
 e.g., residual sugar, citric acid, density.
@@ -73,33 +152,14 @@ Let’s load the data.
 
 ``` r
 library(tidyverse)
-```
 
-    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-    ## ✔ ggplot2 3.3.6      ✔ purrr   0.3.5 
-    ## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-    ## ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-    ## ✔ readr   2.1.2      ✔ forcats 0.5.2 
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-``` r
 # We use read_delim to set the delimiter to ";"
 red_wine <- read_delim('datasets/winequality-red.csv', delim = ";")
 ```
 
-    ## Rows: 1599 Columns: 12
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ";"
-    ## dbl (12): fixed acidity, volatile acidity, citric acid, residual sugar, chlo...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
 Let’s visualize aspects of the dataset. Here are some great examples:
 
--   <https://ksatola.github.io/projects/EDA_RedWineQuality_FinalwithCode.html>
+- <https://ksatola.github.io/projects/EDA_RedWineQuality_FinalwithCode.html>
 
 We adapt them here. For example, quality of wine.
 
@@ -116,10 +176,10 @@ ggplot(data = red_wine, aes(x = quality)) +
   theme_bw()
 ```
 
-    ## List of 93
+    ## List of 94
     ##  $ line                      :List of 6
     ##   ..$ colour       : chr "black"
-    ##   ..$ size         : num 0.5
+    ##   ..$ linewidth    : num 0.5
     ##   ..$ linetype     : num 1
     ##   ..$ lineend      : chr "butt"
     ##   ..$ arrow        : logi FALSE
@@ -128,7 +188,7 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##  $ rect                      :List of 5
     ##   ..$ fill         : chr "white"
     ##   ..$ colour       : chr "black"
-    ##   ..$ size         : num 0.5
+    ##   ..$ linewidth    : num 0.5
     ##   ..$ linetype     : num 1
     ##   ..$ inherit.blank: logi TRUE
     ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
@@ -280,7 +340,7 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
     ##  $ axis.ticks                :List of 6
     ##   ..$ colour       : chr "grey20"
-    ##   ..$ size         : NULL
+    ##   ..$ linewidth    : NULL
     ##   ..$ linetype     : NULL
     ##   ..$ lineend      : NULL
     ##   ..$ arrow        : logi FALSE
@@ -311,7 +371,7 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##  $ legend.background         :List of 5
     ##   ..$ fill         : NULL
     ##   ..$ colour       : logi NA
-    ##   ..$ size         : NULL
+    ##   ..$ linewidth    : NULL
     ##   ..$ linetype     : NULL
     ##   ..$ inherit.blank: logi TRUE
     ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
@@ -324,7 +384,7 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##  $ legend.key                :List of 5
     ##   ..$ fill         : chr "white"
     ##   ..$ colour       : logi NA
-    ##   ..$ size         : NULL
+    ##   ..$ linewidth    : NULL
     ##   ..$ linetype     : NULL
     ##   ..$ inherit.blank: logi TRUE
     ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
@@ -374,14 +434,14 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##  $ panel.background          :List of 5
     ##   ..$ fill         : chr "white"
     ##   ..$ colour       : logi NA
-    ##   ..$ size         : NULL
+    ##   ..$ linewidth    : NULL
     ##   ..$ linetype     : NULL
     ##   ..$ inherit.blank: logi TRUE
     ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
     ##  $ panel.border              :List of 5
     ##   ..$ fill         : logi NA
     ##   ..$ colour       : chr "grey20"
-    ##   ..$ size         : NULL
+    ##   ..$ linewidth    : NULL
     ##   ..$ linetype     : NULL
     ##   ..$ inherit.blank: logi TRUE
     ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
@@ -391,7 +451,7 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##  $ panel.spacing.y           : NULL
     ##  $ panel.grid                :List of 6
     ##   ..$ colour       : chr "grey92"
-    ##   ..$ size         : NULL
+    ##   ..$ linewidth    : NULL
     ##   ..$ linetype     : NULL
     ##   ..$ lineend      : NULL
     ##   ..$ arrow        : logi FALSE
@@ -400,7 +460,7 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##  $ panel.grid.major          : NULL
     ##  $ panel.grid.minor          :List of 6
     ##   ..$ colour       : NULL
-    ##   ..$ size         : 'rel' num 0.5
+    ##   ..$ linewidth    : 'rel' num 0.5
     ##   ..$ linetype     : NULL
     ##   ..$ lineend      : NULL
     ##   ..$ arrow        : logi FALSE
@@ -414,7 +474,7 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##  $ plot.background           :List of 5
     ##   ..$ fill         : NULL
     ##   ..$ colour       : chr "white"
-    ##   ..$ size         : NULL
+    ##   ..$ linewidth    : NULL
     ##   ..$ linetype     : NULL
     ##   ..$ inherit.blank: logi TRUE
     ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
@@ -481,12 +541,13 @@ ggplot(data = red_wine, aes(x = quality)) +
     ##  $ strip.background          :List of 5
     ##   ..$ fill         : chr "grey85"
     ##   ..$ colour       : chr "grey20"
-    ##   ..$ size         : NULL
+    ##   ..$ linewidth    : NULL
     ##   ..$ linetype     : NULL
     ##   ..$ inherit.blank: logi TRUE
     ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
     ##  $ strip.background.x        : NULL
     ##  $ strip.background.y        : NULL
+    ##  $ strip.clip                : chr "inherit"
     ##  $ strip.placement           : chr "inside"
     ##  $ strip.text                :List of 11
     ##   ..$ family       : NULL
@@ -549,15 +610,13 @@ ggplot(data = red_wine, aes(x = quality)) +
   theme_bw()
 ```
 
-    ## Warning: Removed 2 rows containing missing values (geom_bar).
-
 ![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 Some questions:
 
--   What is the data type?
--   What does the plot tell us about the quality of the wine in the
-    dataset?
+- What is the data type?
+- What does the plot tell us about the quality of the wine in the
+  dataset?
 
 We can also split the wine into categories.
 
@@ -569,11 +628,8 @@ breaks <- c(0, 5, 7, 10)
 red_wine$quality_by_category <- cut(red_wine$quality, breaks, include.lowest = TRUE, right = FALSE)
 
 # Check intervals
-summary(red_wine$quality_by_category)
+# summary(red_wine$quality_by_category)
 ```
-
-    ##  [0,5)  [5,7) [7,10] 
-    ##     63   1319    217
 
 And add some labels.
 
@@ -605,9 +661,6 @@ ggplot(data = y, aes(x = y$quality_by_category, fill = ..count..)) +
   # Include bins of length zero
   scale_x_discrete(drop = FALSE) 
 ```
-
-    ## Warning: Use of `y$quality_by_category` is discouraged. Use
-    ## `quality_by_category` instead.
 
 ![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
@@ -642,7 +695,7 @@ ggplot(aes(x = log10(sulphates), y = alcohol, colour = quality_by_category),
 
     ## Warning: Using size for a discrete variable is not advised.
 
-    ## Warning: Removed 3 rows containing missing values (geom_point).
+    ## Warning: Removed 3 rows containing missing values (`geom_point()`).
 
 ![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
@@ -660,110 +713,34 @@ ggplot(aes(x = `fixed acidity`, y = density, colour = quality_by_category),
                            quantile(red_wine$density, 0.9999)))
 ```
 
-    ## Warning: Removed 2 rows containing missing values (geom_point).
+    ## Warning: Removed 2 rows containing missing values (`geom_point()`).
 
 ![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
-# Case study: Come fly with me
-
-Which airlines should you travel with – and which should you avoid? We
-sift through the data so you don’t have to (JAMES TOZER \| APRIL/MAY
-2016)
-
--   <https://www.1843magazine.com/travel/what-the-numbers-say/come-fly-with-me>
-
-> > > Asia’s airlines are mostly excellent; Europe’s are competent;
-> > > America’s are awful. It is a pattern that many globetrotters have
-> > > observed, but which we have confirmed by trawling through data on
-> > > 18 major international carriers.
-
-> > > We used flight-volume data from FlightStats.com and
-> > > customer-satisfaction data from Skytrax, an airline consultancy
-> > > which asks users to mark carriers out of five for the quality of
-> > > their food, service, comfort, in-flight entertainment and value
-> > > for money. American and United each scored 2.17 – barely half as
-> > > much as leaders ANA and Singapore Airlines, both rated at 4.17.
-
-> > > For prices, we took the world’s 30 busiest airports in the last
-> > > quarter of 2015, and analyzed direct flights between them on
-> > > week-long return trips from a sample at the start of August 2016.
-> > > Most of the 870 routes we looked at had a cheapest option, but
-> > > across the whole sample few companies were able to charge much
-> > > more or less than their rivals – as you would expect in a
-> > > competitive market.
-
-> > > With so little difference in prices between airlines, the savvy
-> > > traveller might as well opt for the comfiest seats, not the
-> > > cheapest ones – and plump for Asian luxury over shoddy American
-> > > service.
-
--   Which airlines should you travel with – and which should you avoid?
--   We sift through the data so you don’t have to Asia’s airlines are
-    mostly excellent; Europe’s are competent; America’s are awful.
--   For prices, we took the world’s 30 busiest airports in the last
-    quarter of 2015, and analyzed direct flights between them on
-    week-long return trips from a sample at the start of August 2016.
-
-Sketch the data matrix which could have been used to produce this plot:
-
-![International airlines price vs service](international_airlines.png)
-
-------------------------------------------------------------------------
-
-Recall “Aesthetics”:
-
-> > > aesthetic \< Gr. aisthētikos \< aisthēta ‘perceptible things’ \<
-> > > aisthesthai ‘perceive’
-
-In statistical graphics (specifically in the ggplot sense) this old
-usage is meant: aesthetics are principles for relating sensory
-attributes (color, shape, sound, etc.) to variables.
-
-In modern usage (since mid 18th c., first in Ger. and then in Eng.),
-aesthetics can also mean taste or beauty.
-
--   In a plot one aesthetic attribute can represent one variable
-
--   Sophisticated plots combine various aesthetic attributes (color,
-    shape, line type, size, position, transparency, text, etc.) to
-    represent multiple variables at ones
-
-Which aesthetic attributes stand for what variable:
-
-\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
-
-\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
-
-\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
-
-\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
-
-\_\_\_\_\_\_\_\_\_\_\_ represents \_\_\_\_\_\_\_\_\_\_\_\_
-
 # More resources
 
--   <https://www.1843magazine.com/data-graphic/what-the-numbers-say/higher-earning>
+- <https://www.1843magazine.com/data-graphic/what-the-numbers-say/higher-earning>
 
--   <https://www.economist.com/1843/2016/05/06/where-to-buy>
+- <https://www.economist.com/1843/2016/05/06/where-to-buy>
 
--   <https://pudding.cool/2020/02/authors/>
+- <https://pudding.cool/2020/02/authors/>
 
--   <https://pudding.cool/2020/10/kpop/>
+- <https://pudding.cool/2020/10/kpop/>
 
--   <https://pudding.cool/2018/08/filmordigital/>
+- <https://pudding.cool/2018/08/filmordigital/>
 
--   <https://pudding.cool/2019/02/dress-code-sexualization/>
+- <https://pudding.cool/2019/02/dress-code-sexualization/>
 
--   <https://pudding.cool/projects/vocabulary/>
+- <https://pudding.cool/projects/vocabulary/>
 
--   <https://pudding.cool/2019/10/laugh/>
+- <https://pudding.cool/2019/10/laugh/>
 
--   <https://pudding.cool/2017/03/film-dialogue/>
+- <https://pudding.cool/2017/03/film-dialogue/>
 
--   <https://pudding.cool/2019/05/names-in-songs/>
+- <https://pudding.cool/2019/05/names-in-songs/>
 
--   <https://pudding.cool/2019/11/big-hair/>
+- <https://pudding.cool/2019/11/big-hair/>
 
--   <https://pudding.cool/2017/08/screen-direction/>
+- <https://pudding.cool/2017/08/screen-direction/>
 
--   <https://pudding.cool/2019/04/vogue/>
+- <https://pudding.cool/2019/04/vogue/>
