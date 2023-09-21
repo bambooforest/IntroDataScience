@@ -1,7 +1,7 @@
 Introduction
 ================
 Steven Moran
-(20 September, 2023)
+(21 September, 2023)
 
 - [Getting started](#getting-started)
 - [R](#r)
@@ -81,37 +81,38 @@ You should see something like this when you open **RStudio**. (You will
 not need to open **R** directly.)
 
 <figure>
-<img src="figures/1.png" alt="Upload to GitHub." />
-<figcaption aria-hidden="true">Upload to GitHub.</figcaption>
+<img src="figures/1.png" alt="Open RStudio." />
+<figcaption aria-hidden="true">Open RStudio.</figcaption>
 </figure>
 
 Then create an RMarkdown file.
 
 <figure>
-<img src="figures/2.png" alt="Upload to GitHub." />
-<figcaption aria-hidden="true">Upload to GitHub.</figcaption>
+<img src="figures/2.png" alt="Create RMarkdown file." />
+<figcaption aria-hidden="true">Create RMarkdown file.</figcaption>
 </figure>
 
 Give it a title or leave it “Untitled”. Hit OK.
 
 <figure>
-<img src="figures/3.png" alt="Upload to GitHub." />
-<figcaption aria-hidden="true">Upload to GitHub.</figcaption>
+<img src="figures/3.png" alt="Give it a title." />
+<figcaption aria-hidden="true">Give it a title.</figcaption>
 </figure>
 
 Now you should have a basic RMarkdown file, like this:
 
 <figure>
-<img src="figures/4.png" alt="Upload to GitHub." />
-<figcaption aria-hidden="true">Upload to GitHub.</figcaption>
+<img src="figures/4.png" alt="Example RMarkdown file." />
+<figcaption aria-hidden="true">Example RMarkdown file.</figcaption>
 </figure>
 
 Click on the **Knit** button and it will prompt you to save the file.
 Save it somewhere on your computer.
 
 <figure>
-<img src="figures/5.png" alt="Upload to GitHub." />
-<figcaption aria-hidden="true">Upload to GitHub.</figcaption>
+<img src="figures/5.png" alt="Click on Knit and save the file." />
+<figcaption aria-hidden="true">Click on Knit and save the
+file.</figcaption>
 </figure>
 
 Then RStudio should “knit” (aka
@@ -119,8 +120,8 @@ Then RStudio should “knit” (aka
 and display it for you.
 
 <figure>
-<img src="figures/6.png" alt="Upload to GitHub." />
-<figcaption aria-hidden="true">Upload to GitHub.</figcaption>
+<img src="figures/6.png" alt="Your report should appear." />
+<figcaption aria-hidden="true">Your report should appear.</figcaption>
 </figure>
 
 # Spreadsheets

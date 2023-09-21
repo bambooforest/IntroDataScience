@@ -50,27 +50,27 @@ See in particular Figure 1.1: Analogy of difference between R and RStudio.
 
 You should see something like this when you open **RStudio**. (You will not need to open **R** directly.)
 
-![Upload to GitHub.](figures/1.png)
+![Open RStudio.](figures/1.png)
 
 Then create an RMarkdown file.
 
-![Upload to GitHub.](figures/2.png)
+![Create RMarkdown file.](figures/2.png)
 
 Give it a title or leave it "Untitled". Hit OK.
 
-![Upload to GitHub.](figures/3.png)
+![Give it a title.](figures/3.png)
 
 Now you should have a basic RMarkdown file, like this:
 
-![Upload to GitHub.](figures/4.png)
+![Example RMarkdown file.](figures/4.png)
 
 Click on the **Knit** button and it will prompt you to save the file. Save it somewhere on your computer.
 
-![Upload to GitHub.](figures/5.png)
+![Click on Knit and save the file.](figures/5.png)
 
 Then RStudio should "knit" (aka "[compile](https://en.wikipedia.org/wiki/Compiler)") your RMarkdown file and display it for you.
 
-![Upload to GitHub.](figures/6.png)
+![Your report should appear.](figures/6.png)
 
 # Spreadsheets
 
