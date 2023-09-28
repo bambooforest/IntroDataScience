@@ -1,16 +1,20 @@
 Writing scientific reports
 ================
 Steven Moran
-(20 September, 2023)
+(28 September, 2023)
 
 - [Scientific reports: why?](#scientific-reports-why)
 - [R Markdown: overview](#r-markdown-overview)
 - [Title](#title)
   - [Subtitle](#subtitle)
-- [Automatic referencing](#automatic-referencing)
-- [Additional resources](#additional-resources)
-  - [R Markdown](#r-markdown)
-  - [Reference management software](#reference-management-software)
+- [Markdown cheat sheets](#markdown-cheat-sheets)
+- [Automatic referencing (optional)](#automatic-referencing-optional)
+  - [Overview](#overview)
+  - [Bibliography management
+    software](#bibliography-management-software)
+    - [BibTeX](#bibtex)
+    - [Mendeley](#mendeley)
+    - [Zotero](#zotero)
 - [References](#references)
 
 This report uses the [R programming
@@ -225,14 +229,19 @@ For an overview of R Markdown, check out this video:
 
 - <https://rmarkdown.rstudio.com/lesson-1.html>
 
-And the tutorials here:
+Or the tutorials here:
 
 - <https://rmarkdown.rstudio.com>
+- <https://r4ds.had.co.nz/r-markdown.html>
+- <https://www.earthdatascience.org/courses/earth-analytics/document-your-science/intro-to-the-rmarkdown-format-and-knitr/>
+- <https://bookdown.org/yihui/rmarkdown/>
 
 What you are currently reading is [itself](README.Rmd) generated from an
 R Markdown file.
 
-The file extension is [.Rmd](https://fileinfo.com/extension/rmd).
+The file extension is [.Rmd](https://fileinfo.com/extension/rmd), which
+stands for “R Markdown”, i.e., Rmd.
+
 Together with the `knitr` package and RStudio, this report
 [compiles](https://en.wikipedia.org/wiki/Compilation) this R Markdown
 file (.Rmd) file into a [Markdown
@@ -256,7 +265,7 @@ file should be generated, e.g., I am telling it to produce a
     ---
     title: "Writing scientific reports"
     author: "Steven Moran"
-    date: "(20 September, 2023)"
+    date: "(28 September, 2023)"
     output:
       github_document
     ---
@@ -273,7 +282,7 @@ document](https://bookdown.org/yihui/rmarkdown/html-document.html):
     ---
     title: "Writing scientific reports"
     author: "Steven Moran"
-    date: "(20 September, 2023)"
+    date: "(28 September, 2023)"
     output:
       html_document
     ---
@@ -285,7 +294,7 @@ this report, e.g., so that you can submit it for publication?
     ---
     title: "Writing scientific reports"
     author: "Steven Moran"
-    date: "(20 September, 2023)"
+    date: "(28 September, 2023)"
     output:
       pdf_document
     ---
@@ -298,7 +307,7 @@ one of my old professors):
     ---
     title: "Writing scientific reports"
     author: "Steven Moran"
-    date: "(20 September, 2023)"
+    date: "(28 September, 2023)"
     output:
       word_document
     ---
@@ -309,7 +318,7 @@ You can even create for example slides, such as in
     ---
     title: "Writing scientific reports"
     author: "Steven Moran"
-    date: "(20 September, 2023)"
+    date: "(28 September, 2023)"
     output:
       powerpoint_presentation
     ---
@@ -323,7 +332,7 @@ below). So, for example, this file specifies the header as:
     ---
     title: "Writing scientific reports"
     author: "Steven Moran"
-    date: "(20 September, 2023)"
+    date: "(28 September, 2023)"
     output:
       github_document:
           toc: true
@@ -364,16 +373,6 @@ like this in R Markdown\]:
 
     For example, this sentence formatted with **bold** and *italicized* text and a [hyperlink](https://en.wikipedia.org/wiki/Hyperlink) is written like this in R Markdown]:
 
-A good thing to keep near when you are learning R Markdown are [cheat
-sheets](https://en.wikipedia.org/wiki/Cheat_sheet). [Let me google some
-for you](https://www.dictionary.com/e/slang/lmgtfy/):
-
-- <https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>
-- <https://ethz.ch/content/dam/ethz/special-interest/math/statistics/sfs/Education/Advanced%20Studies%20in%20Applied%20Statistics/course-material-1719/Datenanalyse/rmarkdown-2.pdf>
-
-These cheat sheets are condense visualizations and explain the R
-Markdown workflow. Please have a look at them.
-
 There are not that many things to remember with regard to basic
 formatting. For example, bullet lists are helpful:
 
@@ -395,7 +394,21 @@ Or this:
     1. Item 1
     2. Item 2
 
-# Automatic referencing
+# Markdown cheat sheets
+
+A good thing to keep near when you are learning R Markdown are [cheat
+sheets](https://en.wikipedia.org/wiki/Cheat_sheet). [Let me google some
+for you](https://www.dictionary.com/e/slang/lmgtfy/):
+
+- <https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>
+- <https://ethz.ch/content/dam/ethz/special-interest/math/statistics/sfs/Education/Advanced%20Studies%20in%20Applied%20Statistics/course-material-1719/Datenanalyse/rmarkdown-2.pdf>
+
+These cheat sheets are condense visualizations and explain the R
+Markdown workflow. Please have a look at them.
+
+# Automatic referencing (optional)
+
+## Overview
 
 Scientific reports and scientific publications require that you cite
 (aka reference) your sources, e.g.:
@@ -581,7 +594,7 @@ header in the .Rmd file:
     ---
     title: "Writing scientific reports"
     author: "Steven Moran"
-    date: "(20 September, 2023)"
+    date: "(28 September, 2023)"
     output:
       github_document
     bibliography: 'references.bib'
@@ -626,15 +639,9 @@ edits).
 ![Getting the citation.](figures/citation_example.png) I can give a demo
 in the class.
 
-# Additional resources
+## Bibliography management software
 
-## R Markdown
-
-- <https://r4ds.had.co.nz/r-markdown.html>
-- <https://www.earthdatascience.org/courses/earth-analytics/document-your-science/intro-to-the-rmarkdown-format-and-knitr/>
-- <https://bookdown.org/yihui/rmarkdown/>
-
-## Reference management software
+### BibTeX
 
 Although [BibTeX](https://en.wikipedia.org/wiki/BibTeX) is stored in
 plain text, as mentioned above, one can interact with it through a
@@ -660,6 +667,8 @@ But obviously you can also search the web for the newest, or easiest to
 use, or most popular programs – if you are not already using one
 yourself or are interested in switching.
 
+### Mendeley
+
 As mentioned above [Mendeley](https://en.wikipedia.org/wiki/Mendeley) is
 popular and can be accessed through the web.
 [Zotero](https://en.wikipedia.org/wiki/Zotero) is also popular and
@@ -670,11 +679,30 @@ Also, check with your university’s IT and perhaps they provide free
 access to versions that they pay the software license for and is
 available to students and faculty.
 
+### Zotero
+
+[Zotero](https://en.wikipedia.org/wiki/Zotero) is another popular
+[reference management software
+program](https://en.wikipedia.org/wiki/Reference_management_software):
+
+- <https://www.zotero.org>
+
+I have not integrated it with RMarkdown reports, but searching for
+“zotero and rmarkdown” in Google gives a few, perhaps helpful, results
+for Zotero users:
+
+- <https://gsverhoeven.github.io/post/zotero-rmarkdown-csl/>
+- <https://bookdown.org/pdr_higgins/rmrwr/adding-citations-to-your-rmarkdown.html>
+- <https://www.youtube.com/watch?v=aU0uetWJXis>
+
+------------------------------------------------------------------------
+
 Lastly, don’t hesitate to ask me if you have any questions! (:
 
 # References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-Barnes2010" class="csl-entry">
 
