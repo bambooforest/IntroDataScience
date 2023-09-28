@@ -1,12 +1,13 @@
 Instructions for your data practical
 ================
 Steven Moran
-(20 September, 2023)
+(28 September, 2023)
 
 - [Overview](#overview)
 - [Learning objectives](#learning-objectives)
 - [Requirements](#requirements)
 - [Where to find data?](#where-to-find-data)
+- [Data practical examples](#data-practical-examples)
 
 # Overview
 
@@ -156,3 +157,7 @@ venues that publish datasets, e.g.:
 
 - <https://www.nature.com/sdata>
 - <https://lrec2020.lrec-conf.org/en/shared-lrs/>
+
+# Data practical examples
+
+- 
