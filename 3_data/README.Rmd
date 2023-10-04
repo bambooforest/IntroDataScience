@@ -290,7 +290,7 @@ x + y
 ```
 
 
-# In statistics
+## In statistics
 
 ### Qualitative versus quantitative variables
 

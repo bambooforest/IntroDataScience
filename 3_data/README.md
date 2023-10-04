@@ -9,10 +9,10 @@ Steven Moran
 - [Tabular data](#tabular-data)
 - [Data types](#data-types)
   - [In computer programming](#in-computer-programming)
-- [In statistics](#in-statistics)
-  - [Qualitative versus quantitative
-    variables](#qualitative-versus-quantitative-variables)
-  - [Scales of measurement](#scales-of-measurement)
+  - [In statistics](#in-statistics)
+    - [Qualitative versus quantitative
+      variables](#qualitative-versus-quantitative-variables)
+    - [Scales of measurement](#scales-of-measurement)
 - [Where do I find data?](#where-do-i-find-data)
 - [Optional reading](#optional-reading)
   - [File formats](#file-formats)
@@ -464,7 +464,7 @@ x + y
 
     ## [1] 2
 
-# In statistics
+## In statistics
 
 ### Qualitative versus quantitative variables
 
