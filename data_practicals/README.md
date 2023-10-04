@@ -1,42 +1,49 @@
 Instructions for your data practical
 ================
 Steven Moran
-(28 September, 2023)
+(04 October, 2023)
 
 - [Overview](#overview)
 - [Learning objectives](#learning-objectives)
 - [Requirements](#requirements)
-- [Where to find data?](#where-to-find-data)
+- [Where do I find data?](#where-do-i-find-data)
 - [Data practical examples](#data-practical-examples)
 
 # Overview
 
 For your “final” data practical, you will create a [“scientific”
 report](../2_writing_scientific_reports). This report must be in R
-Markdown with an accompanying `.md` (markdown) file that you “knit” from
-the `Rmd` file. Both files will be uploaded to your GitHub repository as
-`README.Rmd` and `README.md`, so that they display nicely in the
-browser. You will present your work during the last session of class.
+Markdown with an accompanying output file, whether PDF, HTML, or Github
+markdown.
+
+You “knit” this output file from your working file, i.e., your `Rmd`
+file.
+
+You must submit both the RMarkdown file and the output file, plus all
+data files, figures, etc.
+
+<!-- Both files will be uploaded to your GitHub repository as `README.Rmd` and `README.md`, so that they display nicely in the browser. You will present your work during the last session of class.-->
 
 You will write your report on some topic(s) that you are interested in.
 For example, are you working on a masters thesis topic? Does it require
 some type of quantitative analysis and data visualization? Why not use
-that data and what you learn in class towards your thesis?
+that data and what you learn in this class towards your thesis?
 
 Or are you working on a scientific paper that requires some type of
-qualitative and quantitative analysis? Here is an example of a paper I
-recently co-wrote with Matthias Urban on ejective and uvular speech
-sounds in the world’s languages:
+qualitative and quantitative analysis?
+
+Here is an example of a paper that I co-wrote with Matthias Urban on
+ejective and uvular speech sounds in the world’s languages:
 
 - <https://doi.org/10.1371/journal.pone.0245522>
 
 We lay out our hypothesis and describe the analysis in the paper and
-produce the supplementary materials in R Markdown reports, e.g.:
+produce the supplementary materials in R Markdown reports, here:
 
 - <https://github.com/urban-m/elev/tree/master/phylogenetic_study>
 - <https://github.com/urban-m/elev>
 
-Or are you interested in [data
+Or perhaps you are interested in [data
 journalism](https://en.wikipedia.org/wiki/Data_journalism)? Why not
 create a data practical that reports on some type of analysis of data
 that creates or elevates a story? Here is a fun resource that “makes
@@ -67,10 +74,10 @@ The learning objectives for your data practical include:
   with Python and [Jupyter notebook](https://jupyter.org) or [Google
   Colab](https://colab.research.google.com), then discuss this with me!
 
-- Your README.Rmd must include a header with
+- Your report, e.g., `README.Rmd` must include a header with
   [metadata](https://en.wikipedia.org/wiki/Metadata) (e.g., title,
-  author, date, output format) that successfully knits into markdown
-  (\`.md)
+  author, date, output format) that successfully knits into an output
+  format (PDF, HTML, GitHub markdown).
 
 - You must use R Markdown syntax for formatting your scientific report,
   e.g.:
@@ -87,17 +94,21 @@ The learning objectives for your data practical include:
   this can be done by hand (but if it is not compliant with a specific
   [citation
   style](https://www.scribbr.com/citing-sources/citation-styles/)), you
-  will lose points or it can be generated automatically (preferred).
+  will lose points.
 
-- You scientific report must contain R code blocks, i.e., you will have
+Alternatively, you can learn how to use a [reference management
+software](https://en.wikipedia.org/wiki/Reference_management_software)
+and automatically generate your references cited.
+
+- Your scientific report must contain R code blocks, i.e., you will have
   to implement code in R including:
 
   - [Loading and displaying the data](../3_data)
   - [Transforming (aka “wrangling”) data](../4_data_wrangling)
 
-- You must find and use some dataset(s) for your report. You must
-  describe the data, e.g., in terms of its R vs statistical data types.
-  Knowing the data types will help you visualze the data.
+- You must find and use some dataset(s) for your scientific report. You
+  must describe the data, e.g., in terms of its R vs statistical data
+  types. Knowing the data types will help you visualize the data.
 
 - You must implement some data visualization(s) of your dataset(s). Here
   are lots of examples:
@@ -109,7 +120,7 @@ The learning objectives for your data practical include:
   data](../7_data_modeling).
 
 - Your data model(s) and quantitative method(s) must fit the question(s)
-  that you are asking. There are a lot fo different data models and
+  that you are asking. There are a lot of different data models and
   methods to choose from, e.g.:
 
   - [Linear models I](../8_Linear_Models_I)
@@ -118,14 +129,18 @@ The learning objectives for your data practical include:
     redution](../10_Dimensionality_reduction_clustering_I)
   - [Dimensionality
     redution](../11_Dimensionality_reduction_clustering_II)
-  - [Time series](../12_Time_series_analysis)
-  - [Machine learning](../13_Time_series_analysis)
+  - [Time series](../9_time_series/)
+  - [Machine learning](../12_machine_learning/)
 
 - You must have an introduction that introduces your work.
 
-- You must present and discuss your results and provide a conclusion.
+- You must present and discuss your results in a discussion or
+  conclusion section.
 
-# Where to find data?
+If you need structure, follow the [IMRAD
+model](https://github.com/bambooforest/IntroDataScience/tree/main/2_writing_scientific_reports#scientific-reports-why).
+
+# Where do I find data?
 
 As with most things in data science, one of your best bets is to [google
 it](https://www.google.com). In other words, a search engine is one of
@@ -135,7 +150,7 @@ Whether it’s [Google](https://www.google.com),
 [Bing](https://www.bing.com), [Yahoo](https://www.yahoo.com),
 [Baidu](https://www.baidu.com), [DuckDuckGo](https://duckduckgo.com), or
 whatever, internet searches for data, information, answers to why your
-code isn’t working, etc., is probably your most important tool.
+code isn’t working, etc., is probably **your most important tool**.
 
 Regarding data, there are lots of options depending on what kind of data
 you’re looking for. First, do some internet searches for it. Keywords
@@ -158,6 +173,13 @@ venues that publish datasets, e.g.:
 - <https://www.nature.com/sdata>
 - <https://lrec2020.lrec-conf.org/en/shared-lrs/>
 
+R also has built in data sets:
+
+- <https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html>
+
 # Data practical examples
 
-- 
+Here are some data practicals from former students:
+
+- <https://github.com/DidierYourassoff/IntroDataScience>
+- <https://github.com/alex-ro96/ADHD_in_women>
