@@ -102,6 +102,293 @@ To summarize, [data](https://en.wikipedia.org/wiki/Data) contain(s) raw facts, t
 Data is based on observations or records. Information is based on the organization, summarization, or analysis of the data and tells us something about the raw data.
 
 
+# Structured versus unstructured data
+
+[Raw data](https://en.wikipedia.org/wiki/Raw_data) (aka "primary" data) are data collected from some source. Raw data has not yet been processed for use. Human brains are very good at processing raw data and making decisions. 
+
+Consider crossing a street -- your brain processes the data around you, from your eyes and/or your ears, together with your working memory, to make an informed decision of whether crossing the street is safe or not.
+
+[Information](https://www.etymonline.com/word/information) is the end product of [data processing](https://en.wikipedia.org/wiki/Data_processing). Data processing may include:
+
+* [Validation](https://en.wikipedia.org/wiki/Data_validation) -- Ensuring that supplied data is correct and relevant.
+* [Sorting](https://en.wikipedia.org/wiki/Sorting) -- "arranging items in some sequence and/or in different sets."
+* [Summarization](https://en.wikipedia.org/wiki/Summary_statistics) statistical or automatic -- reducing detailed data to its main points, e.g., taking the mean of a set of numbers.
+* [Aggregation](https://en.wikipedia.org/wiki/Aggregate_data) -- combining multiple pieces of data.
+* [Analysis](https://en.wikipedia.org/wiki/Statistical_inference) -- the "collection, organization, analysis, interpretation and presentation of data."
+* [Reporting](https://en.wikipedia.org/wiki/Business_reporting) -- list detail or summary data or computed information.
+* [Classification](https://en.wikipedia.org/wiki/Data_classification_(business_intelligence)) -- separation of data into various categories.
+
+We can process raw data to turn it into useful information.
+
+Raw data can come in structured or unstructured formats:
+
+* https://www.ibm.com/cloud/blog/structured-vs-unstructured-data
+
+Unstructured data does not have a predefined format and may be (very) diverse. It is considered qualitative and may be difficult to search, sort, analyze.
+
+Structured data is data that are organized into a data format and are quantitative in nature, e.g., tables or relational databases. 
+
+What do you think? Structured or unstructured?
+
+1. text files
+2. emails
+3. audio files
+4. videos
+5. dates
+6. numbers
+7. credit card numbers
+8. phone numbers
+
+Structured or unstructured?
+
+| Date |
+|------|
+|Jan 1, 2021|
+|10/10/2010|
+|22/11/2011|
+
+Structured or unstructured?
+
+| Date |
+|------|
+|1/1/2021|
+|10/10/2010|
+|22/11/2011|
+
+For the uninitiated, the terminology in data science (and about data in general) may seem all over the place. Let's clarify a few standard terms that use the word data in the next few sections. 
+
+**Most pertinent to this class is the discussion on tabular data below.**
+
+
+# Tabular data
+
+In this course, we are mainly going to be dealing with data in [plain text](https://en.wikipedia.org/wiki/Plain_text) and structured data in rectangular format, also known as **tabular data**. Here are some descriptions:
+
+* https://en.wikipedia.org/wiki/Table_(information)
+* https://papl.cs.brown.edu/2016/intro-tabular-data.html
+* https://www.w3.org/TR/tabular-data-model/
+
+Tabular data **can be stored in many ways**, e.g.:
+
+* [CSV](https://en.wikipedia.org/wiki/Comma-separated_values)
+* [Excel sheets](https://en.wikipedia.org/wiki/Microsoft_Excel)
+* [Google sheets](https://en.wikipedia.org/wiki/Google_Sheets)
+* [Numbers](https://en.wikipedia.org/wiki/Numbers_(spreadsheet))
+* [SQLite](https://en.wikipedia.org/wiki/SQLite)
+* [JSON](https://en.wikipedia.org/wiki/JSON)
+
+Which of these formats above are stored in plain text?
+
+***
+
+Tabular (or table) data has several properties. It consists of [rows and columns](https://en.wikipedia.org/wiki/Row_and_column_vectors) in the linear algebra sense, and [rows](https://en.wikipedia.org/wiki/Row_(database)) and [columns](https://en.wikipedia.org/wiki/Column_(database)) in the relational database sense.
+
+[Columns](https://en.wikipedia.org/wiki/Column_(database)) in tabular data contain a set of data of a particular type and contain (typically) one value (data type -- see above) for each row in the table. 
+
+Each [row](https://en.wikipedia.org/wiki/Row_(database)) in the table contains an observation, in which each row represents a set of related data, i.e., every row has the same structure and each cell in each row should adhere to the column's specification (i.e., that data type of that column). 
+
+For example if you run the `data()` command in R / RStudio, you will get a list of all of the pre-loaded data sets available in R.
+
+```{r}
+# Recall you can also use the help() function to learn more about datasets in R, i.e., run: help(data)
+data()
+```
+
+For example, do you want to know about the [Swiss Fertility and Socioeconomic Indicators (1888) Data](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/swiss.html) available in R? This is a dataset with standardized fertility measures and socio-economic indicators for each of the 47 French-speaking provinces of Switzerland in 1888.
+
+```{r}
+help(swiss)
+data(swiss)
+head(swiss)
+```
+
+What are the columns? What their data types? What are the rows? Again, we can use the structure function `str()` and pass it the dataset's name.
+
+```{r}
+str(swiss)
+```
+
+***
+
+When there is more than one table and they are are specified relations between the tables, then you have a [relational database](https://en.wikipedia.org/wiki/Relational_database). We will discuss these later.
+
+Lastly, note that there are lots of non-rectangular (i.e., not tabular) datasets out there. Some examples include text, images, audio files, video files, [tree data structures](https://en.wikipedia.org/wiki/Tree_(data_structure)), and so on.
+
+**We will focus in this course on tabular data -- that is, loading it, transforming it, creating it, and analyzing it.**
+
+Tabular data typically contains numerical data or [categorical data](https://en.wikipedia.org/wiki/Categorical_variable) (recall data types discussed above). Numerical data is either:
+
+* numerical (aka discrete) -- integer values, e.g., counts, indices.
+* continuous -- data that can take any value within in interval, e.g., temperature.
+
+[Categorical data](https://en.wikipedia.org/wiki/Categorical_variable) represents sets of values that represent possible categories. They are not subject to the laws of arithmetic (but note they can be counted, as are the words in the example above). Categorical data includes:
+
+* binary -- dichotomous data, i.e., True vs False (often encoded 1 vs. 0).
+* ordinal -- categorical data with explicit ordering, e.g., grades, ranks, 5-star reviews.
+
+The types of data in your table, i.e., the [statistical data types](https://en.wikipedia.org/wiki/Statistical_data_type) **constrain or determine the types of statistics you can do with your data!**
+
+
+# Data types
+
+## In computer programming
+
+[Data types](https://en.wikipedia.org/wiki/Data_type) for computer programming typically refer to various *types* of data that can be interpreted by the computer's [compiler](https://en.wikipedia.org/wiki/Compiler). In programming languages, these include types such as:
+
+* [Integers](https://en.wikipedia.org/wiki/Integer_(computer_science))
+* [Floats (floating point numbers)](https://en.wikipedia.org/wiki/Floating-point_arithmetic)
+* [Characters](https://en.wikipedia.org/wiki/Character_(computing)) -- ask me about these
+* [Strings](https://en.wikipedia.org/wiki/String_(computer_science)) -- sequence of characters
+* [Boolean](https://en.wikipedia.org/wiki/Boolean_data_type) -- two possible values (True vs False)
+* [Enumerated types](https://en.wikipedia.org/wiki/Enumerated_type) -- categorical data, i.e., a set of values (e.g., factors in R)
+
+In a [typed programming language](https://en.wikipedia.org/wiki/Type_system), the data type provides information for the compiler to check the [correctness of the computer program](https://en.wikipedia.org/wiki/Correctness_(computer_science)).
+
+R has several data types underlying its data structures, e.g.:
+
+* https://www.r-bloggers.com/2021/09/r-data-types/
+* https://www.w3schools.com/r/r_data_types.asp
+* https://statsandr.com/blog/data-types-in-r/
+
+[Data types for computer programming](https://en.wikipedia.org/wiki/Data_type) have comparable types of [data types in statistics](https://en.wikipedia.org/wiki/Statistical_data_type) -- or how else would we use computer programs to do statistics? For example:
+
+| Programming | Statistics |
+|-------------|------------|
+| [Integer](https://en.wikipedia.org/wiki/Integer_(computer_science)) | [Count data](https://en.wikipedia.org/wiki/Count_data) |
+| [Boolean](https://en.wikipedia.org/wiki/Boolean_data_type) | [Binary data](https://en.wikipedia.org/wiki/Binary_data) |
+| [Floating-point](https://en.wikipedia.org/wiki/Floating-point_arithmetic) | [Interval scale](https://en.wikipedia.org/wiki/Level_of_measurement#Interval_scale), [Ratio scale](https://en.wikipedia.org/wiki/Positive_real_numbers#Ratio_scale) |
+| [Enumerated type](https://en.wikipedia.org/wiki/Enumerated_type) | [Categorical variable](https://en.wikipedia.org/wiki/Categorical_variable) |
+| [List](https://en.wikipedia.org/wiki/List_(abstract_data_type)), [Array](https://en.wikipedia.org/wiki/Array_data_type) | [Random vector](https://en.wikipedia.org/wiki/Multivariate_random_variable) |
+
+Why is important to keep this in mind? How you can programmatically access, perform functions or statistics on these data types -- whether in programming code or with statistical methods -- depends on what **type** of data you are dealing with. For example:
+
+* You cannot apply arithmetic to qualitative / categorical values.
+* Ordinal scales are equidistant, so you can rank them, but how much x is from y is unknown.
+
+One last distinction to make clear is between the term "variable" in computer programming and in statistical analysis. 
+
+A [variable in computer programming](https://en.wikipedia.org/wiki/Variable_(computer_science)) is used to store information that can be referenced and manipulated by a computer program. One assigns a value to a variable, e.g., in R:
+
+```{r}
+my_name <- 'Steven'
+my_name
+```
+
+Variables can be manipulated, e.g.:
+
+```{r}
+my_full_name <- paste0(my_name, ' Moran')
+my_full_name
+```
+
+Another example:
+
+```{r}
+x <- 1
+y <- 1
+x + y
+```
+
+
+# In statistics
+
+### Qualitative versus quantitative variables
+
+In contrast to variables in computer programming, variables in statistics are **properties** or **characteristics** used to measure a population of individuals. A variable is thus a quantity whose value can change across a population.
+
+They include:
+
+* **Qualitative variables** -- measure non-numeric qualities and are not subject to the laws of arithmetic.
+* **Quantitative variables** -- measure numeric quantities and arithmetic can be applied to them.
+
+Qualitative variables are also call **categorical** or **discrete** variables. Quantitative variables can be measured, so that their rank or score can tell you about the degree or amount of variable.
+
+A hierarchy of variable types in statistics is given in the image below taken from this [Stats and R](https://statsandr.com/terms/) blog.
+
+![Variable types.](figures/variable-types-and-examples.png)
+
+As you can see, variables in statistics can be classified into four types under qualitative and quantitative variables:
+
+* **Nominal** -- a qualitative variable where no ordering is possible (e.g., eye color) as implied by its **levels** -- levels can be for example binary (e.g., do you smoke?) or multilevel (e.g., what is your degree -- where each degree is a level).
+* **Ordinal** -- a qualitative variable in which an order is implied in the levels, e.g., if the side effects of a drug taken are measured as "light", "moderate", "severe", then this qualitative ordinal value has a clear order or ranking (but note we don't know *how* different these levels are from one to the next!).
+* **Discrete** -- variables that can only take specific values (e.g., whole numbers) -- no values can exist between these numbers.
+* **Continuous** -- variables can take the full range of values (e.g., floating point numbers) -- there are an infinite number of potential values between values.
+
+Consider these examples:
+
+* What number were you wearing in the race? -- "5"!
+* What place did you finish in? -- "5"!
+* How many minutes did it take you to finish? -- "5"!
+
+The three "5"s all look the same. 
+
+However, the three variables (identification number, finish place, and time) are quite different. Because of the differences, each "5" has a different possible interpretation.
+
+What kind of of variables are each of these below?^[Note we set the `na` parameter of `readr::read_csv` to `na=character()` so that the blank cells in the CSV file are not interpreted as [NA](https://en.wikipedia.org/wiki/N/A), i.e., "not applicable". Note also the "_1" in the output -- ask me about it!)]
+
+```{r, warning=FALSE, message=FALSE}
+df <- readr::read_csv('data/variables_quiz.csv', na=character())
+knitr::kable(df)
+```
+
+Answers are available [here](data/variables_quiz_answers.csv).
+
+
+### Scales of measurement
+
+In statistics, we often talk about [scales of measurement or levels of measurement](https://en.wikipedia.org/wiki/Level_of_measurement). 
+
+When using statistics, one must first understand **what types of variables** are in question and **what scales** should be measured using these variables. 
+
+The level of measurement of a variable determines what statistical tests can be applied to it. How a variable is measured is its level of measurement.
+
+The best-known classification scheme has four levels [@Stevens1946]. It was developed by a psychologist [Stanley Smith Stevens](https://en.wikipedia.org/wiki/Stanley_Smith_Stevens) and is commonly used in survey questionnaires, such as the [Likert scale](https://en.wikipedia.org/wiki/Likert_scale). Each scale above is an incremental level of measurement, such that each scale incorporates the function of the previous scale.
+
+* **Nominal** -- the so-called "naming" scale, i.e., variables have categorical values with no specific order (thus it's not really a scale at all because it does not scale along any dimension!). Instead, the nominal scale is generally used for classification purposes, e.g., the numbers worn by athletes.
+
+* **Ordinal** -- the simplest true scale in which variables are encoded in a specific order, but the individual positions are equidistant, e.g., the rank of winners in a marathon (regardless of their times).
+
+* **Interval** -- a scale of measurement in which the order of the variables and the distance between them is known, e.g., a scale for temperature (e.g., Celsius or Fahrenheit) in which a difference of 10 degrees has the same meaning anywhere on the scale (but not across scales!).
+
+* **Ratio** -- a scale of measurement that includes rank (ordinal), distance between points on the scale (interval) and additionally information about the value of *true zero**, where zero means the complete absence of the property under measurement, e.g., how many [cervelat](https://en.wikipedia.org/wiki/Cervelat) can you eat per day?
+
+Depending on what is being measured (i.e., what kind of variables) and how we measure it (i.e., with what methods and scales), the numbers or categories may have different properties. 
+
+We will talk about this more in future lectures. 
+
+But note that in general it is **rare to find a true and unambiguous example of any particular kind of scale**. 
+
+Consider for example that Stevens' scale unifies qualitative and quantitative beneath the "nominal" type. Thus, Stevens' typology has been widely criticized, e.g., @Michell1986.
+
+Here is a cheat sheet that summarizes the levels of measurement.^[Note also how we load a CSV file in R Markdown and display it in a tabular format with `knitr`.]
+
+```{r, warning=FALSE, message=FALSE}
+df <- readr::read_csv('data/levels_of_measurement.csv')
+knitr::kable(df)
+```
+
+And here is a table that compares the levels of measurement.
+
+```{r, warning=FALSE, message=FALSE}
+df <- readr::read_csv('data/comparison_of_levels.csv')
+knitr::kable(df)
+```
+
+And yet another way of looking at the differences between scales [@Spatz2008]. <!-- page 11 -->
+
+```{r, warning=FALSE, message=FALSE}
+df <- readr::read_csv('data/Spatz2008_11.csv')
+knitr::kable(df)
+```
+
+***
+
+To summarize, knowing the distinctions among the four scales of measurement will help you in two tasks:
+
+* The kind of descriptive statistics you can compute from numbers depends, in part, on the scale of measurement the numbers represent.
+
+* Understanding scales of measurement is sometimes important in choosing the kind of inferential statistic that is appropriate for a set of data. For example, if the dependent variable is a nominal variable, then a chi-square analysis is appropriate. If the dependent variable is a set of ranks (ordinal data), then a nonparametric statistic is required. Etc.
+
 # Where do I find data?
 
 The world is awash in data. And the amount of data being created is increasingly rapidly. By some estimates, there was 60 or more [zettabytes](https://en.wikipedia.org/wiki/Zettabyte_Era) of data as of 2020.
@@ -217,68 +504,86 @@ R also has built in datasets:
 * https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html
 
 
+# Optional reading
 
-# Structured versus unstructured data
+## File formats
 
-[Raw data](https://en.wikipedia.org/wiki/Raw_data) (aka "primary" data) are data collected from some source. Raw data has not yet been processed for use. Human brains are very good at processing raw data and making decisions. 
+[File formants](https://en.wikipedia.org/wiki/File_format) are standardized ways of encoding digital data for storage as computer files. You know these mainly from their appearance, e.g., text document, image, audio or video file. But also from their [filename extensions](https://en.wikipedia.org/wiki/Filename_extension), i.e., the suffix (typically) after "." in the file name. For example, this file is a markdown file that ends in ".md" (or a R Markdown file ".Rmd" if you are looking at the source code).
 
-Consider crossing a street -- your brain processes the data around you, from your eyes and/or your ears, together with your working memory, to make an informed decision of whether crossing the street is safe or not.
+Typical file names include suffixes such as:
 
-[Information](https://www.etymonline.com/word/information) is the end product of [data processing](https://en.wikipedia.org/wiki/Data_processing). Data processing may include:
+* .txt -- [plain text file](https://en.wikipedia.org/wiki/Plain_text)
+* .csv -- [CSV comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values)
+* .doc -- [MS Word doc](https://en.wikipedia.org/wiki/Microsoft_Word)
+* .html -- [HTML](https://en.wikipedia.org/wiki/HTML), i.e., the [markup language](https://en.wikipedia.org/wiki/Markup_language) for documents displayed in a web browser
+* .exe -- [executable file](https://en.wikipedia.org/wiki/.exe) for [Windows](https://en.wikipedia.org/wiki/Microsoft_Windows)
 
-* [Validation](https://en.wikipedia.org/wiki/Data_validation) -- Ensuring that supplied data is correct and relevant.
-* [Sorting](https://en.wikipedia.org/wiki/Sorting) -- "arranging items in some sequence and/or in different sets."
-* [Summarization](https://en.wikipedia.org/wiki/Summary_statistics) statistical or automatic -- reducing detailed data to its main points, e.g., taking the mean of a set of numbers.
-* [Aggregation](https://en.wikipedia.org/wiki/Aggregate_data) -- combining multiple pieces of data.
-* [Analysis](https://en.wikipedia.org/wiki/Statistical_inference) -- the "collection, organization, analysis, interpretation and presentation of data."
-* [Reporting](https://en.wikipedia.org/wiki/Business_reporting) -- list detail or summary data or computed information.
-* [Classification](https://en.wikipedia.org/wiki/Data_classification_(business_intelligence)) -- separation of data into various categories.
+There are lots more!
 
-We can process raw data to turn it into useful information.
+A note about textual data -- its native format is unstructured, but it can be structured into other formats, e.g., tabular format, for processing. Consider the following code snippet.
 
-Raw data can come in structured or unstructured formats:
+First, we generate some [Lorem Ipsum](https://www.lipsum.com) text and assign it to a variable called `text`.
 
-* https://www.ibm.com/cloud/blog/structured-vs-unstructured-data
+```{r}
+text <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae nisi nibh. In dolor neque, ultricies a tincidunt et, rutrum in erat. Morbi venenatis massa at neque imperdiet, eu faucibus augue varius. Ut molestie risus in dolor porttitor pretium sit amet vel enim. Pellentesque posuere blandit velit eget ultrices. Sed tristique dui ipsum, id sodales dui egestas id. Proin a dolor placerat, accumsan quam nec, ullamcorper enim. Nunc commodo a quam sit amet molestie. Quisque nec elit et diam consequat aliquet nec sed leo. Mauris scelerisque sed lorem eu bibendum. Morbi id ex commodo, elementum elit at, varius dui. Maecenas facilisis velit ut malesuada lobortis. Vestibulum dictum dapibus velit ut pellentesque."
+```
 
-Unstructured data does not have a predefined format and may be (very) diverse. It is considered qualitative and may be difficult to search, sort, analyze.
+Now perhaps we want to have a table of [word types](https://en.wikipedia.org/wiki/Type–token_distinction) and counts of their occurrences (i.e., word tokens), so that we can know how many times they occur in the text.
 
-Structured data is data that are organized into a data format and are quantitative in nature, e.g., tables or relational databases. 
+First we can split the `text` character string into an [R `list` data type](http://www.r-tutor.com/r-introduction/list). On the second line we simply display the output from splitting the character string on white space.
 
-What do you think? Structured or unstructured?
+```{r}
+words <- strsplit(text, " ")
+words
+```
 
-1. text files
-2. emails
-3. audio files
-4. videos
-5. dates
-6. numbers
-7. credit card numbers
-8. phone numbers
+We can then "[coerce](https://en.wikipedia.org/wiki/Data_conversion)", i.e., convert, the list of words into an [R data frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html) with the following function (`as.data.frame`), to which we pass it `words` and tell it to name the column (there's only one) "words". We assign the results to a new data frame `words_df`. We can use the `head` function on `words_df` to display the first few rows.
 
-Structured or unstructured?
+```{r}
+words_df <- as.data.frame(words, col.names = "words")
+head(words_df)
+```
 
-| Date |
-|------|
-|Jan 1, 2021|
-|10/10/2010|
-|22/11/2011|
+Lastly, we want to summarize the number of times a word occurs.
 
-Structured or unstructured?
+```{r}
+words_df %>% 
+  group_by(words) %>% 
+  summarize(word_count = n()) %>%
+  arrange(desc(word_count))
+```
 
-| Date |
-|------|
-|1/1/2021|
-|10/10/2010|
-|22/11/2011|
+We can save the results to another data frame or we can write them to disk as a table for later use, e.g., as a CSV file (more in next section). 
 
-For the uninitiated, the terminology in data science (and about data in general) may seem all over the place. Let's clarify a few standard terms that use the word data in the next few sections. 
-
-**Most pertinent to this class is the discussion on tabular data below.**
+Are the results data or information? Was the text string that we started with data or information?
 
 
-# Data formats
+## Data structures
 
-## Analog versus digital
+[Data structures](https://en.wikipedia.org/wiki/Data_structure) are collections of data values that are organized so that operations can be performed on them. They include the primitive data types (some mentioned above) but also abstract data types, linear data structures, trees, hashes, graphs, and so on. 
+
+* https://en.wikipedia.org/wiki/List_of_data_structures
+
+Data structures are also typically programming language dependent, i.e., the developers of the language have made decisions which types of data structures to implement. R has several data structures:
+
+* http://adv-r.had.co.nz/Data-structures.html
+
+[Data transformation](https://en.wikipedia.org/wiki/Data_transformation) is the process of converting one data format to another (whether unstructured or structured). This is discussed under data wrangling.
+
+
+
+## Metadata
+
+A quick note about metadata. [Metadata](https://en.wikipedia.org/wiki/Metadata) is data about data, i.e., it provides information about the data. There are different metadata types, but most pertinent to this course are:
+
+* **Descriptive metadata** -— the descriptive information about a resource. It is used for discovery and identification. It includes elements such as title, abstract, author, and keywords.
+
+* **Structural metadata** -— metadata about containers of data and indicates how compound objects are put together, for example, how pages are ordered to form chapters. It describes the types, versions, relationships and other characteristics of digital materials.
+
+
+## Data formats
+
+### Analog versus digital
 
 The data that we work with is mainly [digital data](https://en.wikipedia.org/wiki/Digital_data). 
 
@@ -303,7 +608,7 @@ Increasing the sampling rate leads to higher resolution of the audio (right hand
 ![Increased sampling rate](figures/waveform_sample_rates.png)
 
 
-## Binary and electronic text
+### Binary and electronic text
 
 At the "lowest" level, all digital data is [binary data](https://en.wikipedia.org/wiki/Binary_data) -- see the "stream of digits" in the figure above.
 
@@ -366,309 +671,7 @@ Here's a Unicode table website to easily search for characters and emojis:
 Find the craziest Unicode symbol!
 
 
-# Data types in computer programming
-
-[Data types](https://en.wikipedia.org/wiki/Data_type) for computer programming typically refer to various *types* of data that can be interpreted by the computer's [compiler](https://en.wikipedia.org/wiki/Compiler). In programming languages, these include types such as:
-
-* [Integers](https://en.wikipedia.org/wiki/Integer_(computer_science))
-* [Floats (floating point numbers)](https://en.wikipedia.org/wiki/Floating-point_arithmetic)
-* [Characters](https://en.wikipedia.org/wiki/Character_(computing)) -- ask me about these
-* [Strings](https://en.wikipedia.org/wiki/String_(computer_science)) -- sequence of characters
-* [Boolean](https://en.wikipedia.org/wiki/Boolean_data_type) -- two possible values (True vs False)
-* [Enumerated types](https://en.wikipedia.org/wiki/Enumerated_type) -- categorical data, i.e., a set of values (e.g., factors in R)
-
-In a [typed programming language](https://en.wikipedia.org/wiki/Type_system), the data type provides information for the compiler to check the [correctness of the computer program](https://en.wikipedia.org/wiki/Correctness_(computer_science)).
-
-R has several data types underlying its data structures, e.g.:
-
-* https://www.r-bloggers.com/2021/09/r-data-types/
-* https://www.w3schools.com/r/r_data_types.asp
-* https://statsandr.com/blog/data-types-in-r/
-
-[Data types for computer programming](https://en.wikipedia.org/wiki/Data_type) have comparable types of [data types in statistics](https://en.wikipedia.org/wiki/Statistical_data_type) -- or how else would we use computer programs to do statistics? For example:
-
-| Programming | Statistics |
-|-------------|------------|
-| [Integer](https://en.wikipedia.org/wiki/Integer_(computer_science)) | [Count data](https://en.wikipedia.org/wiki/Count_data) |
-| [Boolean](https://en.wikipedia.org/wiki/Boolean_data_type) | [Binary data](https://en.wikipedia.org/wiki/Binary_data) |
-| [Floating-point](https://en.wikipedia.org/wiki/Floating-point_arithmetic) | [Interval scale](https://en.wikipedia.org/wiki/Level_of_measurement#Interval_scale), [Ratio scale](https://en.wikipedia.org/wiki/Positive_real_numbers#Ratio_scale) |
-| [Enumerated type](https://en.wikipedia.org/wiki/Enumerated_type) | [Categorical variable](https://en.wikipedia.org/wiki/Categorical_variable) |
-| [List](https://en.wikipedia.org/wiki/List_(abstract_data_type)), [Array](https://en.wikipedia.org/wiki/Array_data_type) | [Random vector](https://en.wikipedia.org/wiki/Multivariate_random_variable) |
-
-Why is important to keep this in mind? How you can programmatically access, perform functions or statistics on these data types -- whether in programming code or with statistical methods -- depends on what **type** of data you are dealing with. For example:
-
-* You cannot apply arithmetic to qualitative / categorical values.
-* Ordinal scales are equidistant, so you can rank them, but how much x is from y is unknown.
-
-One last distinction to make clear is between the term "variable" in computer programming and in statistical analysis. 
-
-A [variable in computer programming](https://en.wikipedia.org/wiki/Variable_(computer_science)) is used to store information that can be referenced and manipulated by a computer program. One assigns a value to a variable, e.g., in R:
-
-```{r}
-my_name <- 'Steven'
-my_name
-```
-
-Variables can be manipulated, e.g.:
-
-```{r}
-my_full_name <- paste0(my_name, ' Moran')
-my_full_name
-```
-
-Another example:
-
-```{r}
-x <- 1
-y <- 1
-x + y
-```
-
-
-# Data types in statistics
-
-## Qualitative versus quantitative variables
-
-In contrast to variables in computer programming, variables in statistics are **properties** or **characteristics** used to measure a population of individuals. A variable is thus a quantity whose value can change across a population.
-
-They include:
-
-* **Qualitative variables** -- measure non-numeric qualities and are not subject to the laws of arithmetic.
-* **Quantitative variables** -- measure numeric quantities and arithmetic can be applied to them.
-
-Qualitative variables are also call **categorical** or **discrete** variables. Quantitative variables can be measured, so that their rank or score can tell you about the degree or amount of variable.
-
-A hierarchy of variable types in statistics is given in the image below taken from this [Stats and R](https://statsandr.com/terms/) blog.
-
-![Variable types.](figures/variable-types-and-examples.png)
-
-As you can see, variables in statistics can be classified into four types under qualitative and quantitative variables:
-
-* **Nominal** -- a qualitative variable where no ordering is possible (e.g., eye color) as implied by its **levels** -- levels can be for example binary (e.g., do you smoke?) or multilevel (e.g., what is your degree -- where each degree is a level).
-* **Ordinal** -- a qualitative variable in which an order is implied in the levels, e.g., if the side effects of a drug taken are measured as "light", "moderate", "severe", then this qualitative ordinal value has a clear order or ranking (but note we don't know *how* different these levels are from one to the next!).
-* **Discrete** -- variables that can only take specific values (e.g., whole numbers) -- no values can exist between these numbers.
-* **Continuous** -- variables can take the full range of values (e.g., floating point numbers) -- there are an infinite number of potential values between values.
-
-Consider these examples:
-
-* What number were you wearing in the race? -- "5"!
-* What place did you finish in? -- "5"!
-* How many minutes did it take you to finish? -- "5"!
-
-The three "5"s all look the same. 
-
-However, the three variables (identification number, finish place, and time) are quite different. Because of the differences, each "5" has a different possible interpretation.
-
-What kind of of variables are each of these below?^[Note we set the `na` parameter of `readr::read_csv` to `na=character()` so that the blank cells in the CSV file are not interpreted as [NA](https://en.wikipedia.org/wiki/N/A), i.e., "not applicable". Note also the "_1" in the output -- ask me about it!)]
-
-```{r, warning=FALSE, message=FALSE}
-df <- readr::read_csv('data/variables_quiz.csv', na=character())
-knitr::kable(df)
-```
-
-Answers are available [here](data/variables_quiz_answers.csv).
-
-
-## Scales of measurement
-
-In statistics, we often talk about [scales of measurement or levels of measurement](https://en.wikipedia.org/wiki/Level_of_measurement). 
-
-When using statistics, one must first understand **what types of variables** are in question and **what scales** should be measured using these variables. 
-
-The level of measurement of a variable determines what statistical tests can be applied to it. How a variable is measured is its level of measurement.
-
-The best-known classification scheme has four levels [@Stevens1946]. It was developed by a psychologist [Stanley Smith Stevens](https://en.wikipedia.org/wiki/Stanley_Smith_Stevens) and is commonly used in survey questionnaires, such as the [Likert scale](https://en.wikipedia.org/wiki/Likert_scale). Each scale above is an incremental level of measurement, such that each scale incorporates the function of the previous scale.
-
-* **Nominal** -- the so-called "naming" scale, i.e., variables have categorical values with no specific order (thus it's not really a scale at all because it does not scale along any dimension!). Instead, the nominal scale is generally used for classification purposes, e.g., the numbers worn by athletes.
-
-* **Ordinal** -- the simplest true scale in which variables are encoded in a specific order, but the individual positions are equidistant, e.g., the rank of winners in a marathon (regardless of their times).
-
-* **Interval** -- a scale of measurement in which the order of the variables and the distance between them is known, e.g., a scale for temperature (e.g., Celsius or Fahrenheit) in which a difference of 10 degrees has the same meaning anywhere on the scale (but not across scales!).
-
-* **Ratio** -- a scale of measurement that includes rank (ordinal), distance between points on the scale (interval) and additionally information about the value of *true zero**, where zero means the complete absence of the property under measurement, e.g., how many [cervelat](https://en.wikipedia.org/wiki/Cervelat) can you eat per day?
-
-Depending on what is being measured (i.e., what kind of variables) and how we measure it (i.e., with what methods and scales), the numbers or categories may have different properties. 
-
-We will talk about this more in future lectures. 
-
-But note that in general it is **rare to find a true and unambiguous example of any particular kind of scale**. 
-
-Consider for example that Stevens' scale unifies qualitative and quantitative beneath the "nominal" type. Thus, Stevens' typology has been widely criticized, e.g., @Michell1986.
-
-Here is a cheat sheet that summarizes the levels of measurement.^[Note also how we load a CSV file in R Markdown and display it in a tabular format with `knitr`.]
-
-```{r, warning=FALSE, message=FALSE}
-df <- readr::read_csv('data/levels_of_measurement.csv')
-knitr::kable(df)
-```
-
-And here is a table that compares the levels of measurement.
-
-```{r, warning=FALSE, message=FALSE}
-df <- readr::read_csv('data/comparison_of_levels.csv')
-knitr::kable(df)
-```
-
-And yet another way of looking at the differences between scales [@Spatz2008]. <!-- page 11 -->
-
-```{r, warning=FALSE, message=FALSE}
-df <- readr::read_csv('data/Spatz2008_11.csv')
-knitr::kable(df)
-```
-
-***
-
-To summarize, knowing the distinctions among the four scales of measurement will help you in two tasks:
-
-* The kind of descriptive statistics you can compute from numbers depends, in part, on the scale of measurement the numbers represent.
-
-* Understanding scales of measurement is sometimes important in choosing the kind of inferential statistic that is appropriate for a set of data. For example, if the dependent variable is a nominal variable, then a chi-square analysis is appropriate. If the dependent variable is a set of ranks (ordinal data), then a nonparametric statistic is required. Etc.
-
-
-# Data structures
-
-[Data structures](https://en.wikipedia.org/wiki/Data_structure) are collections of data values that are organized so that operations can be performed on them. They include the primitive data types (some mentioned above) but also abstract data types, linear data structures, trees, hashes, graphs, and so on. 
-
-* https://en.wikipedia.org/wiki/List_of_data_structures
-
-Data structures are also typically programming language dependent, i.e., the developers of the language have made decisions which types of data structures to implement. R has several data structures:
-
-* http://adv-r.had.co.nz/Data-structures.html
-
-[Data transformation](https://en.wikipedia.org/wiki/Data_transformation) is the process of converting one data format to another (whether unstructured or structured). This is discussed under data wrangling.
-
-
-# File formats
-
-[File formants](https://en.wikipedia.org/wiki/File_format) are standardized ways of encoding digital data for storage as computer files. You know these mainly from their appearance, e.g., text document, image, audio or video file. But also from their [filename extensions](https://en.wikipedia.org/wiki/Filename_extension), i.e., the suffix (typically) after "." in the file name. For example, this file is a markdown file that ends in ".md" (or a R Markdown file ".Rmd" if you are looking at the source code).
-
-Typical file names include suffixes such as:
-
-* .txt -- [plain text file](https://en.wikipedia.org/wiki/Plain_text)
-* .csv -- [CSV comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values)
-* .doc -- [MS Word doc](https://en.wikipedia.org/wiki/Microsoft_Word)
-* .html -- [HTML](https://en.wikipedia.org/wiki/HTML), i.e., the [markup language](https://en.wikipedia.org/wiki/Markup_language) for documents displayed in a web browser
-* .exe -- [executable file](https://en.wikipedia.org/wiki/.exe) for [Windows](https://en.wikipedia.org/wiki/Microsoft_Windows)
-
-There are lots more!
-
-A note about textual data -- its native format is unstructured, but it can be structured into other formats, e.g., tabular format, for processing. Consider the following code snippet.
-
-First, we generate some [Lorem Ipsum](https://www.lipsum.com) text and assign it to a variable called `text`.
-
-```{r}
-text <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae nisi nibh. In dolor neque, ultricies a tincidunt et, rutrum in erat. Morbi venenatis massa at neque imperdiet, eu faucibus augue varius. Ut molestie risus in dolor porttitor pretium sit amet vel enim. Pellentesque posuere blandit velit eget ultrices. Sed tristique dui ipsum, id sodales dui egestas id. Proin a dolor placerat, accumsan quam nec, ullamcorper enim. Nunc commodo a quam sit amet molestie. Quisque nec elit et diam consequat aliquet nec sed leo. Mauris scelerisque sed lorem eu bibendum. Morbi id ex commodo, elementum elit at, varius dui. Maecenas facilisis velit ut malesuada lobortis. Vestibulum dictum dapibus velit ut pellentesque."
-```
-
-Now perhaps we want to have a table of [word types](https://en.wikipedia.org/wiki/Type–token_distinction) and counts of their occurrences (i.e., word tokens), so that we can know how many times they occur in the text.
-
-First we can split the `text` character string into an [R `list` data type](http://www.r-tutor.com/r-introduction/list). On the second line we simply display the output from splitting the character string on white space.
-
-```{r}
-words <- strsplit(text, " ")
-words
-```
-
-We can then "[coerce](https://en.wikipedia.org/wiki/Data_conversion)", i.e., convert, the list of words into an [R data frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html) with the following function (`as.data.frame`), to which we pass it `words` and tell it to name the column (there's only one) "words". We assign the results to a new data frame `words_df`. We can use the `head` function on `words_df` to display the first few rows.
-
-```{r}
-words_df <- as.data.frame(words, col.names = "words")
-head(words_df)
-```
-
-Lastly, we want to summarize the number of times a word occurs.
-
-```{r}
-words_df %>% 
-  group_by(words) %>% 
-  summarize(word_count = n()) %>%
-  arrange(desc(word_count))
-```
-
-We can save the results to another data frame or we can write them to disk as a table for later use, e.g., as a CSV file (more in next section). 
-
-Are the results data or information? Was the text string that we started with data or information?
-
-
-# Tabular data
-
-In this course, we are mainly going to be dealing with data in [plain text](https://en.wikipedia.org/wiki/Plain_text) and structured data in rectangular format, also known as **tabular data**. Here are some descriptions:
-
-* https://en.wikipedia.org/wiki/Table_(information)
-* https://papl.cs.brown.edu/2016/intro-tabular-data.html
-* https://www.w3.org/TR/tabular-data-model/
-
-Tabular data **can be stored in many ways**, e.g.:
-
-* [CSV](https://en.wikipedia.org/wiki/Comma-separated_values)
-* [Excel sheets](https://en.wikipedia.org/wiki/Microsoft_Excel)
-* [Google sheets](https://en.wikipedia.org/wiki/Google_Sheets)
-* [Numbers](https://en.wikipedia.org/wiki/Numbers_(spreadsheet))
-* [SQLite](https://en.wikipedia.org/wiki/SQLite)
-* [JSON](https://en.wikipedia.org/wiki/JSON)
-
-Which of these formats above are stored in plain text?
-
-***
-
-Tabular (or table) data has several properties. It consists of [rows and columns](https://en.wikipedia.org/wiki/Row_and_column_vectors) in the linear algebra sense, and [rows](https://en.wikipedia.org/wiki/Row_(database)) and [columns](https://en.wikipedia.org/wiki/Column_(database)) in the relational database sense.
-
-[Columns](https://en.wikipedia.org/wiki/Column_(database)) in tabular data contain a set of data of a particular type and contain (typically) one value (data type -- see above) for each row in the table. 
-
-Each [row](https://en.wikipedia.org/wiki/Row_(database)) in the table contains an observation, in which each row represents a set of related data, i.e., every row has the same structure and each cell in each row should adhere to the column's specification (i.e., that data type of that column). 
-
-For example if you run the `data()` command in R / RStudio, you will get a list of all of the pre-loaded data sets available in R.
-
-```{r}
-# Recall you can also use the help() function to learn more about datasets in R, i.e., run: help(data)
-data()
-```
-
-For example, do you want to know about the [Swiss Fertility and Socioeconomic Indicators (1888) Data](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/swiss.html) available in R? This is a dataset with standardized fertility measures and socio-economic indicators for each of the 47 French-speaking provinces of Switzerland in 1888.
-
-```{r}
-help(swiss)
-data(swiss)
-head(swiss)
-```
-
-What are the columns? What their data types? What are the rows? Again, we can use the structure function `str()` and pass it the dataset's name.
-
-```{r}
-str(swiss)
-```
-
-***
-
-When there is more than one table and they are are specified relations between the tables, then you have a [relational database](https://en.wikipedia.org/wiki/Relational_database). We will discuss these later.
-
-Lastly, note that there are lots of non-rectangular (i.e., not tabular) datasets out there. Some examples include text, images, audio files, video files, [tree data structures](https://en.wikipedia.org/wiki/Tree_(data_structure)), and so on.
-
-**We will focus in this course on tabular data -- that is, loading it, transforming it, creating it, and analyzing it.**
-
-Tabular data typically contains numerical data or [categorical data](https://en.wikipedia.org/wiki/Categorical_variable) (recall data types discussed above). Numerical data is either:
-
-* numerical (aka discrete) -- integer values, e.g., counts, indices.
-* continuous -- data that can take any value within in interval, e.g., temperature.
-
-[Categorical data](https://en.wikipedia.org/wiki/Categorical_variable) represents sets of values that represent possible categories. They are not subject to the laws of arithmetic (but note they can be counted, as are the words in the example above). Categorical data includes:
-
-* binary -- dichotomous data, i.e., True vs False (often encoded 1 vs. 0).
-* ordinal -- categorical data with explicit ordering, e.g., grades, ranks, 5-star reviews.
-
-The types of data in your table, i.e., the [statistical data types](https://en.wikipedia.org/wiki/Statistical_data_type) **constrain or determine the types of statistics you can do with your data!**
-
-
-# Metadata
-
-A quick note about metadata. [Metadata](https://en.wikipedia.org/wiki/Metadata) is data about data, i.e., it provides information about the data. There are different metadata types, but most pertinent to this course are:
-
-* **Descriptive metadata** -— the descriptive information about a resource. It is used for discovery and identification. It includes elements such as title, abstract, author, and keywords.
-
-* **Structural metadata** -— metadata about containers of data and indicates how compound objects are put together, for example, how pages are ordered to form chapters. It describes the types, versions, relationships and other characteristics of digital materials.
-
-
-# Data archiving
+## Data archiving
 
 We won't talk much about data archiving, but it is important for research and reproducibility, e.g.:
 
@@ -677,8 +680,9 @@ We won't talk much about data archiving, but it is important for research and re
 Ask me more, if you have questions or it is relevant to your research! For example, I have collected a lot of data on endangered languages, which I digitally archive in an attempt to preserve it for future speakers and researchers.
 
 
-# Exercises
+## Exercises
 
 Understanding data types is important for data visualization and statistical modeling. Check out the case studies on [data behind the plots](../case_studies/data_behind_the_plot/).
+
 
 # References and footnotes
