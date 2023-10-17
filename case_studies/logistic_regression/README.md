@@ -1,7 +1,7 @@
 Logistic regression: alcohol language corpus
 ================
 Steve Moran and Alena Witzlack-Makarevich
-(23 March, 2023)
+(17 October, 2023)
 
 - [Overview](#overview)
 - [Example](#example)
@@ -94,14 +94,16 @@ Let’s create a fake dataset.
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-    ## ✔ ggplot2 3.4.1      ✔ purrr   1.0.1 
-    ## ✔ tibble  3.2.0      ✔ dplyr   1.0.10
-    ## ✔ tidyr   1.3.0      ✔ stringr 1.5.0 
-    ## ✔ readr   2.1.3      ✔ forcats 0.5.2 
+    ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ## ✔ dplyr     1.1.3     ✔ readr     2.1.4
+    ## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+    ## ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+    ## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+    ## ✔ purrr     1.0.2     
     ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
     ## ✖ dplyr::filter() masks stats::filter()
     ## ✖ dplyr::lag()    masks stats::lag()
+    ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
 ``` r
 # Create a `tibble`, i.e., a data frame in Tidyverse
@@ -132,7 +134,7 @@ df
     ##  8     8            0  0.3  Male   No      
     ##  9     9            1  0.25 Male   Yes     
     ## 10    10            0  0.25 Female Yes     
-    ## # … with 20 more rows
+    ## # ℹ 20 more rows
 
 First let’s plot the data.
 
@@ -261,3 +263,7 @@ format.
 ``` r
 # t.test(df$y, df$x, paired=T, alternative="greater")
 ```
+
+Some fun:
+
+- <https://xkcd.com/323/>

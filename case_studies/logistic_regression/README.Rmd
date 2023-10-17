@@ -125,5 +125,7 @@ But to do the test, we will have to transform the data into a long format.
 # t.test(df$y, df$x, paired=T, alternative="greater")
 ```
 
+Some fun:
 
+* https://xkcd.com/323/
 
