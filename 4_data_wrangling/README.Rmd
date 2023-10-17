@@ -18,6 +18,7 @@ library(knitr)
 library(gapminder)
 ```
 
+***
 
 # Overview
 
@@ -44,16 +45,16 @@ The steps in data wrangling, broadly, include:
 
 # Data wrangling in R
 
-Here is a visualization of how the data science workflow works in the book [R for Data Science](https://r4ds.had.co.nz/index.html) within the so-called [tidyverse](https://www.tidyverse.org):
+Here is a visualization of how the data science workflow works in the book [R for Data Science](https://r4ds.had.co.nz/index.html) within the  [tidyverse](https://www.tidyverse.org) library:
 
 * https://r4ds.had.co.nz/introduction.html
 
 ![Typical data science project workflow](figures/WickhamGrolemund.png)
 
-That is you:
+In words, you:
 
-1. **Load** (aka "import") your data into R -- this entails that the data is already in a loadable format (e.g., text, CSV file, Excel spreadsheet, relational database).
-2. **Tidy** the data -- in terms of the R [tidyverse](https://www.tidyverse.org), i.e., a set of R packages aimed to make data science easy (more on this below).
+1. **Import** (aka "load") your data into R -- this entails that the data is already in a loadable format (e.g., text, CSV file, Excel spreadsheet, relational database).
+2. **Tidy** (aka "clean") the data -- in terms of the R [tidyverse](https://www.tidyverse.org), i.e., a set of R packages aimed to make data science easy (more on this below).
 3. **Transform** your data -- select the data of interest, extend your data by adding other data source(s), summarize results.
 4. **Visualize** your data -- create plots to explore and interact with your data and to develop questions to answer.
 5. **Model** your data -- to answer questions and hypotheses.
@@ -84,7 +85,7 @@ The "tidying" and "transforming" of your data is commonly referred to as "data w
 when your data is tidy, each column is a variable, and each row is an observation. Tidy data is important because the consistent structure lets you focus your struggle on questions about the data, not fighting to get the data into the right form for different functions.
 -->
 
-***
+# A bit about R
 
 The [R](https://en.wikipedia.org/wiki/R_(programming_language)) programming language has a long history. Here are some resources about it:
 
@@ -97,20 +98,11 @@ The [base R package](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00I
 
 * https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf
 
-In this course we will also use the `tidyverse` library, which contains a set of functions that have corresponding base R functions. Here is an overview:
-
-* https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html
-
-Let's look at some examples. First we will load some fake data that we've created that includes the height and weight of some made up cats and dogs.
-
-```{r, message=FALSE}
-data1 <- read_table('datasets/fake.txt')
-data1
-```
+<!--
 
 Now if we want to subset this data in base R, we access it by its name and then the [row, column] syntax.
 
-```{r}
+```{r, echo=FALSE, eval=FALSE}
 # First row, first column
 data1[1,1]
 
@@ -124,7 +116,37 @@ data1[1:2, ]
 data1[c(1,2,10), 1:2]
 ```
 
-In the tidyverse, we would use the `dplyr` library and the so-called "pipe" command `%>%` to pipe the data into some number of functions. For example:
+-->
+
+
+# Tidyverse
+
+Instead of using "base R", in this course we use the `tidyverse` library. This library has a set of functions that correspond to base R functions, but are typically easier for people new to programming and R. Here is an overview:
+
+* https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html
+
+Let's look at some examples. First we will load some fake data that we've created that includes the height and weight of some made set of up cats and dogs.
+
+First we need to load the libraries that we need. We load `tidyverse` and we also need to load a library to read Excel files, called `readxl`.
+
+```{r, message=FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+We have our fake data in an Excel file in the `datasets` folder in the file where this README.Rmd file is. Let's read it into R.
+
+```{r, message=FALSE}
+data1 <- read_excel('datasets/fake.xlsx')
+```
+
+Nowe we can have a look at it.
+
+```{r}
+data1
+```
+
+In the tidyverse, we would use the `dplyr` library and the so-called "pipe" command `%>%` to "pipe" the data into some number of functions. For example:
 
 ```{r}
 data1 %>% select(weight, height)
@@ -147,17 +169,17 @@ data1[data1$height > 160, ] # grab height greater than 160 -- DON'T FORGET COMMA
 data1[data1$height > 160 & data1$animal == 'cat', ] # cats over 160cm
 ```
 
-With dplyr you would do this:
+With dplyr you simply do this:
 
 ```{r}
 data1 %>% filter(height > 160) %>% filter(animal == 'cat')
 data1 %>% filter(animal == 'cat') %>% filter(height > 160)
 ```
 
-They are two different approaches to data wrangling. Given its ease of use, we will focus here on the tidyverse approach.
+Base R and functions in the tidyverse are two different ways to do data wrangling. Given its ease of use, we will focus here on the tidyverse approach.
 
 
-## tidyverse
+## About the tidyverse
 
 The [tidyverse](https://www.tidyverse.org/) is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. [Tidyverse](https://www.tidyverse.org) includes several R [packages](https://www.tidyverse.org/packages/) for data science. We may not use all of them in this class, but they currently include:
 
@@ -194,7 +216,6 @@ Below we will load some csv data and have a look at it.
 
 As well as `readr`, the `tidyverse` package will install several packages for reading in other types of formats, such as Excel with `[readxl](https://readxl.tidyverse.org)`, e.g.:
 
-
 | Function | Format | Filename typically ends with |
 |----------|--------|---| 
 | read_excel | auto detect the format | xls, xlsx|
@@ -225,7 +246,7 @@ str(df)
 ```
 
 
-## dplyr
+## Data wrangling with dplyr
 
 Once you've loaded a data set into a data frame (or [tibble](https://tibble.tidyverse.org)), you can begin to work with it.
 
@@ -915,7 +936,7 @@ In short, make your coding life easier; use a linter! Here's one for R:
 * https://cran.r-project.org/web/packages/lintr/readme/README.html
 
 
-## Tests
+## Writing tests
 
 [Software testing](https://en.wikipedia.org/wiki/Software_testing) involves evaluating and verifying whether aspects of software validate and perform as expected. The idea is to verify that the code (or system) is working as expected, i.e., that the behavior of the software is performing as expected.
 

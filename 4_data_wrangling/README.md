@@ -2,29 +2,28 @@ Data wrangling
 ================
 Steven Moran
 
-12 October, 2022
+17 October, 2023
 
--   <a href="#overview" id="toc-overview">Overview</a>
--   <a href="#data-wrangling-in-r" id="toc-data-wrangling-in-r">Data
-    wrangling in R</a>
-    -   <a href="#tidyverse" id="toc-tidyverse">tidyverse</a>
-    -   <a href="#loading-data" id="toc-loading-data">Loading data</a>
-    -   <a href="#dplyr" id="toc-dplyr">dplyr</a>
-        -   <a href="#select" id="toc-select"><code>select()</code></a>
-        -   <a href="#arrange" id="toc-arrange"><code>arrange()</code></a>
-        -   <a href="#mutate" id="toc-mutate"><code>mutate()</code></a>
-        -   <a href="#filter" id="toc-filter"><code>filter()</code></a>
-        -   <a href="#summarize" id="toc-summarize"><code>summarize()</code></a>
--   <a href="#databases-advanced" id="toc-databases-advanced">Databases
-    (advanced)</a>
-    -   <a href="#overview-1" id="toc-overview-1">Overview</a>
-    -   <a href="#joining-tables" id="toc-joining-tables">Joining tables</a>
--   <a href="#code-style--advanced" id="toc-code-style--advanced">Code style
-    💩 (advanced)</a>
-    -   <a href="#code-style-in-r" id="toc-code-style-in-r">Code style in R</a>
-    -   <a href="#stylr-and-lintr" id="toc-stylr-and-lintr">stylr and lintr</a>
-    -   <a href="#tests" id="toc-tests">Tests</a>
--   <a href="#references" id="toc-references">References</a>
+- [Overview](#overview)
+- [Data wrangling in R](#data-wrangling-in-r)
+- [A bit about R](#a-bit-about-r)
+- [Tidyverse](#tidyverse)
+  - [About the tidyverse](#about-the-tidyverse)
+  - [Loading data](#loading-data)
+  - [Data wrangling with dplyr](#data-wrangling-with-dplyr)
+    - [`select()`](#select)
+    - [`arrange()`](#arrange)
+    - [`mutate()`](#mutate)
+    - [`filter()`](#filter)
+    - [`summarize()`](#summarize)
+- [Databases (advanced)](#databases-advanced)
+  - [Overview](#overview-1)
+  - [Joining tables](#joining-tables)
+- [Code style 💩 (advanced)](#code-style--advanced)
+  - [Code style in R](#code-style-in-r)
+  - [stylr and lintr](#stylr-and-lintr)
+  - [Writing tests](#writing-tests)
+- [References](#references)
 
 ------------------------------------------------------------------------
 
@@ -38,6 +37,8 @@ library(tidyverse)
 library(knitr)
 library(gapminder)
 ```
+
+------------------------------------------------------------------------
 
 # Overview
 
@@ -56,49 +57,59 @@ Here’s a [visualization of the
 process](https://en.wikipedia.org/wiki/Data_wrangling#/media/File:Data_Wrangling_From_Messy_To_Clean_Data_Management.jpg)
 of converting raw data to formatted (or structured) data:
 
-![Visualization of data
-wrangling](figures/Data_Wrangling_From_Messy_To_Clean_Data_Management.jpg)
+<figure>
+<img
+src="figures/Data_Wrangling_From_Messy_To_Clean_Data_Management.jpg"
+alt="Visualization of data wrangling" />
+<figcaption aria-hidden="true">Visualization of data
+wrangling</figcaption>
+</figure>
 
 ------------------------------------------------------------------------
 
 The steps in data wrangling, broadly, include:
 
--   **Explore your data** – look at and think about your data and maybe
-    come up with some questions to ask.
--   **Structure your data** – organize the data (necessarily if its in a
-    raw format) and structure it for the functions or methods that will
-    take it as input.
--   **Clean your data** – in the process of dealing with data
-    (especially raw data), you may need to clean it, e.g., get all the
-    dates into the same format (Feb 1 vs 2/1 vs 1/2 etc.).
--   **Enrich your data** – do you need more data for your analysis?
-    E.g., you have a list of languages but you need to know where they
-    are spoken to plot them on a world map.
--   **Validate your data** – basically making sure that your structured
-    and cleaned data is actually structured and clean – also commonly
-    refereed to as [data
-    validation](https://en.wikipedia.org/wiki/Data_validation) and in
-    software development, [software
-    testing](https://en.wikipedia.org/wiki/Software_testing).
--   **Publish your data** – publish your analysis, findings, etc., for
-    consumption, reproducibility, archiving, etc.
+- **Explore your data** – look at and think about your data and maybe
+  come up with some questions to ask.
+- **Structure your data** – organize the data (necessarily if its in a
+  raw format) and structure it for the functions or methods that will
+  take it as input.
+- **Clean your data** – in the process of dealing with data (especially
+  raw data), you may need to clean it, e.g., get all the dates into the
+  same format (Feb 1 vs 2/1 vs 1/2 etc.).
+- **Enrich your data** – do you need more data for your analysis? E.g.,
+  you have a list of languages but you need to know where they are
+  spoken to plot them on a world map.
+- **Validate your data** – basically making sure that your structured
+  and cleaned data is actually structured and clean – also commonly
+  refereed to as [data
+  validation](https://en.wikipedia.org/wiki/Data_validation) and in
+  software development, [software
+  testing](https://en.wikipedia.org/wiki/Software_testing).
+- **Publish your data** – publish your analysis, findings, etc., for
+  consumption, reproducibility, archiving, etc.
 
 # Data wrangling in R
 
 Here is a visualization of how the data science workflow works in the
 book [R for Data Science](https://r4ds.had.co.nz/index.html) within the
-so-called [tidyverse](https://www.tidyverse.org):
+[tidyverse](https://www.tidyverse.org) library:
 
--   <https://r4ds.had.co.nz/introduction.html>
+- <https://r4ds.had.co.nz/introduction.html>
 
-![Typical data science project workflow](figures/WickhamGrolemund.png)
+<figure>
+<img src="figures/WickhamGrolemund.png"
+alt="Typical data science project workflow" />
+<figcaption aria-hidden="true">Typical data science project
+workflow</figcaption>
+</figure>
 
-That is you:
+In words, you:
 
-1.  **Load** (aka “import”) your data into R – this entails that the
+1.  **Import** (aka “load”) your data into R – this entails that the
     data is already in a loadable format (e.g., text, CSV file, Excel
     spreadsheet, relational database).
-2.  **Tidy** the data – in terms of the R
+2.  **Tidy** (aka “clean”) the data – in terms of the R
     [tidyverse](https://www.tidyverse.org), i.e., a set of R packages
     aimed to make data science easy (more on this below).
 3.  **Transform** your data – select the data of interest, extend your
@@ -119,33 +130,25 @@ data science!
 <!-- and to some extent -- if we are trying to follow [coding best practices](https://en.wikipedia.org/wiki/Coding_best_practices); see also [here](https://www.cs.utexas.edu/~mitra/csSummer2014/cs312/lectures/bestPractices.html) -- [software engineering](https://en.wikipedia.org/wiki/Software_engineering). -->
 <!-- 
 ## Loading data
-
-When working with data you first have to have some data. What about this data for example?
-
-* https://digital.library.unt.edu/ark:/67531/metadc855661/
+&#10;When working with data you first have to have some data. What about this data for example?
+&#10;* https://digital.library.unt.edu/ark:/67531/metadc855661/
 * https://digital.library.unt.edu/ark:/67531/metadc855661/m1/2/
-
-How would you load it into R?
-
-What kind of data type is it?
-
-What kind of data structure?
-
-The "tidying" and "transforming" of your data is commonly referred to as "data wrangling".
-
-* https://r4ds.had.co.nz/introduction.html
-
-when your data is tidy, each column is a variable, and each row is an observation. Tidy data is important because the consistent structure lets you focus your struggle on questions about the data, not fighting to get the data into the right form for different functions.
+&#10;How would you load it into R?
+&#10;What kind of data type is it?
+&#10;What kind of data structure?
+&#10;The "tidying" and "transforming" of your data is commonly referred to as "data wrangling".
+&#10;* https://r4ds.had.co.nz/introduction.html
+&#10;when your data is tidy, each column is a variable, and each row is an observation. Tidy data is important because the consistent structure lets you focus your struggle on questions about the data, not fighting to get the data into the right form for different functions.
 -->
 
-------------------------------------------------------------------------
+# A bit about R
 
 The [R](https://en.wikipedia.org/wiki/R_(programming_language))
 programming language has a long history. Here are some resources about
 it:
 
--   <https://bookdown.org/rdpeng/rprogdatascience/history-and-overview-of-r.html>
--   <https://medium.com/@ArtisOne/r-overview-and-history-75ecb036d0df>
+- <https://bookdown.org/rdpeng/rprogdatascience/history-and-overview-of-r.html>
+- <https://medium.com/@ArtisOne/r-overview-and-history-75ecb036d0df>
 
 Primary R is available via the [Comprehensive R Archive
 Network](https://cran.r-project.org) and the [R project
@@ -156,20 +159,44 @@ package](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html)
 contains the basic functions for reading, writing, accessing, and
 working with data. Here is a tutorial:
 
--   <https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf>
+- <https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf>
 
-In this course we will also use the `tidyverse` library, which contains
-a set of functions that have corresponding base R functions. Here is an
-overview:
+<!--
+&#10;Now if we want to subset this data in base R, we access it by its name and then the [row, column] syntax.
+&#10;
+&#10;-->
 
--   <https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html>
+# Tidyverse
+
+Instead of using “base R”, in this course we use the `tidyverse`
+library. This library has a set of functions that correspond to base R
+functions, but are typically easier for people new to programming and R.
+Here is an overview:
+
+- <https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html>
 
 Let’s look at some examples. First we will load some fake data that
-we’ve created that includes the height and weight of some made up cats
-and dogs.
+we’ve created that includes the height and weight of some made set of up
+cats and dogs.
+
+First we need to load the libraries that we need. We load `tidyverse`
+and we also need to load a library to read Excel files, called `readxl`.
 
 ``` r
-data1 <- read_table('datasets/fake.txt')
+library(tidyverse)
+library(readxl)
+```
+
+We have our fake data in an Excel file in the `datasets` folder in the
+file where this README.Rmd file is. Let’s read it into R.
+
+``` r
+data1 <- read_excel('datasets/fake.xlsx')
+```
+
+Nowe we can have a look at it.
+
+``` r
 data1
 ```
 
@@ -192,69 +219,9 @@ data1
     ## 14     71    159 cat   
     ## 15     72    164 dog
 
-Now if we want to subset this data in base R, we access it by its name
-and then the \[row, column\] syntax.
-
-``` r
-# First row, first column
-data1[1,1]
-```
-
-    ## # A tibble: 1 × 1
-    ##   height
-    ##    <dbl>
-    ## 1     58
-
-``` r
-# Second and third columns (notice row is blank)
-data1[, 2:3]
-```
-
-    ## # A tibble: 15 × 2
-    ##    weight animal
-    ##     <dbl> <chr> 
-    ##  1    115 cat   
-    ##  2    117 cat   
-    ##  3    120 dog   
-    ##  4    123 dog   
-    ##  5    126 cat   
-    ##  6    129 dog   
-    ##  7    132 cat   
-    ##  8    135 dog   
-    ##  9    139 dog   
-    ## 10    142 cat   
-    ## 11    146 dog   
-    ## 12    150 cat   
-    ## 13    154 dog   
-    ## 14    159 cat   
-    ## 15    164 dog
-
-``` r
-# First two rows, all columns (notice column is blank -- don't forget the comma!)
-data1[1:2, ]
-```
-
-    ## # A tibble: 2 × 3
-    ##   height weight animal
-    ##    <dbl>  <dbl> <chr> 
-    ## 1     58    115 cat   
-    ## 2     59    117 cat
-
-``` r
-# Rows 1, 2, 10 and columns 1 and 2... 
-data1[c(1,2,10), 1:2]
-```
-
-    ## # A tibble: 3 × 2
-    ##   height weight
-    ##    <dbl>  <dbl>
-    ## 1     58    115
-    ## 2     59    117
-    ## 3     67    142
-
 In the tidyverse, we would use the `dplyr` library and the so-called
-“pipe” command `%>%` to pipe the data into some number of functions. For
-example:
+“pipe” command `%>%` to “pipe” the data into some number of functions.
+For example:
 
 ``` r
 data1 %>% select(weight, height)
@@ -357,7 +324,7 @@ data1[data1$height > 160, ] # grab height greater than 160 -- DON'T FORGET COMMA
 ```
 
     ## # A tibble: 0 × 3
-    ## # … with 3 variables: height <dbl>, weight <dbl>, animal <chr>
+    ## # ℹ 3 variables: height <dbl>, weight <dbl>, animal <chr>
 
 ``` r
 # data1[data1$height > 160] # this fails and makes one pull their hair out
@@ -365,28 +332,29 @@ data1[data1$height > 160 & data1$animal == 'cat', ] # cats over 160cm
 ```
 
     ## # A tibble: 0 × 3
-    ## # … with 3 variables: height <dbl>, weight <dbl>, animal <chr>
+    ## # ℹ 3 variables: height <dbl>, weight <dbl>, animal <chr>
 
-With dplyr you would do this:
+With dplyr you simply do this:
 
 ``` r
 data1 %>% filter(height > 160) %>% filter(animal == 'cat')
 ```
 
     ## # A tibble: 0 × 3
-    ## # … with 3 variables: height <dbl>, weight <dbl>, animal <chr>
+    ## # ℹ 3 variables: height <dbl>, weight <dbl>, animal <chr>
 
 ``` r
 data1 %>% filter(animal == 'cat') %>% filter(height > 160)
 ```
 
     ## # A tibble: 0 × 3
-    ## # … with 3 variables: height <dbl>, weight <dbl>, animal <chr>
+    ## # ℹ 3 variables: height <dbl>, weight <dbl>, animal <chr>
 
-They are two different approaches to data wrangling. Given its ease of
-use, we will focus here on the tidyverse approach.
+Base R and functions in the tidyverse are two different ways to do data
+wrangling. Given its ease of use, we will focus here on the tidyverse
+approach.
 
-## tidyverse
+## About the tidyverse
 
 The [tidyverse](https://www.tidyverse.org/) is an opinionated collection
 of R packages designed for data science. All packages share an
@@ -395,19 +363,19 @@ underlying design philosophy, grammar, and data structures.
 [packages](https://www.tidyverse.org/packages/) for data science. We may
 not use all of them in this class, but they currently include:
 
--   [ggplot2](https://ggplot2.tidyverse.org): for creating graphics
--   [dplyr](https://dplyr.tidyverse.org): for data manipulation
--   [tidyr](https://tidyr.tidyverse.org): to make your data tidy
--   [readr](https://readr.tidyverse.org): for reading / loading data
--   [purr](https://purrr.tidyverse.org): enhancements for functional
-    programming
--   [tibble](https://tibble.tidyverse.org): update of the R [data
-    frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html)
--   [stringr](https://stringr.tidyverse.org): functions for working with
-    strings
--   [forcats](https://forcats.tidyverse.org): functions for dealing with
-    [factors](https://stat.ethz.ch/R-manual/R-devel/library/base/html/factor.html)
-    in R
+- [ggplot2](https://ggplot2.tidyverse.org): for creating graphics
+- [dplyr](https://dplyr.tidyverse.org): for data manipulation
+- [tidyr](https://tidyr.tidyverse.org): to make your data tidy
+- [readr](https://readr.tidyverse.org): for reading / loading data
+- [purr](https://purrr.tidyverse.org): enhancements for functional
+  programming
+- [tibble](https://tibble.tidyverse.org): update of the R [data
+  frame](https://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html)
+- [stringr](https://stringr.tidyverse.org): functions for working with
+  strings
+- [forcats](https://forcats.tidyverse.org): functions for dealing with
+  [factors](https://stat.ethz.ch/R-manual/R-devel/library/base/html/factor.html)
+  in R
 
 To load the `tidyverse` package, which then includes all the libraries
 above, first install it and then load:
@@ -471,7 +439,7 @@ class(df)
 str(df)
 ```
 
-    ## spec_tbl_df [2,859 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+    ## spc_tbl_ [2,859 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
     ##  $ age          : num [1:2859] 17 27 21 21 21 21 18 23 17 21 ...
     ##  $ birthdate    : Date[1:2859], format: "1996-04-12" "1986-05-14" ...
     ##  $ gender       : chr [1:2859] "Male" "Male" "Male" "Male" ...
@@ -557,7 +525,7 @@ str(df)
     ##  $ sport        : chr  "Freestyle Skiing" "Snowboard" "Short Track" "Figure Skating" ...
     ##  $ country      : chr  "United States" "Italy" "Kazakhstan" "Kazakhstan" ...
 
-## dplyr
+## Data wrangling with dplyr
 
 Once you’ve loaded a data set into a data frame (or
 [tibble](https://tibble.tidyverse.org)), you can begin to work with it.
@@ -572,13 +540,13 @@ basics](https://r4ds.had.co.nz/transform.html?q=dplyr#dplyr-basics).
 `dplyr` is super-fast on data frames. Essentially, one works with five
 basic “verbs” or functions:
 
--   `select()`: for subsetting variables/columns
--   `arrange()`: for re-ordering rows
--   `mutate()`: for adding new columns
--   `filter()`: for subsetting rows
--   `summarize()` (or `summarise()` if you prefer [British
-    spelling](https://en.wikipedia.org/wiki/American_and_British_English_spelling_differences)):
-    for reducing each group to a smaller number of summary statistics
+- `select()`: for subsetting variables/columns
+- `arrange()`: for re-ordering rows
+- `mutate()`: for adding new columns
+- `filter()`: for subsetting rows
+- `summarize()` (or `summarise()` if you prefer [British
+  spelling](https://en.wikipedia.org/wiki/American_and_British_English_spelling_differences)):
+  for reducing each group to a smaller number of summary statistics
 
 Let’s try them out!
 
@@ -604,11 +572,11 @@ list of equal length vectors – each element of the list can be thought
 of as a column and the length of each element of the list is its number
 of rows.) Data frames have the following characteristics:
 
--   Column names should not be empty
--   Row names should be unique
--   Data stored in the data frame can be of type numeric, factor, of
-    character
--   Each column should contain the same number of items
+- Column names should not be empty
+- Row names should be unique
+- Data stored in the data frame can be of type numeric, factor, of
+  character
+- Each column should contain the same number of items
 
 If you are working within this repository on your local computer, you
 can load the data in this directory with this command:
@@ -630,13 +598,13 @@ athletes <- read_csv(url("https://raw.githubusercontent.com/bambooforest/IntroDa
 
 Note that GitHub displays well-formatted CSV files as tabular data:
 
--   <https://github.com/bambooforest/IntroDataScience/blob/main/4_data_wrangling/datasets/athletes.csv>
+- <https://github.com/bambooforest/IntroDataScience/blob/main/4_data_wrangling/datasets/athletes.csv>
 
 But if you want to load it from the web, you need to use the raw data
 (note the button on the GitHub page with the label “raw”, which results
 in this URL:
 
--   <https://raw.githubusercontent.com/bambooforest/IntroDataScience/main/4_data_wrangling/datasets/athletes.csv>
+- <https://raw.githubusercontent.com/bambooforest/IntroDataScience/main/4_data_wrangling/datasets/athletes.csv>
 
 Now that you’ve loaded the `atheletes.csv` data, let’s have a look at
 its structure with the `str()` function:
@@ -645,7 +613,7 @@ its structure with the `str()` function:
 str(athletes)
 ```
 
-    ## spec_tbl_df [2,859 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+    ## spc_tbl_ [2,859 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
     ##  $ age          : num [1:2859] 17 27 21 21 21 21 18 23 17 21 ...
     ##  $ birthdate    : Date[1:2859], format: "1996-04-12" "1986-05-14" ...
     ##  $ gender       : chr [1:2859] "Male" "Male" "Male" "Male" ...
@@ -700,7 +668,7 @@ Now note the change in data type:
 str(athletes)
 ```
 
-    ## spec_tbl_df [2,859 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+    ## spc_tbl_ [2,859 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
     ##  $ age          : num [1:2859] 17 27 21 21 21 21 18 23 17 21 ...
     ##  $ birthdate    : Date[1:2859], format: "1996-04-12" "1986-05-14" ...
     ##  $ gender       : Factor w/ 2 levels "Female","Male": 2 2 2 2 2 2 2 2 1 1 ...
@@ -786,8 +754,8 @@ which contains only the variables of immediate interest.
 To prepare such a version of your data set, use the function `select()`
 to select the variables (columns) you need.
 
--   First, you can select the variables of interest just by naming them.
-    Note that this way you can also modify the order of the variables:
+- First, you can select the variables of interest just by naming them.
+  Note that this way you can also modify the order of the variables:
 
 ``` r
 select(athletes, name, height, weight)
@@ -806,10 +774,10 @@ select(athletes, name, height, weight)
     ##  8 Adam Zampa          1.78     80
     ##  9 Adelina Sotnikova   1.63     NA
     ## 10 Adeline Baud        1.62     56
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
--   You can use `:` to select all columns in a range between two
-    specified columns (inclusively):
+- You can use `:` to select all columns in a range between two specified
+  columns (inclusively):
 
 ``` r
 select(athletes, age:weight)
@@ -828,29 +796,29 @@ select(athletes, age:weight)
     ##  8    23 1990-09-13 Male     1.78 Adam Zampa            80
     ##  9    17 1996-07-01 Female   1.63 Adelina Sotnikova     NA
     ## 10    21 1992-09-28 Female   1.62 Adeline Baud          56
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
--   You can exclude a variable with the help of `-`.
+- You can exclude a variable with the help of `-`.
 
 ``` r
 select(athletes, -birthdate, -age)
 ```
 
     ## # A tibble: 2,859 × 10
-    ##    gender height name       weight gold_…¹ silve…² bronz…³ total…⁴ sport country
-    ##    <fct>   <dbl> <chr>       <dbl>   <dbl>   <dbl>   <dbl>   <dbl> <fct> <chr>  
-    ##  1 Male     1.72 Aaron Blu…     68       0       0       0       0 Free… United…
-    ##  2 Male     1.85 Aaron Mar…     85       0       0       0       0 Snow… Italy  
-    ##  3 Male     1.78 Abzal Azh…     68       0       0       0       0 Shor… Kazakh…
-    ##  4 Male     1.68 Abzal Rak…     NA       0       0       0       0 Figu… Kazakh…
-    ##  5 Male     1.86 Adam Barw…     82       0       0       0       0 Alpi… New Ze…
-    ##  6 Male     1.75 Adam Cies…     57       0       0       0       0 Nord… Poland 
-    ##  7 Male     1.7  Adam Lamh…     76       0       0       0       0 Alpi… Morocco
-    ##  8 Male     1.78 Adam Zampa     80       0       0       0       0 Alpi… Slovak…
-    ##  9 Female   1.63 Adelina S…     NA       0       0       0       0 Figu… Russia…
-    ## 10 Female   1.62 Adeline B…     56       0       0       0       0 Alpi… France 
-    ## # … with 2,849 more rows, and abbreviated variable names ¹​gold_medals,
-    ## #   ²​silver_medals, ³​bronze_medals, ⁴​total_medals
+    ##    gender height name             weight gold_medals silver_medals bronze_medals
+    ##    <fct>   <dbl> <chr>             <dbl>       <dbl>         <dbl>         <dbl>
+    ##  1 Male     1.72 Aaron Blunck         68           0             0             0
+    ##  2 Male     1.85 Aaron March          85           0             0             0
+    ##  3 Male     1.78 Abzal Azhgaliyev     68           0             0             0
+    ##  4 Male     1.68 Abzal Rakimgali…     NA           0             0             0
+    ##  5 Male     1.86 Adam Barwood         82           0             0             0
+    ##  6 Male     1.75 Adam Cieslar         57           0             0             0
+    ##  7 Male     1.7  Adam Lamhamedi       76           0             0             0
+    ##  8 Male     1.78 Adam Zampa           80           0             0             0
+    ##  9 Female   1.63 Adelina Sotniko…     NA           0             0             0
+    ## 10 Female   1.62 Adeline Baud         56           0             0             0
+    ## # ℹ 2,849 more rows
+    ## # ℹ 3 more variables: total_medals <dbl>, sport <fct>, country <chr>
 
 Note that `dplyr` functions never modify their input data frames. If you
 want to save the result e.g., of the `select()`function, you need to use
@@ -876,28 +844,28 @@ select(athletes, birthdate, age)
     ##  8 1990-09-13    23
     ##  9 1996-07-01    17
     ## 10 1992-09-28    21
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 ``` r
 athletes
 ```
 
     ## # A tibble: 2,859 × 12
-    ##      age birthdate  gender height name    weight gold_…¹ silve…² bronz…³ total…⁴
-    ##    <dbl> <date>     <fct>   <dbl> <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-    ##  1    17 1996-04-12 Male     1.72 Aaron …     68       0       0       0       0
-    ##  2    27 1986-05-14 Male     1.85 Aaron …     85       0       0       0       0
-    ##  3    21 1992-06-30 Male     1.78 Abzal …     68       0       0       0       0
-    ##  4    21 1992-05-25 Male     1.68 Abzal …     NA       0       0       0       0
-    ##  5    21 1992-07-30 Male     1.86 Adam B…     82       0       0       0       0
-    ##  6    21 1992-12-18 Male     1.75 Adam C…     57       0       0       0       0
-    ##  7    18 1995-04-22 Male     1.7  Adam L…     76       0       0       0       0
-    ##  8    23 1990-09-13 Male     1.78 Adam Z…     80       0       0       0       0
-    ##  9    17 1996-07-01 Female   1.63 Adelin…     NA       0       0       0       0
-    ## 10    21 1992-09-28 Female   1.62 Adelin…     56       0       0       0       0
-    ## # … with 2,849 more rows, 2 more variables: sport <fct>, country <chr>, and
-    ## #   abbreviated variable names ¹​gold_medals, ²​silver_medals, ³​bronze_medals,
-    ## #   ⁴​total_medals
+    ##      age birthdate  gender height name          weight gold_medals silver_medals
+    ##    <dbl> <date>     <fct>   <dbl> <chr>          <dbl>       <dbl>         <dbl>
+    ##  1    17 1996-04-12 Male     1.72 Aaron Blunck      68           0             0
+    ##  2    27 1986-05-14 Male     1.85 Aaron March       85           0             0
+    ##  3    21 1992-06-30 Male     1.78 Abzal Azhgal…     68           0             0
+    ##  4    21 1992-05-25 Male     1.68 Abzal Rakimg…     NA           0             0
+    ##  5    21 1992-07-30 Male     1.86 Adam Barwood      82           0             0
+    ##  6    21 1992-12-18 Male     1.75 Adam Cieslar      57           0             0
+    ##  7    18 1995-04-22 Male     1.7  Adam Lamhame…     76           0             0
+    ##  8    23 1990-09-13 Male     1.78 Adam Zampa        80           0             0
+    ##  9    17 1996-07-01 Female   1.63 Adelina Sotn…     NA           0             0
+    ## 10    21 1992-09-28 Female   1.62 Adeline Baud      56           0             0
+    ## # ℹ 2,849 more rows
+    ## # ℹ 4 more variables: bronze_medals <dbl>, total_medals <dbl>, sport <fct>,
+    ## #   country <chr>
 
 And here we create a new data frame with the selected columns only:
 
@@ -919,7 +887,7 @@ athletes_age
     ##  8 1990-09-13    23
     ##  9 1996-07-01    17
     ## 10 1992-09-28    21
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 There are a number of **helper functions** you can use within
 `select()`. Try to guess what they do before executing the commands:
@@ -943,7 +911,7 @@ select(athletes, ends_with("medals"))
     ##  8           0             0             0            0
     ##  9           0             0             0            0
     ## 10           0             0             0            0
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 2.  **`contains()`**
 
@@ -964,7 +932,7 @@ select(athletes, contains("eigh"))
     ##  8   1.78     80
     ##  9   1.63     NA
     ## 10   1.62     56
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 3.  For details on other helper functions, see `?select`.
 
@@ -1038,7 +1006,7 @@ athletes_narrow
     ##  8 Adam Zampa        Male      23 Alpine Skiing      1.78     80
     ##  9 Adelina Sotnikova Female    17 Figure Skating     1.63     NA
     ## 10 Adeline Baud      Female    21 Alpine Skiing      1.62     56
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 Next, add the column BMI (body mass index). The BMI is calculated as the
 body mass (`weight`) divided by the square of the body `height`. It is
@@ -1061,7 +1029,7 @@ mutate(athletes_narrow, BMI = weight/height^2)
     ##  8 Adam Zampa        Male      23 Alpine Skiing      1.78     80  25.2
     ##  9 Adelina Sotnikova Female    17 Figure Skating     1.63     NA  NA  
     ## 10 Adeline Baud      Female    21 Alpine Skiing      1.62     56  21.3
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 Notice that `mutate` does not overwrite the existing data frame.
 
@@ -1082,7 +1050,7 @@ mutate(athletes_narrow, BMI = weight/height^2)
     ##  8 Adam Zampa        Male      23 Alpine Skiing      1.78     80  25.2
     ##  9 Adelina Sotnikova Female    17 Figure Skating     1.63     NA  NA  
     ## 10 Adeline Baud      Female    21 Alpine Skiing      1.62     56  21.3
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 ``` r
 athletes_narrow
@@ -1101,7 +1069,7 @@ athletes_narrow
     ##  8 Adam Zampa        Male      23 Alpine Skiing      1.78     80
     ##  9 Adelina Sotnikova Female    17 Figure Skating     1.63     NA
     ## 10 Adeline Baud      Female    21 Alpine Skiing      1.62     56
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 To add the new column to it permanently, you have to overwrite the
 original data frame:
@@ -1124,7 +1092,7 @@ athletes_narrow
     ##  8 Adam Zampa        Male      23 Alpine Skiing      1.78     80  25.2
     ##  9 Adelina Sotnikova Female    17 Figure Skating     1.63     NA  NA  
     ## 10 Adeline Baud      Female    21 Alpine Skiing      1.62     56  21.3
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 There are many functions for creating new variables that you can use
 with `mutate()`. Think of a function and look up
@@ -1222,21 +1190,21 @@ athletes %>% filter(is.na(height))
 ```
 
     ## # A tibble: 139 × 12
-    ##      age birthdate  gender height name    weight gold_…¹ silve…² bronz…³ total…⁴
-    ##    <dbl> <date>     <fct>   <dbl> <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-    ##  1    25 1988-05-12 Female     NA Aja Ev…     NA       0       0       0       0
-    ##  2    21 1992-09-21 Male       NA Aleksa…     NA       0       0       0       0
-    ##  3    24 1989-05-28 Male       NA Alexey…     NA       0       0       0       0
-    ##  4    20 1993-05-08 Female     NA Anasta…     NA       0       0       0       0
-    ##  5    22 1991-05-13 Male       NA Anders…     NA       0       0       0       0
-    ##  6    27 1986-05-22 Male       NA Anders…     NA       0       0       0       0
-    ##  7    28 1985-10-24 Female     NA Angeli…     NA       0       0       0       0
-    ##  8    31 1982-11-06 Female     NA Ann Kr…     NA       0       0       0       0
-    ##  9    15 1998-03-31 Female     NA Anna S…     43       0       0       0       0
-    ## 10    23 1991-02-05 Female     NA Anna S…     NA       0       0       0       0
-    ## # … with 129 more rows, 2 more variables: sport <fct>, country <chr>, and
-    ## #   abbreviated variable names ¹​gold_medals, ²​silver_medals, ³​bronze_medals,
-    ## #   ⁴​total_medals
+    ##      age birthdate  gender height name          weight gold_medals silver_medals
+    ##    <dbl> <date>     <fct>   <dbl> <chr>          <dbl>       <dbl>         <dbl>
+    ##  1    25 1988-05-12 Female     NA Aja Evans         NA           0             0
+    ##  2    21 1992-09-21 Male       NA Aleksander A…     NA           0             0
+    ##  3    24 1989-05-28 Male       NA Alexey Negod…     NA           0             0
+    ##  4    20 1993-05-08 Female     NA Anastasiya N…     NA           0             0
+    ##  5    22 1991-05-13 Male       NA Anders Fanne…     NA           0             0
+    ##  6    27 1986-05-22 Male       NA Anders Gloee…     NA           0             0
+    ##  7    28 1985-10-24 Female     NA Angeli Vanla…     NA           0             0
+    ##  8    31 1982-11-06 Female     NA Ann Kristin …     NA           0             0
+    ##  9    15 1998-03-31 Female     NA Anna Seidel       43           0             0
+    ## 10    23 1991-02-05 Female     NA Anna Sloan        NA           0             0
+    ## # ℹ 129 more rows
+    ## # ℹ 4 more variables: bronze_medals <dbl>, total_medals <dbl>, sport <fct>,
+    ## #   country <chr>
 
 You can also filter to **remove** `NA`s, which is often useful for when
 you want to visualize the data. Use the logical operation `!` mentioned
@@ -1247,21 +1215,21 @@ athletes %>% filter(!is.na(height))
 ```
 
     ## # A tibble: 2,720 × 12
-    ##      age birthdate  gender height name    weight gold_…¹ silve…² bronz…³ total…⁴
-    ##    <dbl> <date>     <fct>   <dbl> <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-    ##  1    17 1996-04-12 Male     1.72 Aaron …     68       0       0       0       0
-    ##  2    27 1986-05-14 Male     1.85 Aaron …     85       0       0       0       0
-    ##  3    21 1992-06-30 Male     1.78 Abzal …     68       0       0       0       0
-    ##  4    21 1992-05-25 Male     1.68 Abzal …     NA       0       0       0       0
-    ##  5    21 1992-07-30 Male     1.86 Adam B…     82       0       0       0       0
-    ##  6    21 1992-12-18 Male     1.75 Adam C…     57       0       0       0       0
-    ##  7    18 1995-04-22 Male     1.7  Adam L…     76       0       0       0       0
-    ##  8    23 1990-09-13 Male     1.78 Adam Z…     80       0       0       0       0
-    ##  9    17 1996-07-01 Female   1.63 Adelin…     NA       0       0       0       0
-    ## 10    21 1992-09-28 Female   1.62 Adelin…     56       0       0       0       0
-    ## # … with 2,710 more rows, 2 more variables: sport <fct>, country <chr>, and
-    ## #   abbreviated variable names ¹​gold_medals, ²​silver_medals, ³​bronze_medals,
-    ## #   ⁴​total_medals
+    ##      age birthdate  gender height name          weight gold_medals silver_medals
+    ##    <dbl> <date>     <fct>   <dbl> <chr>          <dbl>       <dbl>         <dbl>
+    ##  1    17 1996-04-12 Male     1.72 Aaron Blunck      68           0             0
+    ##  2    27 1986-05-14 Male     1.85 Aaron March       85           0             0
+    ##  3    21 1992-06-30 Male     1.78 Abzal Azhgal…     68           0             0
+    ##  4    21 1992-05-25 Male     1.68 Abzal Rakimg…     NA           0             0
+    ##  5    21 1992-07-30 Male     1.86 Adam Barwood      82           0             0
+    ##  6    21 1992-12-18 Male     1.75 Adam Cieslar      57           0             0
+    ##  7    18 1995-04-22 Male     1.7  Adam Lamhame…     76           0             0
+    ##  8    23 1990-09-13 Male     1.78 Adam Zampa        80           0             0
+    ##  9    17 1996-07-01 Female   1.63 Adelina Sotn…     NA           0             0
+    ## 10    21 1992-09-28 Female   1.62 Adeline Baud      56           0             0
+    ## # ℹ 2,710 more rows
+    ## # ℹ 4 more variables: bronze_medals <dbl>, total_medals <dbl>, sport <fct>,
+    ## #   country <chr>
 
 You can also combined the filters. For example, if you want all rows in
 `atheletes` that do not have `NA` values for `height` and `weight`.
@@ -1272,21 +1240,21 @@ athletes %>% filter(!is.na(height)) %>% filter(!is.na(weight))
 ```
 
     ## # A tibble: 2,479 × 12
-    ##      age birthdate  gender height name    weight gold_…¹ silve…² bronz…³ total…⁴
-    ##    <dbl> <date>     <fct>   <dbl> <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-    ##  1    17 1996-04-12 Male     1.72 Aaron …     68       0       0       0       0
-    ##  2    27 1986-05-14 Male     1.85 Aaron …     85       0       0       0       0
-    ##  3    21 1992-06-30 Male     1.78 Abzal …     68       0       0       0       0
-    ##  4    21 1992-07-30 Male     1.86 Adam B…     82       0       0       0       0
-    ##  5    21 1992-12-18 Male     1.75 Adam C…     57       0       0       0       0
-    ##  6    18 1995-04-22 Male     1.7  Adam L…     76       0       0       0       0
-    ##  7    23 1990-09-13 Male     1.78 Adam Z…     80       0       0       0       0
-    ##  8    21 1992-09-28 Female   1.62 Adelin…     56       0       0       0       0
-    ##  9    21 1992-11-22 Male     1.86 Adrian…     75       0       0       0       0
-    ## 10    21 1992-08-07 Male     1.78 Adrien…     73       0       0       0       0
-    ## # … with 2,469 more rows, 2 more variables: sport <fct>, country <chr>, and
-    ## #   abbreviated variable names ¹​gold_medals, ²​silver_medals, ³​bronze_medals,
-    ## #   ⁴​total_medals
+    ##      age birthdate  gender height name          weight gold_medals silver_medals
+    ##    <dbl> <date>     <fct>   <dbl> <chr>          <dbl>       <dbl>         <dbl>
+    ##  1    17 1996-04-12 Male     1.72 Aaron Blunck      68           0             0
+    ##  2    27 1986-05-14 Male     1.85 Aaron March       85           0             0
+    ##  3    21 1992-06-30 Male     1.78 Abzal Azhgal…     68           0             0
+    ##  4    21 1992-07-30 Male     1.86 Adam Barwood      82           0             0
+    ##  5    21 1992-12-18 Male     1.75 Adam Cieslar      57           0             0
+    ##  6    18 1995-04-22 Male     1.7  Adam Lamhame…     76           0             0
+    ##  7    23 1990-09-13 Male     1.78 Adam Zampa        80           0             0
+    ##  8    21 1992-09-28 Female   1.62 Adeline Baud      56           0             0
+    ##  9    21 1992-11-22 Male     1.86 Adrian Krain…     75           0             0
+    ## 10    21 1992-08-07 Male     1.78 Adrien Backs…     73           0             0
+    ## # ℹ 2,469 more rows
+    ## # ℹ 4 more variables: bronze_medals <dbl>, total_medals <dbl>, sport <fct>,
+    ## #   country <chr>
 
 If you want to check if there are any `NA`s in a column, you can also
 use the `any()` function.
@@ -1377,10 +1345,10 @@ Let’s create a data frame as an [reproducible
 example](http://adv-r.had.co.nz/Reproducibility.html). What is a
 reproducible example:
 
--   <https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example>
--   <https://stackoverflow.com/help/minimal-reproducible-example>
--   <http://adv-r.had.co.nz/Reproducibility.html>
--   <https://xiangxing98.github.io/R_Learning/R_Reproducible.nb.html>
+- <https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example>
+- <https://stackoverflow.com/help/minimal-reproducible-example>
+- <http://adv-r.had.co.nz/Reproducibility.html>
+- <https://xiangxing98.github.io/R_Learning/R_Reproducible.nb.html>
 
 ``` r
 df <- data.frame(
@@ -1462,7 +1430,7 @@ athletes %>% group_by(country) %>% summarize(gold_medals = sum(gold_medals))
     ##  8 Belarus              5
     ##  9 Belgium              0
     ## 10 Bermuda              0
-    ## # … with 78 more rows
+    ## # ℹ 78 more rows
 
 Maybe for viewing purposes it’s better to arrange them by number of gold
 medals instead of alphabetically by country name.
@@ -1484,7 +1452,7 @@ athletes %>% group_by(country) %>% summarize(gold_medals = sum(gold_medals)) %>%
     ##  8 Belarus                 5
     ##  9 Switzerland             5
     ## 10 Canada                  4
-    ## # … with 78 more rows
+    ## # ℹ 78 more rows
 
 As we continue to [pipe](https://r4ds.had.co.nz/pipes.html) commands
 together, i.e., putting multiple operations (aka dplyr verbs) together –
@@ -1512,7 +1480,7 @@ athletes %>%
     ##  8 Belarus                 5
     ##  9 Switzerland             5
     ## 10 Canada                  4
-    ## # … with 78 more rows
+    ## # ℹ 78 more rows
 
 # Databases (advanced)
 
@@ -1538,16 +1506,16 @@ head(athletes)
 ```
 
     ## # A tibble: 6 × 12
-    ##     age birthdate  gender height name     weight gold_…¹ silve…² bronz…³ total…⁴
-    ##   <dbl> <date>     <fct>   <dbl> <chr>     <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-    ## 1    17 1996-04-12 Male     1.72 Aaron B…     68       0       0       0       0
-    ## 2    27 1986-05-14 Male     1.85 Aaron M…     85       0       0       0       0
-    ## 3    21 1992-06-30 Male     1.78 Abzal A…     68       0       0       0       0
-    ## 4    21 1992-05-25 Male     1.68 Abzal R…     NA       0       0       0       0
-    ## 5    21 1992-07-30 Male     1.86 Adam Ba…     82       0       0       0       0
-    ## 6    21 1992-12-18 Male     1.75 Adam Ci…     57       0       0       0       0
-    ## # … with 2 more variables: sport <fct>, country <chr>, and abbreviated variable
-    ## #   names ¹​gold_medals, ²​silver_medals, ³​bronze_medals, ⁴​total_medals
+    ##     age birthdate  gender height name           weight gold_medals silver_medals
+    ##   <dbl> <date>     <fct>   <dbl> <chr>           <dbl>       <dbl>         <dbl>
+    ## 1    17 1996-04-12 Male     1.72 Aaron Blunck       68           0             0
+    ## 2    27 1986-05-14 Male     1.85 Aaron March        85           0             0
+    ## 3    21 1992-06-30 Male     1.78 Abzal Azhgali…     68           0             0
+    ## 4    21 1992-05-25 Male     1.68 Abzal Rakimga…     NA           0             0
+    ## 5    21 1992-07-30 Male     1.86 Adam Barwood       82           0             0
+    ## 6    21 1992-12-18 Male     1.75 Adam Cieslar       57           0             0
+    ## # ℹ 4 more variables: bronze_medals <dbl>, total_medals <dbl>, sport <fct>,
+    ## #   country <chr>
 
 What kind of data is in this cell?
 
@@ -1579,7 +1547,7 @@ athletes[,2]
     ##  8 1990-09-13
     ##  9 1996-07-01
     ## 10 1992-09-28
-    ## # … with 2,849 more rows
+    ## # ℹ 2,849 more rows
 
 Table data can be cut and spliced in various ways. But most data is
 specific to some purposes. The real power comes when data sets are
@@ -1599,8 +1567,8 @@ Fundamentally, a relational database is a set of tables, which
 themselves are made up of sets of rows and sets of columns. Relational
 databases provide two basic operations:
 
--   Retrieving a set of columns and
--   Retrieving a set of rows
+- Retrieving a set of columns and
+- Retrieving a set of rows
 
 These two basic operations to retrieve columns and rows can also be
 combined. [Set
@@ -1647,16 +1615,16 @@ citation('gapminder')
     ## 
     ## To cite package 'gapminder' in publications use:
     ## 
-    ##   Bryan J (2017). _gapminder: Data from Gapminder_. R package version
-    ##   0.3.0, <https://CRAN.R-project.org/package=gapminder>.
+    ##   Jennifer Bryan (2023). gapminder: Data from Gapminder. R package
+    ##   version 1.0.0. https://CRAN.R-project.org/package=gapminder
     ## 
     ## A BibTeX entry for LaTeX users is
     ## 
     ##   @Manual{,
     ##     title = {gapminder: Data from Gapminder},
     ##     author = {Jennifer Bryan},
-    ##     year = {2017},
-    ##     note = {R package version 0.3.0},
+    ##     year = {2023},
+    ##     note = {R package version 1.0.0},
     ##     url = {https://CRAN.R-project.org/package=gapminder},
     ##   }
 
@@ -1716,8 +1684,8 @@ sets](https://csiro-data-school.github.io/r/10-Data-Verbs---join/index.html).
 It has some great visualizations about [relational database
 joins](https://en.wikipedia.org/wiki/Join_(SQL)):
 
--   <https://tavareshugo.github.io/r-intro-tidyverse-gapminder/08-joins/index.html>
--   <https://csiro-data-school.github.io/r/10-Data-Verbs---join/index.html>
+- <https://tavareshugo.github.io/r-intro-tidyverse-gapminder/08-joins/index.html>
+- <https://csiro-data-school.github.io/r/10-Data-Verbs---join/index.html>
 
 Let’s load the [sex ratio
 data](https://csiro-data-school.github.io/r/data/gapminder_sex_ratios.csv)
@@ -1763,7 +1731,7 @@ str(gapminder)
 str(sex_ratios)
 ```
 
-    ## spec_tbl_df [1,722 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+    ## spc_tbl_ [1,722 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
     ##  $ country  : chr [1:1722] "Burundi" "Comoros" "Djibouti" "Eritrea" ...
     ##  $ year     : num [1:1722] 1952 1952 1952 1952 1952 ...
     ##  $ sex_ratio: num [1:1722] 91.9 98.8 98.6 98.2 98.6 ...
@@ -1786,19 +1754,22 @@ the logical relationships described by different join functions. The
 following image is taken from
 [here](https://en.wikipedia.org/wiki/Venn_diagram).
 
-![Set functions.](figures/venn_diagrams.png)
+<figure>
+<img src="figures/venn_diagrams.png" alt="Set functions." />
+<figcaption aria-hidden="true">Set functions.</figcaption>
+</figure>
 
 They describe the operations from [set
 theory](https://en.wikipedia.org/wiki/Set_theory) including:
 
--   [Intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory))
--   [Union](https://en.wikipedia.org/wiki/Union_(set_theory))
--   [Symmetric
-    difference](https://en.wikipedia.org/wiki/Symmetric_difference)
--   [Relative
-    complement](https://en.wikipedia.org/wiki/Complement_(set_theory)#Relative_complement)
--   [Absolute
-    complement](https://en.wikipedia.org/wiki/Complement_(set_theory)#Absolute_complement)
+- [Intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory))
+- [Union](https://en.wikipedia.org/wiki/Union_(set_theory))
+- [Symmetric
+  difference](https://en.wikipedia.org/wiki/Symmetric_difference)
+- [Relative
+  complement](https://en.wikipedia.org/wiki/Complement_(set_theory)#Relative_complement)
+- [Absolute
+  complement](https://en.wikipedia.org/wiki/Complement_(set_theory)#Absolute_complement)
 
 Important for us, will be the following types of joins as they are
 implemented in dplyr (for more information see the chapter on
@@ -1806,7 +1777,10 @@ implemented in dplyr (for more information see the chapter on
 Data Science](https://r4ds.had.co.nz/index.html), from which the
 following image was copied):
 
-![Dplyr joins.](figures/dplyr_joins.png)
+<figure>
+<img src="figures/dplyr_joins.png" alt="Dplyr joins." />
+<figcaption aria-hidden="true">Dplyr joins.</figcaption>
+</figure>
 
 Before we return to the gapminder data, let’s illustrate joins with some
 example data. First, let’s create two small tables (data frames) – one
@@ -1843,24 +1817,24 @@ customers
 Now we can use the joins to join the table in various ways. What does
 each do?
 
--   Inner join
+- Inner join
 
 ``` r
 inner_join(orders, customers)
 ```
 
-    ## Joining, by = "CustomerID"
+    ## Joining with `by = join_by(CustomerID)`
 
     ##   OrderID CustomerID  OrderData CustomerName   Country
     ## 1     101          2 01.01.2021   Mary Grand Australia
 
--   Full join
+- Full join
 
 ``` r
 full_join(orders, customers)
 ```
 
-    ## Joining, by = "CustomerID"
+    ## Joining with `by = join_by(CustomerID)`
 
     ##   OrderID CustomerID  OrderData CustomerName   Country
     ## 1     101          2 01.01.2021   Mary Grand Australia
@@ -1869,26 +1843,26 @@ full_join(orders, customers)
     ## 4      NA          1       <NA>     Lee Stan       USA
     ## 5      NA          3       <NA>     Ana Lake        UK
 
--   Left join
+- Left join
 
 ``` r
 left_join(orders, customers)
 ```
 
-    ## Joining, by = "CustomerID"
+    ## Joining with `by = join_by(CustomerID)`
 
     ##   OrderID CustomerID  OrderData CustomerName   Country
     ## 1     101          2 01.01.2021   Mary Grand Australia
     ## 2     102         37 01.02.2021         <NA>      <NA>
     ## 3     103         77 02.02.2021         <NA>      <NA>
 
--   Right join
+- Right join
 
 ``` r
 right_join(orders, customers)
 ```
 
-    ## Joining, by = "CustomerID"
+    ## Joining with `by = join_by(CustomerID)`
 
     ##   OrderID CustomerID  OrderData CustomerName   Country
     ## 1     101          2 01.01.2021   Mary Grand Australia
@@ -1903,8 +1877,8 @@ exist and the join on those columns. Often it will be the case that you
 would like to join two tables that have different column names. You have
 two options:
 
--   Change the column names to match
--   Tell the join on which columns to match
+- Change the column names to match
+- Tell the join on which columns to match
 
 Let’s make another example. Different programming languages have
 different style for naming variables, column names, etc. These styles go
@@ -1973,7 +1947,7 @@ Now, back to the gapminder and sex ratio data. What’s going on here?
 left_join(gapminder, sex_ratios)
 ```
 
-    ## Joining, by = c("country", "year")
+    ## Joining with `by = join_by(country, year)`
 
     ## # A tibble: 1,704 × 7
     ##    country     continent  year lifeExp      pop gdpPercap sex_ratio
@@ -1988,7 +1962,7 @@ left_join(gapminder, sex_ratios)
     ##  8 Afghanistan Asia       1987    40.8 13867957      852.      104.
     ##  9 Afghanistan Asia       1992    41.7 16317921      649.      105.
     ## 10 Afghanistan Asia       1997    41.8 22227415      635.      107.
-    ## # … with 1,694 more rows
+    ## # ℹ 1,694 more rows
 
 # Code style 💩 (advanced)
 
@@ -1996,11 +1970,11 @@ Let’s talk about (code) style. According to the [dictionary
 app](https://en.wikipedia.org/wiki/Dictionary_(software)) on my
 computer, style can be defined in various ways, including:
 
--   “a manner of doing something”
--   “a way of using language”
--   “a way of behaving or approaching a situation that is characteristic
-    of or favored by a particular person”
--   “elegance and sophistication”
+- “a manner of doing something”
+- “a way of using language”
+- “a way of behaving or approaching a situation that is characteristic
+  of or favored by a particular person”
+- “elegance and sophistication”
 
 Most people recognize style when they see it. Whether it is someone’s
 manner or behavior, the way they speak or write, how they dress, how
@@ -2021,7 +1995,10 @@ website](https://clauswilke.com/dataviz/figure-titles-captions.html):
 
 ------------------------------------------------------------------------
 
-![Ugly tables.](figures/ugly_tables_example.png)
+<figure>
+<img src="figures/ugly_tables_example.png" alt="Ugly tables." />
+<figcaption aria-hidden="true">Ugly tables.</figcaption>
+</figure>
 
 ------------------------------------------------------------------------
 
@@ -2039,67 +2016,66 @@ creates a consistent code base that makes it easier to maintain in the
 long run and it also helps people new to programming, or people not so
 new to programming, in the developer learning curve, e.g.:
 
--   <https://medium.com/@arnabdhar430/why-you-should-keep-learning-as-a-software-engineer-ae69aab8c774>
+- <https://medium.com/@arnabdhar430/why-you-should-keep-learning-as-a-software-engineer-ae69aab8c774>
 
 Major programming languages have official style guides. For example in
 [Python](https://en.wikipedia.org/wiki/Python_(programming_language)):
 
--   <https://www.python.org/dev/peps/pep-0008/>
+- <https://www.python.org/dev/peps/pep-0008/>
 
 But corporations will often make their own tweaks to the style guide (or
 change parts completely) to fit their needs or desires, e.g., Google’s
 Python style guide:
 
--   <https://google.github.io/styleguide/pyguide.html>
+- <https://google.github.io/styleguide/pyguide.html>
 
 Want to know more about Python versus R and what to learn and why? Read
 this:
 
--   <https://www.ibm.com/cloud/blog/python-vs-r>
+- <https://www.ibm.com/cloud/blog/python-vs-r>
 
 R doesn’t seem to have its own official style guide, e.g.:
 
--   <https://www.google.com/search?client=safari&rls=en&q=r+style+guide&ie=UTF-8&oe=UTF-8>
+- <https://www.google.com/search?client=safari&rls=en&q=r+style+guide&ie=UTF-8&oe=UTF-8>
 
 But there are numerous “R style guides”. For example, when writing
 packages for [The Comprehensive R Archive Network
 (CRAN)](https://cran.r-project.org):
 
--   <https://cran.r-project.org/web/packages/AirSensor/vignettes/Developer_Style_Guide.html>
+- <https://cran.r-project.org/web/packages/AirSensor/vignettes/Developer_Style_Guide.html>
 
 Google also has an R style guide:
 
--   <https://google.github.io/styleguide/Rguide.html>
+- <https://google.github.io/styleguide/Rguide.html>
 
 If you are using [tidyverse](https://www.tidyverse.org), they have a
 style guide:
 
--   <https://style.tidyverse.org/>
+- <https://style.tidyverse.org/>
 
 [Advanced R](http://adv-r.had.co.nz) also has a style guide:
 
--   <http://adv-r.had.co.nz/Style.html>
+- <http://adv-r.had.co.nz/Style.html>
 
 [R-bloggers]() has a blog about style guides in R, which covers some of
 the basic different **between style guide standards**:
 
--   <a href="https://www.r-bloggers.com/2019/01/🖊-r-coding-style-guide/"
-    class="uri">https://www.r-bloggers.com/2019/01/🖊-r-coding-style-guide/</a>
+- <https://www.r-bloggers.com/2019/01/🖊-r-coding-style-guide/>
 
 To summarize, every programming language, and most groups of
 programmers, will have different recommendations for how to do things
 like:
 
--   declare you variables (e.g., should_it_be_with_underscores or
-    shouldItBeCamelCase?)
--   are your file names in upper or lower case? (e.g. analysis.R
-    vs. Analysis.R?)
--   depending on the language and its naming constraints are your
-    variables, methods, etc., using punctuation? (e.g., my.fiction vs
-    my_function vs myFunction vs MyFunction… and so on)
--   where should you introduce (or should you introduce) [new
-    lines](https://en.wikipedia.org/wiki/Newline) into your code,
-    editor, etc.?
+- declare you variables (e.g., should_it_be_with_underscores or
+  shouldItBeCamelCase?)
+- are your file names in upper or lower case? (e.g. analysis.R
+  vs. Analysis.R?)
+- depending on the language and its naming constraints are your
+  variables, methods, etc., using punctuation? (e.g., my.fiction vs
+  my_function vs myFunction vs MyFunction… and so on)
+- where should you introduce (or should you introduce) [new
+  lines](https://en.wikipedia.org/wiki/Newline) into your code, editor,
+  etc.?
 
 The
 [TL;DR](https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read)?
@@ -2119,9 +2095,9 @@ style guide!
 So how do you do that in the easiest way possible? There’s tools for
 that! For example, there’s an R library called `styler`:
 
--   <https://style.tidyverse.org>
--   <https://www.tidyverse.org/blog/2017/12/styler-1.0.0/>
--   <https://cran.r-project.org/web/packages/styler/vignettes/introducing_styler.html>
+- <https://style.tidyverse.org>
+- <https://www.tidyverse.org/blog/2017/12/styler-1.0.0/>
+- <https://cran.r-project.org/web/packages/styler/vignettes/introducing_styler.html>
 
 That you can use directly in RStudio (or on the command line)! It is
 going to tell you why your code is ugly and does not follow the
@@ -2142,10 +2118,10 @@ in your code:
 
 In short, make your coding life easier; use a linter! Here’s one for R:
 
--   <https://style.tidyverse.org>
--   <https://cran.r-project.org/web/packages/lintr/readme/README.html>
+- <https://style.tidyverse.org>
+- <https://cran.r-project.org/web/packages/lintr/readme/README.html>
 
-## Tests
+## Writing tests
 
 [Software testing](https://en.wikipedia.org/wiki/Software_testing)
 involves evaluating and verifying whether aspects of software validate
@@ -2161,13 +2137,14 @@ of specific code requirements.
 
 In R, information about testing can be found here, e.g.:
 
--   <https://r-pkgs.org/tests.html>
--   <https://testthat.r-lib.org>
--   <https://towardsdatascience.com/unit-testing-in-r-68ab9cc8d211>
+- <https://r-pkgs.org/tests.html>
+- <https://testthat.r-lib.org>
+- <https://towardsdatascience.com/unit-testing-in-r-68ab9cc8d211>
 
 # References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-Bryan2017" class="csl-entry">
 
