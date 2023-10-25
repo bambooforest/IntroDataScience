@@ -2,40 +2,29 @@ Data visualization I
 ================
 Steven Moran & Alena Witzlack-Makarevich
 
-26 October, 2022
+25 October, 2023
 
--   <a href="#data-formats-for-visualization"
-    id="toc-data-formats-for-visualization">Data formats for
-    visualization</a>
-    -   <a href="#tabular-data" id="toc-tabular-data">Tabular data</a>
-    -   <a href="#wide-vs-long-table-formats"
-        id="toc-wide-vs-long-table-formats">Wide vs long table formats</a>
-        -   <a href="#wide" id="toc-wide">Wide</a>
-        -   <a href="#long" id="toc-long">Long</a>
-    -   <a href="#tidy-data" id="toc-tidy-data">Tidy data</a>
-    -   <a href="#reshaping-data" id="toc-reshaping-data">Reshaping data</a>
-        -   <a href="#gather--pivot_longer"
-            id="toc-gather--pivot_longer"><code>gather()</code> /
-            <code>pivot_longer()</code></a>
-        -   <a href="#separate" id="toc-separate"><code>separate()</code></a>
-        -   <a href="#spread--pivot_wider"
-            id="toc-spread--pivot_wider"><code>spread()</code> /
-            <code>pivot_wider()</code></a>
-        -   <a href="#unite" id="toc-unite"><code>unite()</code></a>
--   <a href="#visualizing-data" id="toc-visualizing-data">Visualizing
-    data</a>
-    -   <a href="#workflow" id="toc-workflow">Workflow</a>
-    -   <a href="#layered-graphics" id="toc-layered-graphics">Layered
-        graphics</a>
-        -   <a href="#example-fertility-data"
-            id="toc-example-fertility-data">Example: fertility data</a>
-        -   <a href="#example-diamonds-data" id="toc-example-diamonds-data">Example:
-            diamonds data</a>
--   <a href="#additional-resources" id="toc-additional-resources">Additional
-    resources</a>
--   <a href="#exercises" id="toc-exercises">Exercises</a>
--   <a href="#references-and-footnotes"
-    id="toc-references-and-footnotes">References and footnotes</a>
+- [Data formats for visualization](#data-formats-for-visualization)
+  - [Tabular data](#tabular-data)
+  - [Wide vs long table formats](#wide-vs-long-table-formats)
+    - [Wide](#wide)
+    - [Long](#long)
+  - [Tidy data](#tidy-data)
+  - [Reshaping data](#reshaping-data)
+    - [`gather()` / `pivot_longer()`](#gather--pivot_longer)
+    - [`separate()`](#separate)
+    - [`spread()` / `pivot_wider()`](#spread--pivot_wider)
+    - [`unite()`](#unite)
+- [Visualizing data](#visualizing-data)
+  - [Workflow](#workflow)
+  - [Layered graphics](#layered-graphics)
+    - [Example: fertility data](#example-fertility-data)
+    - [Example: diamonds data](#example-diamonds-data)
+- [Visualizations](#visualizations)
+  - [Which plot(s) to use?](#which-plots-to-use)
+- [Additional resources](#additional-resources)
+- [Exercises](#exercises)
+- [References and footnotes](#references-and-footnotes)
 
 ------------------------------------------------------------------------
 
@@ -65,12 +54,12 @@ particular column, a missing value (`NA`) is stored in that cell.
 
 Tabular data come in various formats and go by various names, e.g.:
 
--   Table
--   Data set (if rectangular)
--   Data frame (e.g., a data type in R)
--   Data matrix
--   CSV plain text file
--   Spreadsheet
+- Table
+- Data set (if rectangular)
+- Data frame (e.g., a data type in R)
+- Data matrix
+- CSV plain text file
+- Spreadsheet
 
 For most people working with small amounts of data, the data table is
 the fundamental unit of organization because it is both a way of
@@ -93,8 +82,8 @@ formats, so that you can easily feed into the method.
 
 There are two basic presentations of tabular data:
 
--   Wide
--   Long (aka narrow)
+- Wide
+- Long (aka narrow)
 
 ### Wide
 
@@ -117,14 +106,12 @@ df_wide %>% kable()
 | Steve  |  64 |    144 |    165 |
 
 <!-- if you want to do it by hand in .md insert this:
-
-| Person | Age | Weight | Height |
+&#10;| Person | Age | Weight | Height |
 |----------|--------|---| 
 | Bob | 32 | 168 | 180 |
 | Alice | 24 | 150 | 175 |
 | Steve | 64 | 144 | 165 |
-
--->
+&#10;-->
 
 ### Long
 
@@ -286,8 +273,8 @@ ggplot(temp, aes(Person, Value)) +
   geom_line(aes(colour = Variable))
 ```
 
-    ## geom_path: Each group consists of only one observation. Do you need to adjust
-    ## the group aesthetic?
+    ## `geom_line()`: Each group consists of only one observation.
+    ## ℹ Do you need to adjust the group aesthetic?
 
 ![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
@@ -299,8 +286,8 @@ ggplot(df_wide, aes(Age, Weight)) +
   geom_line(aes(colour = Person))
 ```
 
-    ## geom_path: Each group consists of only one observation. Do you need to adjust
-    ## the group aesthetic?
+    ## `geom_line()`: Each group consists of only one observation.
+    ## ℹ Do you need to adjust the group aesthetic?
 
 ![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
@@ -332,18 +319,18 @@ And sometimes you will encounter both issues in the same data set!
 To resolve such issues, there are four very useful functions for tidying
 data:
 
--   `gather()` – makes wide data longer
--   `spread()` – males long data wider
--   `separate()`– splits a column into multiple columns
--   `unite()` – combines multiple columns into one column
+- `gather()` – makes wide data longer
+- `spread()` – males long data wider
+- `separate()`– splits a column into multiple columns
+- `unite()` – combines multiple columns into one column
 
 The first two are probably the most important for reshaping your data.
 Like many developments in programming languages and programming
 libraries, the first two functions (and although they still work) have
 been recently renamed:
 
--   `pivot_longer()` – pivots data into a longer format
--   `pivot_wider()` – pivots data into a wider format
+- `pivot_longer()` – pivots data into a longer format
+- `pivot_wider()` – pivots data into a wider format
 
 Let’s look at each in turn.
 
@@ -418,8 +405,8 @@ fertility_tidy %>% head() %>% kable()
 fertility_tidy %>% separate(year_variable, into=c("year", "variable"), sep="_")
 ```
 
-    ## Warning: Expected 2 pieces. Additional pieces discarded in 112 rows [2, 4, 6, 8,
-    ## 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, ...].
+    ## Warning: Expected 2 pieces. Additional pieces discarded in 112 rows [2, 4, 6, 8, 10, 12,
+    ## 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, ...].
 
     ## # A tibble: 224 × 4
     ##    country year  variable  fertility
@@ -434,7 +421,7 @@ fertility_tidy %>% separate(year_variable, into=c("year", "variable"), sep="_")
     ##  8 Germany 1963  life          70.1 
     ##  9 Germany 1964  fertility      2.49
     ## 10 Germany 1964  life          70.7 
-    ## # … with 214 more rows
+    ## # ℹ 214 more rows
 
 What happened? What did we lose?
 
@@ -518,7 +505,7 @@ fertility_tidy %>% unite(name, year, variable)
     ##  8 Germany 1963_life_expectancy     70.1 
     ##  9 Germany 1964_fertility            2.49
     ## 10 Germany 1964_life_expectancy     70.7 
-    ## # … with 214 more rows
+    ## # ℹ 214 more rows
 
 ``` r
 fertility_tidy %>% head() %>% kable() # one way to display nicely tables 
@@ -594,7 +581,10 @@ A nice illustration of the data exploration process (or pipeline) is
 given [here](https://r4ds.had.co.nz/explore-intro.html) and in the
 screen shot:
 
-![Data exploration.](figures/data_exploration.png)
+<figure>
+<img src="figures/data_exploration.png" alt="Data exploration." />
+<figcaption aria-hidden="true">Data exploration.</figcaption>
+</figure>
 
 In the blue highlighted portion “Explore”, you can seen a circle from
 “Transform” -\> “Visualize” -\> “Model” (then repeat).
@@ -620,26 +610,31 @@ journalism](https://en.wikipedia.org/wiki/Data_journalism).
 
 Consider for example you have some data:
 
--   What you are trying to visualize with your data?
--   What kind of (statistical) data types do you have?
--   How are the data types usually visualized (including if more than
-    one – in relation to each other)?
--   On which axes should they be plotted?
+- What you are trying to visualize with your data?
+- What kind of (statistical) data types do you have?
+- How are the data types usually visualized (including if more than one
+  – in relation to each other)?
+- On which axes should they be plotted?
 
 Or are you trying to visualize – or model – a [statistical
 distribution](https://en.wikipedia.org/wiki/Probability_distribution)?
 Then you might ask:
 
--   How many variables are there?
--   What are your independent and dependent variables?
--   Do you have any? Do you have a hypothesis?
+- How many variables are there?
+- What are your independent and dependent variables?
+- Do you have any? Do you have a hypothesis?
 
 A picture of the workflow with `tidyverse` libraries (`readr`, `tidyr`,
 etc.) is given below. For “model” it will depend on what type of
 statistical *model(s)* you are using – there are numerous libraries for
 statistical modeling in R!
 
-![Work flow annotated with Tidyverse libraries.](figures/workflow.png)
+<figure>
+<img src="figures/workflow.png"
+alt="Work flow annotated with Tidyverse libraries." />
+<figcaption aria-hidden="true">Work flow annotated with Tidyverse
+libraries.</figcaption>
+</figure>
 
 ## Layered graphics
 
@@ -652,7 +647,11 @@ and typology, of graphic design into R.[^1]
 Each layer/component of the *Grammar of Graphics* has a special name in
 `ggplot2`, visualized as:
 
-![A layered grammar of graphics.](figures/layers.png)
+<figure>
+<img src="figures/layers.png" alt="A layered grammar of graphics." />
+<figcaption aria-hidden="true">A layered grammar of
+graphics.</figcaption>
+</figure>
 
 A statistical graphic according to this layered grammar of graphics is a
 mapping from **data** to **aesthetic attributes** (e.g., color, shape,
@@ -661,15 +660,13 @@ size) to geometric objects (e.g., points, lines, bars).
 The basic idea is that you can build data visualizations from the same
 components:
 
--   The data
--   A [coordinate
-    system](https://en.wikipedia.org/wiki/Coordinate_system)
--   Geoms (functions that represent data points in the coordinate
-    system)
+- The data
+- A [coordinate system](https://en.wikipedia.org/wiki/Coordinate_system)
+- Geoms (functions that represent data points in the coordinate system)
 
 Here is a cheat sheet:
 
--   <https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf>
+- <https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf>
 
 ------------------------------------------------------------------------
 
@@ -688,7 +685,10 @@ In sum, it is the combination of these independent components that make
 up a graphic, including layers, scales, the coordinate system, and
 faceting, that one needs to familiarize themself with.
 
-![Components.](figures/components.png)
+<figure>
+<img src="figures/components.png" alt="Components." />
+<figcaption aria-hidden="true">Components.</figcaption>
+</figure>
 
 With ggplot2, you begin a plot with the function `ggplot()`. Then
 `ggplot()` creates a coordinate system that you can add layers to.
@@ -698,13 +698,16 @@ The first argument of `ggplot()` is the dataset to use in the graph. So
 
 However, a simple plot with `ggplot2()` needs:
 
--   Data (a data frame or tibble!)
--   Aesthetics (mapping to variables)
--   Geometry (e.g., dots, lines, boxes)
+- Data (a data frame or tibble!)
+- Aesthetics (mapping to variables)
+- Geometry (e.g., dots, lines, boxes)
 
 These essential ingredients are illustrated below.
 
-![Essentials.](figures/essential_ingredients.png)
+<figure>
+<img src="figures/essential_ingredients.png" alt="Essentials." />
+<figcaption aria-hidden="true">Essentials.</figcaption>
+</figure>
 
 Let’s look at some examples!
 
@@ -902,9 +905,38 @@ geom_point() +
   ggplot(aes(carat, price), diamonds)
 ```
 
+# Visualizations
+
+## Which plot(s) to use?
+
+It depends on your data and the data types in your data. Here is a great
+visualization and great site that gives you a [decision
+tree](https://en.wikipedia.org/wiki/Decision_tree) so that you can
+decide what kind of visualization best fits your data and which caveats
+you should avoid when creating those visualizations:
+
+- <https://www.data-to-viz.com>
+
+First you need to know your data type, e.g., are you working with
+numeric or categorical data? Then ask how many variables you are working
+with, e.g., one or two or more categorical variables. If you have one
+categorical variable, for example, your data set is very simple and you
+can use a bar plot. If you have two or more categorical values, are they
+independent, nested, etc.? If you have a numerical and categorical
+variable, in what relation do they stand to each other? Is there order?
+
+Note also the caveats!
+
+- <https://www.data-to-viz.com/caveats.html>
+
+Remember, you want your visualizations to tell a story. And there are a
+lot of visualization graphics out there!
+
+- <https://www.data-to-viz.com/#story>
+
 # Additional resources
 
--   <https://clauswilke.com/dataviz/>
+- <https://clauswilke.com/dataviz/>
 
 # Exercises
 
@@ -914,7 +946,8 @@ plots](../case_studies/data_behind_the_plot/).
 
 # References and footnotes
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-IrizarryGill2021" class="csl-entry">
 

@@ -494,6 +494,25 @@ geom_point() +
   ggplot(aes(carat, price), diamonds)
 ```
 
+# Visualizations
+
+## Which plot(s) to use?
+
+It depends on your data and the data types in your data. Here is a great visualization and great site that gives you a [decision tree](https://en.wikipedia.org/wiki/Decision_tree) so that you can decide what kind of visualization best fits your data and which caveats you should avoid when creating those visualizations:
+
+* https://www.data-to-viz.com
+
+First you need to know your data type, e.g., are you working with numeric or categorical data? Then ask how many variables you are working with, e.g., one or two or more categorical variables. If you have one categorical variable, for example, your data set is very simple and you can use a bar plot. If you have two or more categorical values, are they independent, nested, etc.? If you have a numerical and categorical variable, in what relation do they stand to each other? Is there order?
+
+Note also the caveats!
+
+* https://www.data-to-viz.com/caveats.html
+
+Remember, you want your visualizations to tell a story. And there are a lot of visualization graphics out there!
+
+* https://www.data-to-viz.com/#story
+
+
 # Additional resources
 
 * https://clauswilke.com/dataviz/
